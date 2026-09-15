@@ -1,0 +1,26 @@
+CARPETA DE IMÁGENES
+===================
+
+Aquí van las imágenes del sitio. Nombres ya previstos por el HTML:
+
+  logo.png        <- VUESTRO LOGO REAL. Copiadlo aquí con este nombre exacto.
+                     Se usa en la cabecera, el pie, el favicon y las miniaturas.
+                     Ideal: PNG cuadrado de 512x512 píxeles o más.
+                     Si no existe, el sitio usa logo.svg (marca provisional).
+
+  logo.svg        Marca provisional generada a partir del logo que me pasaste.
+  favicon.svg     Versión simplificada del sello para la pestaña del navegador.
+
+Opcionales (se referencian desde data/site.json o los HTML):
+
+  og-image.png    Imagen 1200x630 para las vistas previas al compartir en
+                  WhatsApp, Instagram, X... Si no la tenéis, se usa logo.png.
+  proyectos/      Fotos de proyectos: proyectos/nombre-del-proyecto.jpg
+                  Se referencian desde data/site.json -> "imagen".
+  equipo/         Fotos de la junta directiva: equipo/nombre.jpg
+
+RECOMENDACIONES
+  - Formatos modernos: WebP o JPG para fotos, SVG para gráficos.
+  - Fotos de proyecto: 1200x800 píxeles, menos de 300 KB cada una.
+  - Escribid siempre el "alt" de las imágenes con contenido (ya está previsto
+    en data/site.json para las fotos de proyectos y de la junta).

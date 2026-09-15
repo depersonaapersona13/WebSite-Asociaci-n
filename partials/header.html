@@ -1,0 +1,51 @@
+<!-- partials/header.html — encabezado compartido. Lo inyecta assets/js/layout.js -->
+<header class="sticky top-0 z-50 border-b border-brand-100 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+
+    <a href="/" class="flex items-center gap-3">
+      <!-- El logo real vive en assets/img/logo.png. Si no existe, main.js usa assets/img/logo.svg -->
+      <img src="/assets/img/logo.png" data-logo alt="Logotipo de De Personas a Personas"
+           width="48" height="48"
+           class="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-brand-100 sm:h-12 sm:w-12">
+      <span class="leading-tight">
+        <span class="block text-sm font-bold tracking-tight text-brand-900 sm:text-base">De Personas a Personas</span>
+        <span class="hidden text-xs text-brand-700 sm:block">Jóvenes que se apoyan entre sí</span>
+      </span>
+    </a>
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-7 text-sm">
+        <li><a class="nav-enlace" href="/" data-nav="inicio">Inicio</a></li>
+        <li><a class="nav-enlace" href="/sobre-nosotros" data-nav="sobre-nosotros">Sobre Nosotros</a></li>
+        <li><a class="nav-enlace" href="/proyectos" data-nav="proyectos">Proyectos</a></li>
+        <li><a class="nav-enlace" href="/contacto" data-nav="contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/contacto" class="hidden rounded-full bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-800 lg:inline-flex">Escríbenos</a>
+      <button type="button" id="boton-menu" aria-expanded="false" aria-controls="menu-movil"
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 text-brand-800 lg:hidden">
+        <span class="sr-only">Abrir menú de navegación</span>
+        <svg class="icono-abrir h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+        </svg>
+        <svg class="icono-cerrar h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="menu-movil" hidden class="border-t border-brand-100 bg-white lg:hidden">
+    <nav aria-label="Menú móvil" class="mx-auto max-w-6xl px-4 py-3 sm:px-6">
+      <ul class="space-y-1 text-base">
+        <li><a class="nav-enlace block py-2" href="/" data-nav="inicio">Inicio</a></li>
+        <li><a class="nav-enlace block py-2" href="/sobre-nosotros" data-nav="sobre-nosotros">Sobre Nosotros</a></li>
+        <li><a class="nav-enlace block py-2" href="/proyectos" data-nav="proyectos">Proyectos</a></li>
+        <li><a class="nav-enlace block py-2" href="/contacto" data-nav="contacto">Contacto</a></li>
+        <li class="pt-2"><a href="/contacto" class="btn btn-primario w-full">Escríbenos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

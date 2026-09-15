@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Proyectos · De Personas a Personas</title>
+  <meta name="description" content="Los proyectos de la asociación De Personas a Personas: actividades, acompañamiento y acciones comunitarias de jóvenes que se apoyan entre sí.">
+  <meta name="theme-color" content="#8FB9E0">
+  <link rel="canonical" href="https://deperaper13.pages.dev/proyectos">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="De Personas a Personas">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Proyectos · De Personas a Personas">
+  <meta property="og:description" content="Actividades, acompañamiento y acciones comunitarias de la asociación.">
+  <meta property="og:url" content="https://deperaper13.pages.dev/proyectos">
+  <meta property="og:image" content="https://deperaper13.pages.dev/assets/img/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Proyectos · De Personas a Personas">
+  <meta name="twitter:description" content="Actividades, acompañamiento y acciones comunitarias de la asociación.">
+  <meta name="twitter:image" content="https://deperaper13.pages.dev/assets/img/logo.png">
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/logo.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/js/tema.js"></script>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <script src="/assets/js/layout.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/proyectos.js" defer></script>
+</head>
+
+<body data-pagina="proyectos" class="flex min-h-screen flex-col bg-white text-brand-900 antialiased">
+  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+  <noscript>
+    <div class="border-b border-brand-100 bg-brand-50 px-4 py-3 text-sm sm:px-6">
+      <a class="enlace mr-5 font-semibold" href="/">Inicio</a>
+      <a class="enlace mr-5 font-semibold" href="/sobre-nosotros">Sobre Nosotros</a>
+      <a class="enlace mr-5 font-semibold" href="/proyectos">Proyectos</a>
+      <a class="enlace font-semibold" href="/contacto">Contacto</a>
+    </div>
+  </noscript>
+
+  <div data-layout="header" hidden></div>
+
+  <main id="contenido" class="flex-1">
+    <!-- Cabecera de página -->
+    <section class="border-b border-brand-100 bg-brand-50">
+      <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700">Proyectos</p>
+        <h1 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">En qué estamos trabajando</h1>
+        <p class="mt-4 max-w-3xl text-lg text-brand-900/80">
+          Aquí recogemos las actividades, el acompañamiento y las acciones comunitarias de la
+          asociación. Si quieres sumarte a alguno, escríbenos.
+        </p>
+      </div>
+    </section>
+
+    <!-- Listado de proyectos: se genera desde data/site.json -> "proyectos" -->
+    <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
+      <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Filtrar proyectos por estado">
+        <button type="button" class="btn filtro !px-5 !py-2 text-sm" data-filtro="todos" aria-pressed="true">Todos</button>
+        <button type="button" class="btn filtro !px-5 !py-2 text-sm" data-filtro="activo" aria-pressed="false">En marcha</button>
+        <button type="button" class="btn filtro !px-5 !py-2 text-sm" data-filtro="finalizado" aria-pressed="false">Finalizados</button>
+      </div>
+
+      <p class="mt-4 text-sm text-brand-900/70" data-proyectos-cuenta aria-live="polite"></p>
+
+      <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-proyectos></ul>
+      <div class="mt-8" data-proyectos-aviso></div>
+
+      <!-- PENDIENTE: para añadir, editar o quitar proyectos, abrid data/site.json
+           y modificad la lista "proyectos". Cada proyecto admite:
+           titulo, estado (activo o finalizado), anio, resumen, imagen y enlace. -->
+    </section>
+
+    <!-- Llamada a la acción -->
+    <section class="border-t border-brand-100 bg-brand-50">
+      <div class="mx-auto max-w-6xl px-4 py-14 text-center sm:px-6">
+        <h2 class="text-2xl font-bold text-brand-900 sm:text-3xl">¿Tienes una idea para un proyecto?</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-brand-900/80">
+          Cuéntanosla y vemos entre todas cómo llevarla adelante.
+        </p>
+        <a class="btn btn-primario mt-8" href="/contacto">Escríbenos</a>
+      </div>
+    </section>
+  </main>
+
+  <div data-layout="footer" hidden></div>
+</body>
+</html>

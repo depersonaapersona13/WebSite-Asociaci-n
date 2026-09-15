@@ -1,0 +1,73 @@
+{
+  "_ayuda": "Todo lo que empiece por 'PENDIENTE' se muestra en el sitio como contenido pendiente. Al rellenarlo, desaparece el aviso automáticamente. No borres las comillas ni las comas.",
+
+  "meta": {
+    "nombre": "De Personas a Personas",
+    "siglas": "DPAP",
+    "eslogan": "Jóvenes que se apoyan entre sí",
+    "urlBase": "https://deperaper13.pages.dev",
+    "descripcionCorta": "Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.",
+    "descripcion": "PENDIENTE: descripción de 2 a 4 frases. Se usa en buscadores y en la web.",
+    "logo": "/assets/img/logo.png"
+  },
+
+  "contacto": {
+    "email": "PENDIENTE: correo público de contacto",
+    "telefono": "PENDIENTE: teléfono de contacto",
+    "direccion": "PENDIENTE: sede o localidad",
+    "horario": "PENDIENTE: horario de atención",
+    "formulario": {
+      "_ayuda": "tipo 'mailto' abre el correo del visitante (funciona ya, sin servicios externos). Si algún día usáis Web3Forms/Formspree, poned su URL en 'endpoint'.",
+      "tipo": "mailto",
+      "endpoint": "",
+      "destino": "PENDIENTE: correo donde queréis recibir los mensajes"
+    }
+  },
+
+  "redes": [
+    { "nombre": "Instagram", "url": "", "icono": "instagram" },
+    { "nombre": "Facebook", "url": "", "icono": "facebook" },
+    { "nombre": "TikTok", "url": "", "icono": "tiktok" },
+    { "nombre": "WhatsApp", "url": "", "icono": "whatsapp" },
+    { "nombre": "YouTube", "url": "", "icono": "youtube" }
+  ],
+
+  "legal": {
+    "nif": "PENDIENTE: CIF/NIF de la asociación",
+    "registro": "PENDIENTE: número de inscripción en el Registro de Asociaciones",
+    "fundacion": "PENDIENTE: fecha de constitución",
+    "sede": "PENDIENTE: domicilio social"
+  },
+
+  "junta": [],
+
+  "proyectos": [
+    {
+      "id": "punto-de-encuentro",
+      "titulo": "Punto de encuentro juvenil",
+      "estado": "activo",
+      "anio": "2026",
+      "resumen": "PENDIENTE: explicad el proyecto en 1 o 2 frases.",
+      "imagen": "",
+      "enlace": ""
+    },
+    {
+      "id": "acompanamiento-entre-iguales",
+      "titulo": "Acompañamiento entre iguales",
+      "estado": "activo",
+      "anio": "2025",
+      "resumen": "PENDIENTE: explicad el proyecto en 1 o 2 frases.",
+      "imagen": "",
+      "enlace": ""
+    },
+    {
+      "id": "campana-solidaria",
+      "titulo": "Campaña solidaria",
+      "estado": "finalizado",
+      "anio": "2025",
+      "resumen": "PENDIENTE: explicad el proyecto en 1 o 2 frases.",
+      "imagen": "",
+      "enlace": ""
+    }
+  ]
+}

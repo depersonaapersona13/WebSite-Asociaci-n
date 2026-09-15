@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Actualiza la URL cuando tengáis dominio propio
+Sitemap: https://deperaper13.pages.dev/sitemap.xml

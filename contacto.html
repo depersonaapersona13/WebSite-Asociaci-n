@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Contacto · De Personas a Personas</title>
+  <meta name="description" content="Escríbenos: correo, redes sociales y formulario de contacto de la asociación De Personas a Personas.">
+  <meta name="theme-color" content="#8FB9E0">
+  <link rel="canonical" href="https://deperaper13.pages.dev/contacto">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="De Personas a Personas">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Contacto · De Personas a Personas">
+  <meta property="og:description" content="Escríbenos: correo, redes sociales y formulario de contacto.">
+  <meta property="og:url" content="https://deperaper13.pages.dev/contacto">
+  <meta property="og:image" content="https://deperaper13.pages.dev/assets/img/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contacto · De Personas a Personas">
+  <meta name="twitter:description" content="Escríbenos: correo, redes sociales y formulario de contacto.">
+  <meta name="twitter:image" content="https://deperaper13.pages.dev/assets/img/logo.png">
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/logo.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/js/tema.js"></script>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <script src="/assets/js/layout.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+
+<body data-pagina="contacto" class="flex min-h-screen flex-col bg-white text-brand-900 antialiased">
+  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+  <noscript>
+    <div class="border-b border-brand-100 bg-brand-50 px-4 py-3 text-sm sm:px-6">
+      <a class="enlace mr-5 font-semibold" href="/">Inicio</a>
+      <a class="enlace mr-5 font-semibold" href="/sobre-nosotros">Sobre Nosotros</a>
+      <a class="enlace mr-5 font-semibold" href="/proyectos">Proyectos</a>
+      <a class="enlace font-semibold" href="/contacto">Contacto</a>
+    </div>
+  </noscript>
+
+  <div data-layout="header" hidden></div>
+
+  <main id="contenido" class="flex-1">
+    <!-- Cabecera de página -->
+    <section class="border-b border-brand-100 bg-brand-50">
+      <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700">Contacto</p>
+        <h1 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">Hablemos</h1>
+        <p class="mt-4 max-w-3xl text-lg text-brand-900/80">
+          ¿Quieres participar, proponer algo o simplemente preguntarnos? Escríbenos por el medio
+          que te resulte más cómodo.
+        </p>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+      <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+
+        <div>
+          <h2 class="text-2xl font-bold text-brand-900">Datos de contacto</h2>
+          <div class="mt-6" data-contacto-detalle></div>
+
+          <h2 class="mt-10 text-lg font-bold text-brand-900">Redes sociales</h2>
+          <div class="mt-4" data-redes-claro></div>
+
+          <div class="mt-10">
+            <h2 class="text-lg font-bold text-brand-900">Antes de escribirnos</h2>
+            <p class="mt-3 text-sm leading-relaxed text-brand-900/80">
+              <!-- PENDIENTE: si vais a publicar aviso legal y política de privacidad,
+                   añadid aquí los enlaces (por ejemplo /privacidad) -->
+              Usamos los datos que nos envías solo para responderte y no los compartimos con
+              terceros. Si nos pides información sobre actividades, te escribiremos desde el correo
+              de la asociación.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <form class="tarjeta p-6 sm:p-8" data-formulario-contacto novalidate>
+            <h2 class="text-2xl font-bold text-brand-900">Escríbenos</h2>
+            <p class="mt-2 text-sm text-brand-900/70">Los campos marcados con * son obligatorios.</p>
+
+            <div class="mt-6 grid gap-5 sm:grid-cols-2">
+              <div>
+                <label class="block text-sm font-semibold text-brand-900" for="nombre">Nombre *</label>
+                <input class="campo mt-2" id="nombre" name="nombre" type="text" autocomplete="name"
+                       required aria-describedby="error-nombre">
+                <p class="error-campo" id="error-nombre" hidden></p>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-brand-900" for="email">Correo electrónico *</label>
+                <input class="campo mt-2" id="email" name="email" type="email" autocomplete="email"
+                       required aria-describedby="error-email">
+                <p class="error-campo" id="error-email" hidden></p>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <label class="block text-sm font-semibold text-brand-900" for="asunto">Asunto</label>
+              <input class="campo mt-2" id="asunto" name="asunto" type="text" autocomplete="off">
+            </div>
+
+            <div class="mt-5">
+              <label class="block text-sm font-semibold text-brand-900" for="mensaje">Mensaje *</label>
+              <textarea class="campo mt-2" id="mensaje" name="mensaje" rows="6" required
+                        aria-describedby="error-mensaje"></textarea>
+              <p class="error-campo" id="error-mensaje" hidden></p>
+            </div>
+
+            <!-- Trampa anti-spam: invisible para las personas, los bots sí la rellenan -->
+            <div class="hidden" aria-hidden="true">
+              <label for="empresa">No rellenar este campo</label>
+              <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="mt-6 flex items-start gap-3">
+              <input class="mt-1 h-5 w-5 rounded border-brand-200" id="privacidad" name="privacidad"
+                     type="checkbox" required aria-describedby="error-privacidad">
+              <label class="text-sm leading-relaxed text-brand-900/80" for="privacidad">
+                He leído y acepto que mis datos se usen únicamente para responder a este mensaje. *
+              </label>
+            </div>
+            <p class="error-campo" id="error-privacidad" hidden></p>
+
+            <button class="btn btn-primario mt-6 w-full" type="submit">Enviar mensaje</button>
+            <div class="mt-4" data-aviso aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-layout="footer" hidden></div>
+</body>
+</html>

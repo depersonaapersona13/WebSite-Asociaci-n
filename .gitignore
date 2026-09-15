@@ -1,0 +1,15 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Herramientas locales (no se despliegan)
+node_modules/
+.wrangler/
+*.log
+.vscode/
+
+# Copias y temporales
+*.bak
+*.zip
+*~

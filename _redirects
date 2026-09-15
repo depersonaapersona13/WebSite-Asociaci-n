@@ -1,0 +1,13 @@
+# _redirects — URLs limpias para Cloudflare Pages
+# Permiten visitar /proyectos en lugar de /proyectos.html
+# (Pages ya resuelve las rutas .html sin extensión; estas reglas lo hacen explícito
+#  y sirven para enlaces con barra final.)
+
+/inicio            /index.html            200
+/sobre-nosotros/   /sobre-nosotros.html   200
+/proyectos/        /proyectos.html        200
+/contacto/         /contacto.html         200
+/inicio/           /index.html            200
+
+# Ejemplo de redirección permanente (301) por si algún día cambiáis de dominio:
+# /antiguo/        https://deperaper13.pages.dev/   301
