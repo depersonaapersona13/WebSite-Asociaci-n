@@ -47,7 +47,7 @@ una URL del tipo `https://nombre-del-proyecto.pages.dev`.
 
 1. En el proyecto de Pages: **Custom domains → Set up a custom domain**.
 2. Añade el dominio y sigue las instrucciones de DNS.
-3. Después busca y reemplaza `https://deperaper13.pages.dev` por vuestro dominio en:
+3. Después busca y reemplaza `https://depersonaapersona13-web.pages.dev` por vuestro dominio en:
    `index.html`, `sobre-nosotros.html`, `proyectos.html`, `contacto.html`,
    `sitemap.xml`, `robots.txt` y `data/site.json` (campo `meta.urlBase`).
 

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Actualiza la URL cuando tengáis dominio propio
-Sitemap: https://deperaper13.pages.dev/sitemap.xml
+Sitemap: https://depersonaapersona13-web.pages.dev/sitemap.xml
