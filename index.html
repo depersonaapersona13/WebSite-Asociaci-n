@@ -24,20 +24,37 @@
   <meta name="twitter:image" content="https://depersonaapersona13-web.pages.dev/assets/img/logo.png">
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/assets/img/logo.png">
+  <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <!-- Rendimiento: el logo es la imagen más importante; el JSON se pide cuanto antes -->
+  <link rel="preload" href="/assets/img/logo.png" as="image" fetchpriority="high">
+  <link rel="preload" href="/data/site.json" as="fetch" crossorigin="anonymous">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+
+  <!-- Tema visual (modo oscuro) antes de pintar, para evitar el destello blanco -->
+  <script src="/assets/js/tema-visual.js"></script>
 
   <!-- Tailwind por CDN + tema de marca (colores en assets/js/tema.js) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/assets/js/tema.js"></script>
   <link rel="stylesheet" href="/assets/css/styles.css">
 
-  <!-- Encabezado y pie compartidos + comportamiento general -->
+  <!-- Selector de idioma (antes de main.js) + encabezado/pie compartidos + lógica general -->
+  <script src="/assets/js/idiomas.js" defer></script>
   <script src="/assets/js/layout.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
 </head>
 
 <body data-pagina="inicio" class="flex min-h-screen flex-col bg-white text-brand-900 antialiased">
-  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+  <a class="salto-contenido" href="#contenido" data-i18n="comun.saltar">Saltar al contenido</a>
+
+  <!-- Pantalla de carga: main.js la oculta al terminar; si el JS fallara, se oculta sola por CSS -->
+  <div id="pantalla-carga" role="status">
+    <img src="/assets/img/logo.png" data-logo alt="" width="80" height="80">
+    <div class="carga-anillo" aria-hidden="true"></div>
+    <p class="carga-texto" data-i18n="comun.cargando">Cargando…</p>
+  </div>
 
   <!-- Navegación básica para quienes navegan sin JavaScript -->
   <noscript>
@@ -56,9 +73,9 @@
     <section class="relative overflow-hidden bg-brand-400">
       <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.15fr_auto] md:py-20">
         <div>
-          <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-900/70">Asociación juvenil</p>
+          <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-900/70" data-i18n="hero.etiqueta">Asociación juvenil</p>
           <h1 class="mt-4 text-4xl font-bold leading-tight text-brand-900 sm:text-5xl">De Personas a Personas</h1>
-          <p class="mt-4 text-xl font-semibold text-brand-900">Jóvenes que se apoyan entre sí.</p>
+          <p class="mt-4 text-xl font-semibold text-brand-900" data-i18n="hero.eslogan">Jóvenes que se apoyan entre sí.</p>
           <p class="mt-5 max-w-2xl leading-relaxed text-brand-900/85" data-sitio="meta.descripcionCorta"></p>
           <div class="mt-8 flex flex-wrap gap-3">
             <a class="btn btn-primario" href="/sobre-nosotros">Conócenos</a>
@@ -76,9 +93,9 @@
     <!-- Qué hacemos -->
     <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
       <div class="max-w-2xl">
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700">Qué hacemos</p>
-        <h2 class="mt-3 text-3xl font-bold text-brand-900">Apoyo real, entre iguales</h2>
-        <p class="mt-4 text-brand-900/80">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="queHacemos.kicker">Qué hacemos</p>
+        <h2 class="mt-3 text-3xl font-bold text-brand-900" data-i18n="queHacemos.titulo">Apoyo real, entre iguales</h2>
+        <p class="mt-4 text-brand-900/80" data-i18n="queHacemos.texto">
           <!-- PENDIENTE: revisad y ajustad estas tres ideas a lo que hace la asociación -->
           Creamos espacios donde las personas jóvenes se encuentran, se escuchan y se
           acompañan sin sentirse juzgadas.
@@ -92,8 +109,8 @@
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
             </svg>
           </span>
-          <h3 class="text-lg font-bold text-brand-900">Apoyo mutuo</h3>
-          <p class="mt-2 text-sm leading-relaxed text-brand-900/80">
+          <h3 class="text-lg font-bold text-brand-900" data-i18n="queHacemos.apoyoTitulo">Apoyo mutuo</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brand-900/80" data-i18n="queHacemos.apoyoTexto">
             Acompañamos a quienes lo necesitan: escucha, orientación y ayuda práctica entre personas de edades parecidas.
           </p>
         </li>
@@ -103,8 +120,8 @@
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
           </span>
-          <h3 class="text-lg font-bold text-brand-900">Encuentros y actividades</h3>
-          <p class="mt-2 text-sm leading-relaxed text-brand-900/80">
+          <h3 class="text-lg font-bold text-brand-900" data-i18n="queHacemos.encuentrosTitulo">Encuentros y actividades</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brand-900/80" data-i18n="queHacemos.encuentrosTexto">
             Organizamos quedadas, talleres y actividades para conocerse, aprender juntas y desconectar.
           </p>
         </li>
@@ -116,8 +133,8 @@
               <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
           </span>
-          <h3 class="text-lg font-bold text-brand-900">Comunidad</h3>
-          <p class="mt-2 text-sm leading-relaxed text-brand-900/80">
+          <h3 class="text-lg font-bold text-brand-900" data-i18n="queHacemos.comunidadTitulo">Comunidad</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brand-900/80" data-i18n="queHacemos.comunidadTexto">
             Construimos red: lo que aprende una persona lo comparte con las demás, y nadie se queda fuera.
           </p>
         </li>
@@ -129,10 +146,10 @@
       <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div class="max-w-2xl">
-            <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700">Proyectos</p>
-            <h2 class="mt-3 text-3xl font-bold text-brand-900">En lo que estamos trabajando</h2>
+            <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="proyectos.destacadosKicker">Proyectos</p>
+            <h2 class="mt-3 text-3xl font-bold text-brand-900" data-i18n="proyectos.destacadosTitulo">En lo que estamos trabajando</h2>
           </div>
-          <a class="enlace font-semibold" href="/proyectos">Ver todos los proyectos</a>
+          <a class="enlace font-semibold" href="/proyectos" data-i18n="proyectos.verTodos">Ver todos los proyectos</a>
         </div>
         <div class="mt-10" data-proyectos-destacados></div>
       </div>
@@ -141,19 +158,26 @@
     <!-- Llamada a la acción -->
     <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
       <div class="overflow-hidden rounded-2xl bg-brand-700 p-8 text-center shadow-xl sm:p-12">
-        <h2 class="text-2xl font-bold text-white sm:text-3xl">¿Quieres participar?</h2>
-        <p class="mx-auto mt-4 max-w-2xl text-brand-100">
+        <h2 class="text-2xl font-bold text-white sm:text-3xl" data-i18n="queHacemos.ctaTitulo">¿Quieres participar?</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-brand-100" data-i18n="queHacemos.ctaTexto">
           Si eres joven y buscas apoyar o sentirte apoyado, escríbenos. También puedes contar con
           nosotras si quieres proponer una actividad o colaborar con la asociación.
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-3">
-          <a class="rounded-full bg-white px-6 py-3 font-bold text-brand-800 transition-colors hover:bg-brand-50" href="/contacto">Escríbenos</a>
-          <a class="rounded-full border-2 border-white px-6 py-3 font-bold text-white transition-colors hover:bg-white/15" href="/sobre-nosotros">Cómo funcionamos</a>
+          <a class="rounded-full bg-white px-6 py-3 font-bold text-brand-800 transition-colors hover:bg-brand-50" href="/contacto" data-i18n="queHacemos.ctaBoton">Escríbenos</a>
+          <a class="rounded-full border-2 border-white px-6 py-3 font-bold text-white transition-colors hover:bg-white/15" href="/sobre-nosotros" data-i18n="queHacemos.ctaBoton2">Cómo funcionamos</a>
         </div>
       </div>
     </section>
   </main>
 
   <div data-layout="footer" hidden></div>
+
+  <!-- Botón flotante para volver arriba -->
+  <button type="button" id="boton-arriba" class="boton-arriba" data-i18n-aria-label="comun.volverArriba" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
 </body>
 </html>

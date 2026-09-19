@@ -22,18 +22,26 @@
   <meta name="twitter:image" content="https://depersonaapersona13-web.pages.dev/assets/img/logo.png">
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/assets/img/logo.png">
+  <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+
+  <!-- Tema visual (modo oscuro) antes de pintar, para evitar el destello blanco -->
+  <script src="/assets/js/tema-visual.js"></script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/assets/js/tema.js"></script>
   <link rel="stylesheet" href="/assets/css/styles.css">
 
+  <!-- Selector de idioma (antes de main.js) + encabezado/pie compartidos + lógica general -->
+  <script src="/assets/js/idiomas.js" defer></script>
   <script src="/assets/js/layout.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
 </head>
 
 <body data-pagina="contacto" class="flex min-h-screen flex-col bg-white text-brand-900 antialiased">
-  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+  <a class="salto-contenido" href="#contenido" data-i18n="comun.saltar">Saltar al contenido</a>
 
   <noscript>
     <div class="border-b border-brand-100 bg-brand-50 px-4 py-3 text-sm sm:px-6">
@@ -83,33 +91,33 @@
 
         <div>
           <form class="tarjeta p-6 sm:p-8" data-formulario-contacto novalidate>
-            <h2 class="text-2xl font-bold text-brand-900">Escríbenos</h2>
-            <p class="mt-2 text-sm text-brand-900/70">Los campos marcados con * son obligatorios.</p>
+            <h2 class="text-2xl font-bold text-brand-900" data-i18n="contacto.formTitulo">Escríbenos</h2>
+            <p class="mt-2 text-sm text-brand-900/70" data-i18n="contacto.formAviso">Los campos marcados con * son obligatorios.</p>
 
             <div class="mt-6 grid gap-5 sm:grid-cols-2">
               <div>
-                <label class="block text-sm font-semibold text-brand-900" for="nombre">Nombre *</label>
+                <label class="block text-sm font-semibold text-brand-900" for="nombre" data-i18n="contacto.lblNombre">Nombre *</label>
                 <input class="campo mt-2" id="nombre" name="nombre" type="text" autocomplete="name"
-                       required aria-describedby="error-nombre">
+                       required aria-describedby="error-nombre" data-i18n-placeholder="contacto.placeholderNombre">
                 <p class="error-campo" id="error-nombre" hidden></p>
               </div>
               <div>
-                <label class="block text-sm font-semibold text-brand-900" for="email">Correo electrónico *</label>
+                <label class="block text-sm font-semibold text-brand-900" for="email" data-i18n="contacto.lblEmail">Correo electrónico *</label>
                 <input class="campo mt-2" id="email" name="email" type="email" autocomplete="email"
-                       required aria-describedby="error-email">
+                       required aria-describedby="error-email" data-i18n-placeholder="contacto.placeholderEmail">
                 <p class="error-campo" id="error-email" hidden></p>
               </div>
             </div>
 
             <div class="mt-5">
-              <label class="block text-sm font-semibold text-brand-900" for="asunto">Asunto</label>
-              <input class="campo mt-2" id="asunto" name="asunto" type="text" autocomplete="off">
+              <label class="block text-sm font-semibold text-brand-900" for="asunto" data-i18n="contacto.lblAsunto">Asunto</label>
+              <input class="campo mt-2" id="asunto" name="asunto" type="text" autocomplete="off" data-i18n-placeholder="contacto.placeholderAsunto">
             </div>
 
             <div class="mt-5">
-              <label class="block text-sm font-semibold text-brand-900" for="mensaje">Mensaje *</label>
+              <label class="block text-sm font-semibold text-brand-900" for="mensaje" data-i18n="contacto.lblMensaje">Mensaje *</label>
               <textarea class="campo mt-2" id="mensaje" name="mensaje" rows="6" required
-                        aria-describedby="error-mensaje"></textarea>
+                        aria-describedby="error-mensaje" data-i18n-placeholder="contacto.placeholderMensaje"></textarea>
               <p class="error-campo" id="error-mensaje" hidden></p>
             </div>
 
@@ -122,13 +130,13 @@
             <div class="mt-6 flex items-start gap-3">
               <input class="mt-1 h-5 w-5 rounded border-brand-200" id="privacidad" name="privacidad"
                      type="checkbox" required aria-describedby="error-privacidad">
-              <label class="text-sm leading-relaxed text-brand-900/80" for="privacidad">
+              <label class="text-sm leading-relaxed text-brand-900/80" for="privacidad" data-i18n="contacto.lblPrivacidad">
                 He leído y acepto que mis datos se usen únicamente para responder a este mensaje. *
               </label>
             </div>
             <p class="error-campo" id="error-privacidad" hidden></p>
 
-            <button class="btn btn-primario mt-6 w-full" type="submit">Enviar mensaje</button>
+            <button class="btn btn-primario mt-6 w-full" type="submit" data-i18n="contacto.btnEnviar">Enviar mensaje</button>
             <div class="mt-4" data-aviso aria-live="polite"></div>
           </form>
         </div>

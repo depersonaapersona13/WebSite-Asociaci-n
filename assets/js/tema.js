@@ -25,10 +25,14 @@
             600: "#4A87BE",
             700: "#2F6BA8", /* botones con texto blanco (contraste AA) */
             800: "#204F7E",
-            900: "#163A5C" /* títulos y texto principal */
+            900: "#163A5C", /* títulos y texto principal */
+            950: "#0D2236"  /* fondo del modo oscuro */
           }
         }
-      }
+      },
+      /* El modo oscuro se activa con la clase "modo-oscuro" en <html>
+         (la gestionan tema-visual.js y styles.css) */
+      darkMode: "class"
     }
   };
 

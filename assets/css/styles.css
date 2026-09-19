@@ -82,6 +82,24 @@ html {
 
 /* Menú móvil */
 #menu-movil[hidden] { display: none; }
+#menu-movil {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--brand-100);
+  padding: 1rem 1.5rem;
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform .22s ease, opacity .22s ease, visibility .22s ease;
+}
+#menu-movil.abierto {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
 #boton-menu[aria-expanded="true"] .icono-abrir { display: none; }
 #boton-menu[aria-expanded="false"] .icono-cerrar { display: none; }
 
@@ -125,3 +143,187 @@ html {
 /* Redes sociales sobre fondo claro (página de contacto) */
 .enlace-red-claro { background: var(--brand-100); color: var(--brand-700); }
 .enlace-red-claro:hover { background: var(--brand-200); color: var(--brand-800); }
+
+/* ==========================================================================
+   Capa de experiencia: animaciones, microinteracciones e idiomas
+   ========================================================================== */
+@keyframes aparecer { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes desplegar { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@keyframes girar { to { transform: rotate(360deg); } }
+@keyframes brillar { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@keyframes ocultarCarga { to { opacity: 0; visibility: hidden; } }
+
+/* Entrada suave de la página */
+body { animation: aparecer .45s ease-out both; }
+
+/* Microinteracciones en botones y tarjetas */
+.btn {
+  box-shadow: 0 0 0 rgba(22, 58, 92, 0);
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease,
+              transform .15s ease, box-shadow .25s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 12px 22px -14px rgba(22, 58, 92, .6); }
+.btn:active { transform: translateY(1px) scale(.98); box-shadow: 0 3px 8px -8px rgba(22, 58, 92, .6); }
+
+.tarjeta { transition: transform .2s ease, border-color .2s ease, box-shadow .25s ease; }
+.tarjeta-enlace:hover { box-shadow: 0 18px 34px -20px rgba(22, 58, 92, .5); }
+
+.enlace-red { transition: background-color .2s ease, transform .15s ease; }
+.enlace-red:hover { transform: translateY(-2px); }
+
+/* Retardos para el efecto cascada al aparecer */
+.retraso-1 { transition-delay: .06s; }
+.retraso-2 { transition-delay: .12s; }
+.retraso-3 { transition-delay: .18s; }
+.retraso-4 { transition-delay: .24s; }
+
+/* Menú móvil animado */
+#menu-movil:not([hidden]) { animation: desplegar .22s ease-out; }
+
+/* Botón flotante "volver arriba" */
+.boton-arriba {
+  position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 60;
+  display: inline-flex; width: 3rem; height: 3rem; align-items: center; justify-content: center;
+  border: 0; border-radius: 9999px; cursor: pointer;
+  background: var(--brand-700); color: #fff;
+  box-shadow: 0 14px 28px -14px rgba(22, 58, 92, .7);
+  opacity: 0; visibility: hidden; transform: translateY(12px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease, background-color .2s ease;
+}
+.boton-arriba.visible { opacity: 1; visibility: visible; transform: none; }
+.boton-arriba:hover { background: var(--brand-800); transform: translateY(-2px); }
+.boton-arriba:active { transform: scale(.92); }
+.boton-arriba svg { width: 1.25rem; height: 1.25rem; }
+
+/* Pantalla de carga inicial */
+#pantalla-carga {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem;
+  background: #8FB9E0; color: #163A5C;
+  transition: opacity .35s ease, visibility .35s ease;
+  /* Red de seguridad: si el JavaScript fallara, desaparece sola a los 3 s */
+  animation: ocultarCarga .4s ease 3s forwards;
+}
+#pantalla-carga img { width: 5rem; height: 5rem; border-radius: 9999px; object-fit: cover; box-shadow: 0 18px 34px -18px rgba(22, 58, 92, .55); }
+.carga-anillo {
+  width: 2.25rem; height: 2.25rem; border-radius: 9999px;
+  border: 3px solid rgba(255, 255, 255, .4); border-top-color: #fff;
+  animation: girar .8s linear infinite;
+}
+.carga-texto { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+#pantalla-carga.oculta { opacity: 0; visibility: hidden; }
+#pantalla-carga.cargada { opacity: 0; visibility: hidden; }
+
+/* Esqueletos mientras llegan los datos */
+.esqueleto {
+  background: linear-gradient(90deg, var(--brand-100) 25%, #ffffff 50%, var(--brand-100) 75%);
+  background-size: 200% 100%;
+  animation: brillar 1.4s linear infinite;
+  border-radius: .75rem;
+}
+.esqueleto-tarjeta { height: 13rem; border-radius: 1rem; }
+.esqueleto-linea { height: .75rem; border-radius: .4rem; }
+.esqueleto-circulo { width: 3rem; height: 3rem; border-radius: 9999px; }
+
+/* Selector de idioma */
+.selector-idioma {
+  display: inline-flex; align-items: center; gap: 2px;
+  padding: 2px; border-radius: 9999px;
+  border: 1px solid var(--brand-200); background: #fff;
+}
+.idioma-btn {
+  min-width: 2.4rem; padding: .3rem .55rem; border: 0; border-radius: 9999px;
+  background: transparent; color: var(--brand-800);
+  font-size: .72rem; font-weight: 700; letter-spacing: .04em; cursor: pointer;
+  transition: background-color .2s ease, color .2s ease;
+}
+.idioma-btn:hover[aria-pressed="false"] { background: var(--brand-100); }
+.idioma-btn[aria-pressed="true"] { background: var(--brand-700); color: #fff; }
+
+/* Botón de tema claro/oscuro */
+#boton-tema {
+  display: inline-flex; width: 2.5rem; height: 2.5rem; align-items: center; justify-content: center;
+  border-radius: 9999px; border: 1px solid var(--brand-200); background: #fff; color: var(--brand-800);
+  cursor: pointer; transition: background-color .2s ease, transform .15s ease, color .2s ease;
+}
+#boton-tema:hover { background: var(--brand-50); transform: translateY(-1px); }
+#boton-tema:active { transform: scale(.94); }
+#boton-tema svg { width: 1.15rem; height: 1.15rem; }
+.icono-sol { display: none; }
+.modo-oscuro .icono-sol { display: block; }
+.modo-oscuro .icono-luna { display: none; }
+
+/* Estrellas de los testimonios */
+.estrellas svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
+
+/* ==========================================================================
+   Modo oscuro: remapeo de la paleta cuando <html> tiene la clase .modo-oscuro
+   (así no hay que duplicar clases "dark:" en todo el HTML)
+   ========================================================================== */
+.modo-oscuro { color-scheme: dark; }
+.modo-oscuro body { background: #0D2236; color: #E3EEF8; }
+
+.modo-oscuro .bg-white { background-color: #0F2537; }
+.modo-oscuro .bg-white\/95 { background-color: rgba(13, 34, 54, .95); }
+.modo-oscuro .bg-brand-50 { background-color: #112B41; }
+.modo-oscuro .bg-brand-100 { background-color: #16324B; }
+.modo-oscuro .bg-brand-400 { background-color: #1D4E7C; }
+.modo-oscuro .bg-brand-900 { background-color: #0A1B2B; }
+
+.modo-oscuro .text-brand-900 { color: #E3EEF8; }
+.modo-oscuro .text-brand-900\/70 { color: rgba(227, 238, 248, .72); }
+.modo-oscuro .text-brand-900\/80 { color: rgba(227, 238, 248, .8); }
+.modo-oscuro .text-brand-900\/85 { color: rgba(227, 238, 248, .85); }
+.modo-oscuro .text-brand-800 { color: #B9D4EC; }
+.modo-oscuro .text-brand-700 { color: #8CC0EC; }
+
+.modo-oscuro .border-brand-100 { border-color: #1C3A55; }
+.modo-oscuro .border-brand-200 { border-color: #24445F; }
+.modo-oscuro .ring-brand-100 { --tw-ring-color: #24445F; }
+
+.modo-oscuro .tarjeta { background: #0F2537; border-color: #1C3A55; box-shadow: 0 16px 34px -26px rgba(0, 0, 0, .85); }
+.modo-oscuro .campo { background: #0D2437; border-color: #24445F; color: #E3EEF8; }
+.modo-oscuro .campo::placeholder { color: #6E8BA6; }
+.modo-oscuro .pendiente { background: #112B41; border-color: #2C5170; color: #B9D4EC; }
+.modo-oscuro .btn-secundario { background: transparent; color: #E3EEF8; border-color: var(--brand-500); }
+.modo-oscuro .btn-secundario:hover { background: rgba(255, 255, 255, .07); }
+.modo-oscuro .btn-claro { background: #fff; color: var(--brand-900); }
+.modo-oscuro .btn-claro:hover { background: var(--brand-100); }
+.modo-oscuro .filtro { background: transparent; border-color: #24445F; color: #B9D4EC; }
+.modo-oscuro .filtro:hover { background: rgba(255, 255, 255, .07); }
+.modo-oscuro .filtro[aria-pressed="true"] { background: var(--brand-700); border-color: var(--brand-700); color: #fff; }
+.modo-oscuro .enlace { color: #8CC0EC; }
+.modo-oscuro .enlace:hover { color: #A9CBEA; }
+.modo-oscuro .enlace-pie { color: #9DB8D2; }
+.modo-oscuro .nav-enlace { color: #B9D4EC; }
+.modo-oscuro .nav-enlace:hover { color: #fff; }
+.modo-oscuro .nav-enlace[aria-current="page"] { color: #fff; }
+.modo-oscuro .nav-enlace[aria-current="page"]::after { background: #fff; }
+.modo-oscuro .salto-contenido { background: #0F2537; color: #E3EEF8; }
+.modo-oscuro .etiqueta-activo { background: #173A5B; color: #B9D4EC; }
+.modo-oscuro .etiqueta-finalizado { background: #152C42; color: #9DB8D2; }
+.modo-oscuro .error-campo { color: #FF9A93; }
+.modo-oscuro .enlace-red-claro { background: #16324B; color: #8CC0EC; }
+.modo-oscuro .enlace-red-claro:hover { background: #1E4062; color: #B9D4EC; }
+.modo-oscuro .selector-idioma { background: #0F2537; border-color: #24445F; }
+.modo-oscuro .idioma-btn { color: #B9D4EC; }
+.modo-oscuro .idioma-btn:hover[aria-pressed="false"] { background: #16324B; }
+.modo-oscuro #boton-tema { background: #0F2537; border-color: #24445F; color: #E3EEF8; }
+.modo-oscuro #boton-tema:hover { background: #16324B; }
+.modo-oscuro #pantalla-carga { background: #1D4E7C; color: #E3EEF8; }
+.modo-oscuro #menu-movil { background: #0F2537; border-color: #1C3A55; }
+.modo-oscuro .esqueleto {
+  background: linear-gradient(90deg, #16324B 25%, #1E4062 50%, #16324B 75%);
+  background-size: 200% 100%;
+}
+.modo-oscuro .boton-arriba { background: var(--brand-600); }
+
+/* Respeto del movimiento reducido también en la capa de experiencia */
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
+  #menu-movil:not([hidden]) { animation: none; }
+  .btn:hover, .btn:active { transform: none; }
+  .enlace-red:hover, #boton-tema:hover, #boton-tema:active,
+  .boton-arriba:hover, .boton-arriba:active { transform: none; }
+  .esqueleto { animation: none; }
+}

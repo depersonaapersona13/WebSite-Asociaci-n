@@ -27,13 +27,33 @@
   }
 
   function escapar(texto) {
-    return String(texto).replace(/[&<>"']/g, function (caracter) {
+    return String(texto == null ? "" : texto).replace(/[&<>"']/g, function (caracter) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[caracter];
     });
   }
 
   function avisoPendiente(texto) {
-    return '<p class="pendiente">' + escapar(texto || "Información pendiente de completar.") + "</p>";
+    return '<p class="pendiente">' + escapar(texto || textoDe("comun.pendiente", "Información pendiente de completar.")) + "</p>";
+  }
+
+  /* --------------------------------------------------------------- idiomas */
+
+  /* Texto traducido. Si idiomas.js no está disponible, usa el español de reserva. */
+  function textoDe(ruta, reserva) {
+    if (typeof window.textoSitio === "function") {
+      var traducido = window.textoSitio(ruta);
+      if (traducido) return traducido;
+    }
+    return reserva || "";
+  }
+
+  function interpolar(plantilla, valores) {
+    if (typeof window.interpolarSitio === "function") return window.interpolarSitio(plantilla, valores);
+    var resultado = String(plantilla || "");
+    Object.keys(valores || {}).forEach(function (clave) {
+      resultado = resultado.split("{" + clave + "}").join(String(valores[clave]));
+    });
+    return resultado;
   }
 
   /* ------------------------------------- datos del sitio (data/site.json) */
@@ -78,7 +98,9 @@
     var titulo = valor(proyecto.titulo) || "Proyecto";
     var estado = (valor(proyecto.estado) || "activo").toLowerCase();
     var esFinalizado = estado === "finalizado" || estado === "cerrado" || estado === "pasado";
-    var etiqueta = esFinalizado ? "Finalizado" : "En marcha";
+    var etiqueta = esFinalizado
+      ? textoDe("comun.finalizado", "Finalizado")
+      : textoDe("comun.enMarcha", "En marcha");
     var claseEtiqueta = esFinalizado ? "etiqueta etiqueta-finalizado" : "etiqueta etiqueta-activo";
     var anio = valor(proyecto.anio);
     var imagen = valor(proyecto.imagen);
@@ -87,10 +109,10 @@
     var media = imagen
       ? '<img class="h-44 w-full object-cover" src="' + escapar(imagen) + '" alt="" loading="lazy">'
       : '<div class="flex h-44 w-full items-center justify-center bg-brand-100 text-brand-700">' +
-        '<span class="text-[0.7rem] font-bold uppercase tracking-[0.18em]">Imagen pendiente</span></div>';
+        '<span class="text-[0.7rem] font-bold uppercase tracking-[0.18em]">' + escapar(textoDe("comun.imagenPendiente", "Imagen pendiente")) + "</span></div>";
 
     var resumen = esPendiente(proyecto.resumen)
-      ? avisoPendiente("Descripción pendiente de completar.")
+      ? avisoPendiente(textoDe("comun.pendienteFila", "Descripción pendiente de completar."))
       : '<p class="mt-3 text-sm leading-relaxed text-brand-900/80">' + escapar(proyecto.resumen) + "</p>";
 
     return '<article class="tarjeta tarjeta-enlace flex h-full flex-col overflow-hidden">' + media +
@@ -101,7 +123,7 @@
       "</div>" +
       '<h3 class="mt-3 text-lg font-bold text-brand-900">' + escapar(titulo) + "</h3>" +
       resumen +
-      (enlace ? '<p class="mt-4 pt-1"><a class="enlace font-semibold" href="' + escapar(enlace) + '">Más información</a></p>' : "") +
+      (enlace ? '<p class="mt-4 pt-1"><a class="enlace font-semibold" href="' + escapar(enlace) + '">' + escapar(textoDe("comun.masInfo", "Más información")) + "</a></p>" : "") +
       "</div></article>";
   }
   window.plantillaProyecto = plantillaProyecto;
@@ -140,7 +162,7 @@
       if (email) elementos.push('<li><a class="enlace-pie" href="mailto:' + escapar(email) + '">' + escapar(email) + "</a></li>");
       if (telefono) elementos.push('<li><a class="enlace-pie" href="tel:' + escapar(telefono.replace(/[^+0-9]/g, "")) + '">' + escapar(telefono) + "</a></li>");
       if (direccion) elementos.push("<li>" + escapar(direccion) + "</li>");
-      if (!elementos.length) elementos.push('<li class="pendiente">Pendiente de confirmar los datos de contacto.</li>');
+      if (!elementos.length) elementos.push('<li class="pendiente">' + escapar(textoDe("comun.pendienteContacto", "Pendiente de confirmar los datos de contacto.")) + "</li>");
       nodo.innerHTML = elementos.join("");
     });
   }
@@ -149,17 +171,17 @@
   function rellenarContactoDetalle(sitio) {
     var contacto = (sitio && sitio.contacto) || {};
     var filas = [
-      { etiqueta: "Correo electrónico", valor: valor(contacto.email), tipo: "mailto" },
-      { etiqueta: "Teléfono", valor: valor(contacto.telefono), tipo: "tel" },
-      { etiqueta: "Dónde estamos", valor: valor(contacto.direccion), tipo: "" },
-      { etiqueta: "Horario de atención", valor: valor(contacto.horario), tipo: "" }
+      { etiqueta: textoDe("contacto.lblCorreo", "Correo electrónico"), valor: valor(contacto.email), tipo: "mailto" },
+      { etiqueta: textoDe("contacto.lblTelefono", "Teléfono"), valor: valor(contacto.telefono), tipo: "tel" },
+      { etiqueta: textoDe("contacto.lblDonde", "Dónde estamos"), valor: valor(contacto.direccion), tipo: "" },
+      { etiqueta: textoDe("contacto.lblHorario", "Horario de atención"), valor: valor(contacto.horario), tipo: "" }
     ];
 
     document.querySelectorAll("[data-contacto-detalle]").forEach(function (nodo) {
       nodo.innerHTML = '<dl class="space-y-5">' + filas.map(function (fila) {
         var contenido;
         if (!fila.valor) {
-          contenido = '<span class="pendiente">Pendiente de confirmar.</span>';
+          contenido = '<span class="pendiente">' + escapar(textoDe("contacto.pendienteDato", "Pendiente de confirmar.")) + "</span>";
         } else if (fila.tipo === "mailto") {
           contenido = '<a class="enlace text-lg font-semibold" href="mailto:' + escapar(fila.valor) + '">' + escapar(fila.valor) + "</a>";
         } else if (fila.tipo === "tel") {
@@ -177,15 +199,15 @@
   /* Redes sociales: [data-redes] para fondos oscuros, [data-redes-claro] para claros */
   function contenidoRedes(redes, claro) {
     if (!redes.length) {
-      return '<p class="pendiente">Pendiente de añadir las redes sociales.</p>';
+      return '<p class="pendiente">' + escapar(textoDe("comun.pendienteRedes", "Pendiente de añadir las redes sociales.")) + "</p>";
     }
     return '<ul class="flex flex-wrap gap-3">' + redes.map(function (red) {
-      var nombre = valor(red.nombre) || "Red social";
+      var nombre = valor(red.nombre) || textoDe("comun.redSocial", "Red social");
       var icono = ICONOS[String(red.icono || "").toLowerCase()];
       var interior = icono || ('<span aria-hidden="true" class="text-xs font-bold">' + escapar(nombre.slice(0, 2).toUpperCase()) + "</span>");
       return '<li><a class="' + (claro ? "enlace-red enlace-red-claro" : "enlace-red") + '" href="' + escapar(red.url) +
         '" target="_blank" rel="noopener noreferrer">' +
-        '<span class="sr-only">' + escapar(nombre) + " (se abre en una pestaña nueva)</span>" + interior + "</a></li>";
+        '<span class="sr-only">' + escapar(nombre) + escapar(textoDe("comun.nuevaVentana", " (se abre en una pestaña nueva)")) + "</span>" + interior + "</a></li>";
     }).join("") + "</ul>";
   }
 
@@ -202,18 +224,18 @@
     var legal = (sitio && sitio.legal) || {};
     var meta = (sitio && sitio.meta) || {};
     var filas = [
-      { etiqueta: "Nombre de la asociación", valor: valor(meta.nombre) },
-      { etiqueta: "CIF / NIF", valor: valor(legal.nif) },
-      { etiqueta: "Registro de Asociaciones", valor: valor(legal.registro) },
-      { etiqueta: "Fecha de constitución", valor: valor(legal.fundacion) },
-      { etiqueta: "Domicilio social", valor: valor(legal.sede) }
+      { etiqueta: textoDe("legal.nombre", "Nombre de la asociación"), valor: valor(meta.nombre) },
+      { etiqueta: textoDe("legal.cif", "CIF / NIF"), valor: valor(legal.nif) },
+      { etiqueta: textoDe("legal.registro", "Registro de Asociaciones"), valor: valor(legal.registro) },
+      { etiqueta: textoDe("legal.constitucion", "Fecha de constitución"), valor: valor(legal.fundacion) },
+      { etiqueta: textoDe("legal.domicilio", "Domicilio social"), valor: valor(legal.sede) }
     ];
 
     document.querySelectorAll("[data-legal]").forEach(function (nodo) {
       nodo.innerHTML = '<dl class="grid gap-4 sm:grid-cols-2">' + filas.map(function (fila) {
         var contenido = fila.valor
           ? '<span class="font-semibold text-brand-900">' + escapar(fila.valor) + "</span>"
-          : '<span class="pendiente">Pendiente de completar.</span>';
+          : '<span class="pendiente">' + escapar(textoDe("comun.pendienteFila", "Pendiente de completar.")) + "</span>";
         return '<div class="tarjeta p-4"><dt class="text-xs font-bold uppercase tracking-widest text-brand-700">' +
           fila.etiqueta + '</dt><dd class="mt-1 text-sm">' + contenido + "</dd></div>";
       }).join("") + "</dl>";
@@ -222,8 +244,8 @@
     document.querySelectorAll("[data-legal-resumen]").forEach(function (nodo) {
       var partes = [];
       if (valor(legal.nif)) partes.push("CIF " + valor(legal.nif));
-      if (valor(legal.registro)) partes.push("Registro nº " + valor(legal.registro));
-      nodo.textContent = partes.length ? partes.join(" · ") : "Datos legales pendientes de publicar.";
+      if (valor(legal.registro)) partes.push(textoDe("legal.registroCorto", "Registro nº ") + valor(legal.registro));
+      nodo.textContent = partes.length ? partes.join(" · ") : textoDe("comun.pendienteLegal", "Datos legales pendientes de publicar.");
     });
   }
 
@@ -232,16 +254,16 @@
     var junta = (sitio && sitio.junta) || [];
     document.querySelectorAll("[data-junta]").forEach(function (nodo) {
       if (!junta.length) {
-        nodo.innerHTML = avisoPendiente("Pendiente de publicar la composición de la junta directiva.");
+        nodo.innerHTML = avisoPendiente(textoDe("comun.pendienteJunta", "Pendiente de publicar la composición de la junta directiva."));
         return;
       }
       nodo.innerHTML = '<ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">' + junta.map(function (persona) {
-        var nombre = valor(persona.nombre) || "Por confirmar";
+        var nombre = valor(persona.nombre) || textoDe("comun.porConfirmar", "Por confirmar");
         var cargo = valor(persona.cargo);
         var bio = valor(persona.bio);
         var foto = valor(persona.foto);
         var retrato = foto
-          ? '<img class="h-24 w-24 rounded-full object-cover" src="' + escapar(foto) + '" alt="Retrato de ' + escapar(nombre) + '" loading="lazy">'
+          ? '<img class="h-24 w-24 rounded-full object-cover" src="' + escapar(foto) + '" alt="' + escapar(textoDe("comun.retratoDe", "Retrato de ") + nombre) + '" loading="lazy">'
           : '<span class="flex h-24 w-24 items-center justify-center rounded-full bg-brand-100 text-2xl font-bold text-brand-700">' +
             escapar(nombre.slice(0, 2).toUpperCase()) + "</span>";
         return '<li class="tarjeta flex h-full flex-col items-center p-6 text-center">' + retrato +
@@ -258,13 +280,50 @@
     var proyectos = (sitio && sitio.proyectos) || [];
     document.querySelectorAll("[data-proyectos-destacados]").forEach(function (nodo) {
       if (!proyectos.length) {
-        nodo.innerHTML = avisoPendiente("Pendiente de publicar los proyectos.");
+        nodo.innerHTML = avisoPendiente(textoDe("comun.pendienteProyectos", "Pendiente de publicar los proyectos."));
         return;
       }
       nodo.innerHTML = '<ul class="grid gap-6 md:grid-cols-3">' + proyectos.slice(0, 3).map(function (proyecto) {
         return "<li>" + plantillaProyecto(proyecto) + "</li>";
       }).join("") + "</ul>";
     });
+  }
+
+  /* Testimonios de la portada (se editan en data/site.json -> "testimonios") */
+  function rellenarTestimonios(sitio) {
+    var lista = document.querySelector("[data-testimonios]");
+    if (!lista) return;
+    var testimonios = ((sitio && sitio.testimonios) || []).filter(function (t) {
+      return t && !esPendiente(t.texto);
+    });
+    if (!testimonios.length) {
+      lista.innerHTML = '<li class="pendiente max-w-2xl">' +
+        escapar(textoDe("comun.pendienteTestimonios", "Pendiente de publicar los testimonios.")) + "</li>";
+      return;
+    }
+    lista.innerHTML = testimonios.map(function (t) {
+      var texto = valor(t.texto) || "";
+      var nombre = valor(t.nombre);
+      var rol = valor(t.rol);
+      var foto = valor(t.foto);
+      var inicial = nombre ? nombre.slice(0, 1).toUpperCase() : "?";
+      var retrato = foto
+        ? '<img class="h-12 w-12 rounded-full object-cover" src="' + escapar(foto) + '" alt="' +
+          escapar(textoDe("comun.retratoDe", "Retrato de ") + (nombre || "")) + '" loading="lazy">'
+        : '<span aria-hidden="true" class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-700 text-lg font-bold text-white">' +
+          escapar(inicial) + "</span>";
+      return '<li class="revelar tarjeta h-full p-6"><figure class="flex h-full flex-col">' +
+        '<div aria-hidden="true" class="estrellas flex gap-0.5 text-brand-500">' +
+        '<svg viewBox="0 0 24 24"><path d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 16.9 6.3 20l1.2-6.3L2.8 9.3l6.4-.8z"/></svg>'.repeat(5) +
+        "</div>" +
+        '<blockquote class="mt-4 flex-1 text-sm leading-relaxed text-brand-900/90">&ldquo;' +
+        escapar(texto) + "&rdquo;</blockquote>" +
+        '<figcaption class="mt-5 flex items-center gap-3">' + retrato +
+        "<span>" +
+        (nombre ? '<span class="block text-sm font-bold text-brand-900">' + escapar(nombre) + "</span>" : "") +
+        (rol ? '<span class="block text-xs text-brand-900/70">' + escapar(rol) + "</span>" : "") +
+        "</span></figcaption></figure></li>";
+    }).join("");
   }
 
   /* ---------------------------------------------------------- comportamiento */
@@ -278,13 +337,26 @@
 
     function abrir() {
       menu.removeAttribute("hidden");
+      /* Un frame para que la transición CSS (opacity/translate) se dispare */
+      requestAnimationFrame(function () { menu.classList.add("abierto"); });
       boton.setAttribute("aria-expanded", "true");
-      boton.querySelector(".sr-only").textContent = "Cerrar menú de navegación";
+      var etiqueta = boton.querySelector(".sr-only");
+      if (etiqueta) etiqueta.textContent = textoDe("menu.cerrar", "Cerrar menú de navegación");
     }
     function cerrar() {
-      menu.setAttribute("hidden", "");
+      menu.classList.remove("abierto");
       boton.setAttribute("aria-expanded", "false");
-      boton.querySelector(".sr-only").textContent = "Abrir menú de navegación";
+      var etiqueta = boton.querySelector(".sr-only");
+      if (etiqueta) etiqueta.textContent = textoDe("menu.abrir", "Abrir menú de navegación");
+      /* Espera a la transición antes de ocultar; sin animación se oculta al instante */
+      var reducir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reducir) {
+        menu.setAttribute("hidden", "");
+      } else {
+        window.setTimeout(function () {
+          if (boton.getAttribute("aria-expanded") === "false") menu.setAttribute("hidden", "");
+        }, 220);
+      }
     }
 
     boton.addEventListener("click", function () {
@@ -301,6 +373,46 @@
     });
     window.addEventListener("resize", function () {
       if (window.innerWidth >= 1024) cerrar();
+    });
+  }
+
+  /* Pantalla de carga: se oculta al terminar la carga (el CSS la auto-oculta a los 3s) */
+  function inicializarCarga() {
+    if (document.documentElement.dataset.cargaLista === "si") return;
+    document.documentElement.dataset.cargaLista = "si";
+    function ocultar() {
+      var pantalla = document.getElementById("pantalla-carga");
+      if (!pantalla || pantalla.dataset.oculta === "si") return;
+      pantalla.dataset.oculta = "si";
+      pantalla.classList.add("oculta");
+      window.setTimeout(function () { pantalla.remove(); }, 600);
+    }
+    if (document.readyState === "complete") {
+      window.setTimeout(ocultar, 150);
+    } else {
+      window.addEventListener("load", function () { window.setTimeout(ocultar, 150); });
+      /* Red de seguridad extra por si "load" no llegase a dispararse */
+      window.setTimeout(ocultar, 3500);
+    }
+  }
+
+  /* Botón "volver arriba": aparece al bajar y sube con scroll suave */
+  function inicializarArriba() {
+    var boton = document.getElementById("boton-arriba");
+    if (!boton || boton.dataset.listo === "si") return;
+    boton.dataset.listo = "si";
+    var reducir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function alDesplazar() {
+      var visible = window.scrollY > 600;
+      boton.classList.toggle("visible", visible);
+      boton.setAttribute("aria-hidden", visible ? "false" : "true");
+      boton.tabIndex = visible ? 0 : -1;
+    }
+    window.addEventListener("scroll", alDesplazar, { passive: true });
+    alDesplazar();
+    boton.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reducir ? "auto" : "smooth" });
+      boton.blur();
     });
   }
 
@@ -381,47 +493,67 @@
       }
     }
 
-    function validar() {
+    function validarCampo(campo, reglas) {
+      if (!campo) return "";
+      var texto = campo.value.trim();
+      var error = "";
+      if (!texto) {
+        error = reglas.mensaje;
+      } else if (reglas.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(texto)) {
+        error = reglas.mensaje;
+      } else if (reglas.minimo && texto.length < reglas.minimo) {
+        error = interpolar(textoDe("contacto.errCorto", "El mensaje es demasiado corto (mínimo {min} caracteres)."), { min: reglas.minimo });
+      }
+      marcarError(campo, error);
+      return error;
+    }
+
+    function validar(enfocar) {
       var campos = formulario.elements;
       var comprobaciones = [
-        { campo: campos.nombre, mensaje: "Escribe tu nombre." },
-        { campo: campos.email, mensaje: "Escribe un correo electrónico válido.", email: true },
-        { campo: campos.mensaje, mensaje: "Cuéntanos brevemente qué necesitas.", minimo: 10 }
+        { campo: campos.nombre, mensaje: textoDe("contacto.errNombre", "Escribe tu nombre.") },
+        { campo: campos.email, mensaje: textoDe("contacto.errEmail", "Escribe un correo electrónico válido."), email: true },
+        { campo: campos.mensaje, mensaje: textoDe("contacto.errMensaje", "Cuéntanos brevemente qué necesitas."), minimo: 10 }
       ];
       var valido = true;
       var primerError = null;
 
       comprobaciones.forEach(function (item) {
-        var campo = item.campo;
-        if (!campo) return;
-        var texto = campo.value.trim();
-        var error = "";
-        if (!texto) {
-          error = item.mensaje;
-        } else if (item.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(texto)) {
-          error = item.mensaje;
-        } else if (item.minimo && texto.length < item.minimo) {
-          error = "El mensaje es demasiado corto (mínimo " + item.minimo + " caracteres).";
-        }
-        marcarError(campo, error);
-        if (error) {
+        if (!item.campo) return;
+        if (validarCampo(item.campo, item)) {
           valido = false;
-          if (!primerError) primerError = campo;
+          if (!primerError) primerError = item.campo;
         }
       });
 
       if (campos.privacidad) {
         var faltaConsentimiento = !campos.privacidad.checked;
-        marcarError(campos.privacidad, faltaConsentimiento ? "Marca la casilla para poder enviar el mensaje." : "");
+        marcarError(campos.privacidad, faltaConsentimiento ? textoDe("contacto.errPrivacidad", "Marca la casilla para poder enviar el mensaje.") : "");
         if (faltaConsentimiento) {
           valido = false;
           if (!primerError) primerError = campos.privacidad;
         }
       }
 
-      if (primerError) primerError.focus();
+      if (!valido && enfocar !== false && primerError) primerError.focus();
       return valido;
     }
+
+    /* Validación en tiempo real: al salir de cada campo y al escribir si ya falló */
+    ["nombre", "email", "mensaje"].forEach(function (id) {
+      var campo = formulario.elements[id];
+      if (!campo) return;
+      campo.addEventListener("blur", function () {
+        validarCampo(campo, id === "email"
+          ? { mensaje: textoDe("contacto.errEmail", "Escribe un correo electrónico válido."), email: true }
+          : id === "nombre"
+            ? { mensaje: textoDe("contacto.errNombre", "Escribe tu nombre.") }
+            : { mensaje: textoDe("contacto.errMensaje", "Cuéntanos brevemente qué necesitas."), minimo: 10 });
+      });
+      campo.addEventListener("input", function () {
+        if (campo.getAttribute("aria-invalid") === "true") marcarError(campo, "");
+      });
+    });
 
     function leerDatos() {
       function dato(nombre) {
@@ -438,20 +570,23 @@
     /* Sin servicio externo configurado: se abre el correo del visitante ya redactado */
     function enviarPorCorreo() {
       if (!destino) {
-        mostrarAviso("El envío todavía no está configurado: falta el correo de destino en data/site.json.");
+        mostrarAviso(textoDe("contacto.noConfigurado", "El envío todavía no está configurado: falta el correo de destino en data/site.json."));
         return;
       }
       var datos = leerDatos();
-      var asunto = datos.asunto ? "[" + datos.nombre + "] " + datos.asunto : "Mensaje desde la web · " + datos.nombre;
+      var asunto = datos.asunto ? "[" + datos.nombre + "] " + datos.asunto : textoDe("contacto.asunto", "Mensaje desde la web") + " · " + datos.nombre;
       var cuerpo = "Nombre: " + datos.nombre + "\nCorreo: " + datos.email + "\n\n" + datos.mensaje;
       window.location.href = "mailto:" + destino +
         "?subject=" + encodeURIComponent(asunto) + "&body=" + encodeURIComponent(cuerpo);
-      mostrarAviso("Se ha abierto tu programa de correo con el mensaje preparado: solo tienes que pulsar Enviar.", true);
+      mostrarAviso(textoDe("contacto.exitoCorreo", "Se ha abierto tu programa de correo con el mensaje preparado: solo tienes que pulsar Enviar."), true);
     }
 
     /* Con endpoint configurado (Web3Forms, Formspree...): se envía sin salir de la web */
     function enviarRemoto() {
-      mostrarAviso("Enviando…", true);
+      var boton = formulario.querySelector('button[type="submit"]');
+      var textoBoton = boton ? boton.textContent : "";
+      if (boton) { boton.disabled = true; boton.textContent = textoDe("contacto.enviando", "Enviando…"); }
+      mostrarAviso(textoDe("contacto.enviando", "Enviando…"), true);
       fetch(endpoint, { method: "POST", body: new FormData(formulario), headers: { Accept: "application/json" } })
         .then(function (respuesta) {
           if (!respuesta.ok) throw new Error("HTTP " + respuesta.status);
@@ -459,11 +594,14 @@
         })
         .then(function () {
           formulario.reset();
-          mostrarAviso("¡Gracias! Hemos recibido tu mensaje y te responderemos lo antes posible.", true);
+          mostrarAviso(textoDe("contacto.exito", "¡Gracias! Hemos recibido tu mensaje y te responderemos lo antes posible."), true);
         })
         .catch(function (error) {
           console.error("[formulario] Error al enviar:", error);
-          mostrarAviso("No hemos podido enviar el mensaje. Prueba de nuevo o escríbenos por correo.");
+          mostrarAviso(textoDe("contacto.errEnvio", "No hemos podido enviar el mensaje. Prueba de nuevo o escríbenos por correo."));
+        })
+        .then(function () {
+          if (boton) { boton.disabled = false; boton.textContent = textoBoton; }
         });
     }
 
@@ -472,7 +610,7 @@
       /* Trampa anti-spam: si un bot la rellena, se descarta el envío en silencio */
       if (formulario.elements.empresa && formulario.elements.empresa.value !== "") return;
       if (!validar()) {
-        mostrarAviso("Revisa los campos marcados en rojo.");
+        mostrarAviso(textoDe("contacto.errRevisar", "Revisa los campos marcados en rojo."));
         return;
       }
       if (endpoint) { enviarRemoto(); } else { enviarPorCorreo(); }
@@ -483,6 +621,8 @@
 
   function arrancarInteraccion() {
     inicializarMenu();
+    inicializarCarga();
+    inicializarArriba();
     ponerAnio();
     arreglarLogo();
     animarEntrada();
@@ -497,10 +637,22 @@
       rellenarLegal(sitio);
       rellenarJunta(sitio);
       rellenarDestacados(sitio);
+      rellenarTestimonios(sitio);
       inicializarFormulario(sitio);
+      animarEntrada();
       document.dispatchEvent(new CustomEvent("datos:cargados"));
     });
   }
+
+  /* Al cambiar de idioma se re-renderiza todo lo que viene de site.json */
+  var idiomaTimer = null;
+  document.addEventListener("idioma:cambiado", function () {
+    if (idiomaTimer) window.clearTimeout(idiomaTimer);
+    idiomaTimer = window.setTimeout(function () {
+      idiomaTimer = null;
+      arrancarDatos();
+    }, 60);
+  });
 
   /* El encabezado y el pie se inyectan de forma asíncrona: cuando ya están en el
      documento se inicializan los elementos que contienen (menú, contacto, redes...). */

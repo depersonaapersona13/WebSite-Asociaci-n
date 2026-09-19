@@ -15,18 +15,32 @@
 
     <nav aria-label="Principal" class="hidden lg:block">
       <ul class="flex items-center gap-7 text-sm">
-        <li><a class="nav-enlace" href="/" data-nav="inicio">Inicio</a></li>
-        <li><a class="nav-enlace" href="/sobre-nosotros" data-nav="sobre-nosotros">Sobre Nosotros</a></li>
-        <li><a class="nav-enlace" href="/proyectos" data-nav="proyectos">Proyectos</a></li>
-        <li><a class="nav-enlace" href="/contacto" data-nav="contacto">Contacto</a></li>
+        <li><a class="nav-enlace" href="/" data-nav="inicio" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a class="nav-enlace" href="/sobre-nosotros" data-nav="sobre-nosotros" data-i18n="nav.sobre">Sobre Nosotros</a></li>
+        <li><a class="nav-enlace" href="/proyectos" data-nav="proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+        <li><a class="nav-enlace" href="/contacto" data-nav="contacto" data-i18n="nav.contacto">Contacto</a></li>
       </ul>
     </nav>
 
     <div class="flex items-center gap-2">
-      <a href="/contacto" class="hidden rounded-full bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-800 lg:inline-flex">Escríbenos</a>
+      <a href="/contacto" class="hidden rounded-full bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-800 lg:inline-flex" data-i18n="nav.cta">Escríbenos</a>
+      <div class="selector-idioma" role="group" data-i18n-aria-label="comun.cambiarIdioma" aria-label="Cambiar de idioma">
+        <button type="button" class="idioma-btn" data-idioma="es" aria-pressed="true">ES</button>
+        <button type="button" class="idioma-btn" data-idioma="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" id="boton-tema" aria-pressed="false" data-i18n-aria-label="comun.temaClaro" aria-label="Activar el modo oscuro">
+        <svg class="icono-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg class="icono-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+      </button>
       <button type="button" id="boton-menu" aria-expanded="false" aria-controls="menu-movil"
+              data-i18n-aria-label="nav.abrirMenu" aria-label="Abrir menú de navegación"
               class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 text-brand-800 lg:hidden">
-        <span class="sr-only">Abrir menú de navegación</span>
+        <span class="sr-only" data-i18n="nav.abrirMenu">Abrir menú de navegación</span>
         <svg class="icono-abrir h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
         </svg>
@@ -40,11 +54,11 @@
   <div id="menu-movil" hidden class="border-t border-brand-100 bg-white lg:hidden">
     <nav aria-label="Menú móvil" class="mx-auto max-w-6xl px-4 py-3 sm:px-6">
       <ul class="space-y-1 text-base">
-        <li><a class="nav-enlace block py-2" href="/" data-nav="inicio">Inicio</a></li>
-        <li><a class="nav-enlace block py-2" href="/sobre-nosotros" data-nav="sobre-nosotros">Sobre Nosotros</a></li>
-        <li><a class="nav-enlace block py-2" href="/proyectos" data-nav="proyectos">Proyectos</a></li>
-        <li><a class="nav-enlace block py-2" href="/contacto" data-nav="contacto">Contacto</a></li>
-        <li class="pt-2"><a href="/contacto" class="btn btn-primario w-full">Escríbenos</a></li>
+        <li><a class="nav-enlace block py-2" href="/" data-nav="inicio" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a class="nav-enlace block py-2" href="/sobre-nosotros" data-nav="sobre-nosotros" data-i18n="nav.sobre">Sobre Nosotros</a></li>
+        <li><a class="nav-enlace block py-2" href="/proyectos" data-nav="proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+        <li><a class="nav-enlace block py-2" href="/contacto" data-nav="contacto" data-i18n="nav.contacto">Contacto</a></li>
+        <li class="pt-2"><a href="/contacto" class="btn btn-primario w-full" data-i18n="nav.cta">Escríbenos</a></li>
       </ul>
     </nav>
   </div>
