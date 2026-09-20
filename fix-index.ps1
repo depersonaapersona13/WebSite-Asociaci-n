@@ -1,4 +1,5 @@
-﻿﻿<!DOCTYPE html>
+$content = Get-Content 'c:\Users\Poley\Desktop\Proyectos\deperaper13-web\index.html' -Raw -Encoding UTF8
+$newHead = '<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
@@ -91,60 +92,8 @@
   <script src="/assets/js/idiomas.js" defer></script>
   <script src="/assets/js/layout.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
-</head>
-<body data-pagina="proyectos" class="flex min-h-screen flex-col bg-white text-brand-900 antialiased">
-  <a class="salto-contenido" href="#contenido" data-i18n="comun.saltar">Saltar al contenido</a>
+</head>'
 
-  <noscript>
-    <div class="border-b border-brand-100 bg-brand-50 px-4 py-3 text-sm sm:px-6">
-      <a class="enlace mr-5 font-semibold" href="/">Inicio</a>
-      <a class="enlace mr-5 font-semibold" href="/sobre-nosotros">Sobre Nosotros</a>
-      <a class="enlace mr-5 font-semibold" href="/proyectos">Proyectos</a>
-      <a class="enlace font-semibold" href="/contacto">Contacto</a>
-    </div>
-  </noscript>
-
-  <div data-layout="header" hidden></div>
-
-  <main id="contenido" class="flex-1">
-    <!-- Cabecera de página -->
-    <section class="border-b border-brand-100 bg-brand-50">
-      <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="proyectos.kicker">Proyectos</p>
-        <h1 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl" data-i18n="proyectos.tituloPagina">En qué estamos trabajando</h1>
-        <p class="mt-4 max-w-3xl text-lg text-brand-900/80" data-i18n="proyectos.intro">
-          Aquí recogemos las actividades, el acompañamiento y las acciones comunitarias de la
-          asociación. Si quieres sumarte a alguno, escríbenos.
-        </p>
-      </div>
-    </section>
-
-    <!-- Listado de proyectos: se genera desde data/site.json -> "proyectos" -->
-    <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
-      <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Filtrar proyectos por estado" data-i18n-aria-label="proyectos.filtroEtiqueta">
-        <button type="button" class="btn filtro !px-5 !py-2 text-sm" data-filtro="todos" aria-pressed="true" data-i18n="proyectos.filtroTodos">Todos</button>
-        <button type="button" class="btn filtro !px-5 !py-2 text-sm" data-filtro="activo" aria-pressed="false" data-i18n="proyectos.filtroActivos">En marcha</button>
-        <button type="button" class="btn filtro !px-5 !py-2 text-sm" data-filtro="finalizado" aria-pressed="false" data-i18n="proyectos.filtroFinalizados">Finalizados</button>
-      </div>
-
-      <p class="mt-4 text-sm text-brand-900/70" data-proyectos-cuenta aria-live="polite"></p>
-
-      <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-proyectos></ul>
-      <div class="mt-8" data-proyectos-aviso></div>
-    </section>
-
-    <!-- Llamada a la acción -->
-    <section class="border-t border-brand-100 bg-brand-50">
-      <div class="mx-auto max-w-6xl px-4 py-14 text-center sm:px-6">
-        <h2 class="text-2xl font-bold text-brand-900 sm:text-3xl" data-i18n="proyectos.ctaTitulo">¿Tienes una idea para un proyecto?</h2>
-        <p class="mx-auto mt-4 max-w-2xl text-brand-900/80" data-i18n="proyectos.ctaTexto">
-          Cuéntanosla y vemos entre todas cómo llevarla adelante.
-        </p>
-        <a class="btn btn-primario mt-8" href="/contacto" data-i18n="proyectos.ctaBoton">Escríbenos</a>
-      </div>
-    </section>
-  </main>
-
-  <div data-layout="footer" hidden></div>
-</body>
-</html>
+$bodyStart = $content.IndexOf('<body')
+$newFile = $newHead + "`n" + $content.Substring($bodyStart)
+Set-Content 'c:\Users\Poley\Desktop\Proyectos\deperaper13-web\index.html' $newFile -Encoding UTF8

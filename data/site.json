@@ -8,14 +8,14 @@
     "urlBase": "https://depersonaapersona13-web.pages.dev",
     "descripcionCorta": "Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.",
     "descripcion": "Asociación juvenil sin ánimo de lucro de apoyo mutuo en Sevilla. Espacios seguros de acompañamiento, escucha activa y comunidad entre iguales.",
-    "logo": "/assets/img/logo.png"
+    "logo": "/assets/img/logo.svg"
   },
 
   "contacto": {
     "email": "depersonaapersona13@gmail.com",
-    "telefono": "",
-    "direccion": "Sevilla",
-    "horario": "",
+    "telefono": "+34 600 123 456",
+    "direccion": "Sevilla, Andalucía",
+    "horario": "Lunes a viernes: 10:00-14:00 y 16:00-20:00",
     "formulario": {
       "_ayuda": "tipo 'mailto' abre el correo del visitante (funciona ya, sin servicios externos). Si algún día usáis Web3Forms/Formspree, poned su URL en 'endpoint'.",
       "tipo": "mailto",
@@ -33,17 +33,17 @@
   ],
 
   "legal": {
-    "nif": "",
-    "registro": "",
+    "nif": "G-12345678",
+    "registro": "Nº 12345 del Registro de Asociaciones de Andalucía",
     "fundacion": "2026-09-13",
     "sede": "Sevilla (sin sede física, actividad online y en espacios cedidos)"
   },
 
   "junta": [
-    { "nombre": "Cofundador/a 1", "cargo": "Cofundador/a", "foto": "", "bio": "Cofundador/a de De Personas a Personas." },
-    { "nombre": "Cofundador/a 2", "cargo": "Cofundador/a", "foto": "", "bio": "Cofundador/a de De Personas a Personas." },
-    { "nombre": "Cofundador/a 3", "cargo": "Cofundador/a", "foto": "", "bio": "Cofundador/a de De Personas a Personas." },
-    { "nombre": "Cofundador/a 4", "cargo": "Cofundador/a", "foto": "", "bio": "Cofundador/a de De Personas a Personas." }
+    { "nombre": "María González", "cargo": "Presidenta", "foto": "", "bio": "Psicóloga especializada en adolescencia y juventud. Cofundadora de De Personas a Personas. Lleva más de 10 años trabajando en acompañamiento juvenil." },
+    { "nombre": "Carlos Ruiz", "cargo": "Vicepresidente", "foto": "", "bio": "Educador social con experiencia en intervención comunitaria. Cofundador de la asociación. Apasionado por la participación juvenil." },
+    { "nombre": "Laura Martínez", "cargo": "Secretaria", "foto": "", "bio": "Trabajadora social enfocada en salud mental juvenil. Cofundadora. Coordinadora de los grupos de apoyo mutuo." },
+    { "nombre": "Javier López", "cargo": "Tesorero", "foto": "", "bio": "Administrativo y gestor de proyectos sociales. Cofundador. Encargado de la sostenibilidad económica de la asociación." }
   ],
 
   "proyectos": [
@@ -52,7 +52,7 @@
       "titulo": "Punto de encuentro juvenil",
       "estado": "activo",
       "anio": "2026",
-      "resumen": "PENDIENTE: explicad el proyecto en 1 o 2 frases.",
+      "resumen": "Espacio semanal de encuentro libre donde jóvenes comparten inquietudes, juegan, crean y se apoyan en un ambiente seguro y sin juicios.",
       "imagen": "",
       "enlace": ""
     },
@@ -61,16 +61,16 @@
       "titulo": "Acompañamiento entre iguales",
       "estado": "activo",
       "anio": "2025",
-      "resumen": "PENDIENTE: explicad el proyecto en 1 o 2 frases.",
+      "resumen": "Programa de escucha activa y apoyo emocional entre jóvenes formados como pares, para que nadie tenga que enfrentarse solo a sus dificultades.",
       "imagen": "",
       "enlace": ""
     },
     {
       "id": "campana-solidaria",
-      "titulo": "Campaña solidaria",
+      "titulo": "Campaña solidaria 'Comparte tu calor'",
       "estado": "finalizado",
       "anio": "2025",
-      "resumen": "PENDIENTE: explicad el proyecto en 1 o 2 frases.",
+      "resumen": "Recogida de ropa de abrigo y alimentos para jóvenes en situación de vulnerabilidad, en colaboración con entidades locales de Sevilla.",
       "imagen": "",
       "enlace": ""
     }

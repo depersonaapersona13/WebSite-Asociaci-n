@@ -647,7 +647,14 @@
 
     /* Sin servicio externo configurado: se abre el correo del visitante ya redactado */
     function enviarPorCorreo() {
+      var boton = formulario.querySelector('button[type="submit"]');
+      var htmlBoton = boton ? boton.innerHTML : "";
+      if (boton) {
+        boton.disabled = true;
+        boton.innerHTML = '<svg class="animate-spin -ml-1 mr-2 h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>' + textoDe("contacto.enviando", "Enviando…");
+      }
       if (!destino) {
+        if (boton) { boton.disabled = false; boton.innerHTML = htmlBoton; }
         mostrarAviso(textoDe("contacto.noConfigurado", "El envío todavía no está configurado: falta el correo de destino en data/site.json."));
         return;
       }
@@ -657,13 +664,17 @@
       window.location.href = "mailto:" + destino +
         "?subject=" + encodeURIComponent(asunto) + "&body=" + encodeURIComponent(cuerpo);
       mostrarAviso(textoDe("contacto.exitoCorreo", "Se ha abierto tu programa de correo con el mensaje preparado: solo tienes que pulsar Enviar."), true);
+      if (boton) { boton.disabled = false; boton.innerHTML = htmlBoton; }
     }
 
     /* Con endpoint configurado (Web3Forms, Formspree...): se envía sin salir de la web */
     function enviarRemoto() {
       var boton = formulario.querySelector('button[type="submit"]');
-      var textoBoton = boton ? boton.textContent : "";
-      if (boton) { boton.disabled = true; boton.textContent = textoDe("contacto.enviando", "Enviando…"); }
+      var htmlBoton = boton ? boton.innerHTML : "";
+      if (boton) {
+        boton.disabled = true;
+        boton.innerHTML = '<svg class="animate-spin -ml-1 mr-2 h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>' + textoDe("contacto.enviando", "Enviando…");
+      }
       mostrarAviso(textoDe("contacto.enviando", "Enviando…"), true);
       fetch(endpoint, { method: "POST", body: new FormData(formulario), headers: { Accept: "application/json" } })
         .then(function (respuesta) {
@@ -679,7 +690,7 @@
           mostrarAviso(textoDe("contacto.errEnvio", "No hemos podido enviar el mensaje. Prueba de nuevo o escríbenos por correo."));
         })
         .then(function () {
-          if (boton) { boton.disabled = false; boton.textContent = textoBoton; }
+          if (boton) { boton.disabled = false; boton.innerHTML = htmlBoton; }
         });
     }
 
@@ -720,9 +731,6 @@
       rellenarDestacados(sitio);
       rellenarTestimonios(sitio);
       inicializarFormulario(sitio);
-      inicializarContadores();
-      inicializarAcordeon();
-      animarEntrada();
       document.dispatchEvent(new CustomEvent("datos:cargados"));
     });
   }
@@ -744,12 +752,12 @@
     arrancarDatos();
   });
 
-  document.addEventListener("DOMContentLoaded", arrancarDatos);
-
   /* Red de seguridad por si el layout tardase más que la carga completa de la página */
   window.addEventListener("load", function () {
-    arrancarInteraccion();
-    arrancarDatos();
+    if (!window.layoutCargado) {
+      arrancarInteraccion();
+      arrancarDatos();
+    }
   });
 
 })();

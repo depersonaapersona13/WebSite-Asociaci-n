@@ -1,45 +1,97 @@
-<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Política de Privacidad · De Personas a Personas</title>
-  <meta name="description" content="Política de privacidad y protección de datos personales de la Asociación Juvenil De Personas a Personas.">
+  <title>De Personas a Personas · Jóvenes que se apoyan entre sí</title>
+  <meta name="description" content="Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí. Descubre nuestros proyectos y cómo participar.">
   <meta name="theme-color" content="#8FB9E0">
-  <link rel="canonical" href="https://depersonaapersona13-web.pages.dev/politica-privacidad">
+  <link rel="canonical" href="https://depersonaapersona13-web.pages.dev/">
 
+  <!-- Vista previa al compartir por WhatsApp, Instagram, X, Facebook... -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="De Personas a Personas">
   <meta property="og:locale" content="es_ES">
-  <meta property="og:title" content="Política de Privacidad · De Personas a Personas">
-  <meta property="og:description" content="Política de privacidad y protección de datos de la Asociación Juvenil De Personas a Personas.">
-  <meta property="og:url" content="https://depersonaapersona13-web.pages.dev/politica-privacidad">
+  <meta property="og:title" content="De Personas a Personas · Jóvenes que se apoyan entre sí">
+  <meta property="og:description" content="Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.">
+  <meta property="og:url" content="https://depersonaapersona13-web.pages.dev/">
   <meta property="og:image" content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Política de Privacidad · De Personas a Personas">
-  <meta name="twitter:description" content="Política de privacidad y protección de datos de la Asociación Juvenil De Personas a Personas.">
+  <meta name="twitter:title" content="De Personas a Personas · Jóvenes que se apoyan entre sí">
+  <meta name="twitter:description" content="Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.">
   <meta name="twitter:image" content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png">
+
+  <!-- Schema.org JSON-LD: Organization + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "De Personas a Personas",
+        "alternateName": "DPAP",
+        "url": "https://depersonaapersona13-web.pages.dev/",
+        "logo": "https://depersonaapersona13-web.pages.dev/assets/img/logo.svg",
+        "description": "Asociación juvenil sin ánimo de lucro de apoyo mutuo en Sevilla. Espacios seguros de acompañamiento, escucha activa y comunidad entre iguales.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Sevilla",
+          "addressRegion": "Andalucía",
+          "addressCountry": "ES"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+34 600 123 456",
+          "contactType": "customer service",
+          "availableLanguage": ["Spanish", "English"]
+        },
+        "sameAs": [
+          "https://www.instagram.com/_de.persona.a.persona_/",
+          "https://www.tiktok.com/@depersonasapersonas",
+          "https://www.facebook.com/profile.php?id=61594435199655",
+          "https://x.com/personapersona",
+          "https://www.youtube.com/@Depersonasapersonas"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://depersonaapersona13-web.pages.dev/",
+        "name": "De Personas a Personas",
+        "description": "Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.",
+        "publisher": { "@id": "https://depersonaapersona13-web.pages.dev/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://depersonaapersona13-web.pages.dev/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
+  <!-- Rendimiento: el logo es la imagen más importante; el JSON se pide cuanto antes -->
+  <link rel="preload" href="/assets/img/logo.svg" as="image" fetchpriority="high">
+  <link rel="preload" href="/data/site.json" as="fetch" crossorigin="anonymous">
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 
   <!-- Tema visual (modo oscuro) antes de pintar, para evitar el destello blanco -->
   <script src="/assets/js/tema-visual.js"></script>
 
+  <!-- Tailwind por CDN + tema de marca (colores en assets/js/tema.js) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/assets/js/tema.js"></script>
   <link rel="stylesheet" href="/assets/css/styles.css">
 
-  <!-- Selector de idioma + encabezado/pie compartidos + lógica general -->
+  <!-- Selector de idioma (antes de main.js) + encabezado/pie compartidos + lógica general -->
   <script src="/assets/js/idiomas.js" defer></script>
   <script src="/assets/js/layout.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
 </head>
-
 <body data-pagina="politica-privacidad" class="flex min-h-screen flex-col bg-white text-brand-900 antialiased">
   <a class="salto-contenido" href="#contenido" data-i18n="comun.saltar">Saltar al contenido</a>
 
@@ -58,9 +110,9 @@
     <!-- Cabecera de página -->
     <section class="border-b border-brand-100 bg-brand-50">
       <div class="mx-auto max-w-4xl px-4 py-14 sm:px-6">
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700">Protección de datos (RGPD)</p>
-        <h1 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">Política de Privacidad</h1>
-        <p class="mt-4 text-base text-brand-900/80">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="privacidad.kicker">Protección de datos (RGPD)</p>
+        <h1 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl" data-i18n="privacidad.titulo">Política de Privacidad</h1>
+        <p class="mt-4 text-base text-brand-900/80" data-i18n="privacidad.intro">
           En la Asociación Juvenil De Personas a Personas nos tomamos muy en serio tu privacidad. Te explicamos de forma transparente cómo tratamos tus datos de acuerdo con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD).
         </p>
       </div>
@@ -71,7 +123,7 @@
       <div class="prose max-w-none space-y-10 text-brand-900/85">
 
         <article class="tarjeta p-6 sm:p-8">
-          <h2 class="text-xl font-bold text-brand-900">1. Responsable del tratamiento</h2>
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion1Titulo">1. Responsable del tratamiento</h2>
           <ul class="mt-4 list-inside list-disc space-y-1 text-sm leading-relaxed">
             <li><strong>Responsable:</strong> Asociación Juvenil De Personas a Personas</li>
             <li><strong>Ámbito:</strong> Sevilla, Andalucía (España)</li>
@@ -80,7 +132,7 @@
         </article>
 
         <article class="tarjeta p-6 sm:p-8">
-          <h2 class="text-xl font-bold text-brand-900">2. Qué datos recopilamos y cómo</h2>
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion2Titulo">2. Qué datos recopilamos y cómo</h2>
           <p class="mt-3 leading-relaxed">
             Este sitio web recopila únicamente los datos que nos facilitas voluntariamente a través del <strong>formulario de contacto</strong> o al escribirnos un correo electrónico:
           </p>
@@ -91,7 +143,7 @@
         </article>
 
         <article class="tarjeta p-6 sm:p-8">
-          <h2 class="text-xl font-bold text-brand-900">3. Finalidad del tratamiento</h2>
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion3Titulo">3. Finalidad del tratamiento</h2>
           <p class="mt-3 leading-relaxed">
             Los datos que nos envías se utilizan única y exclusivamente para:
           </p>
@@ -105,28 +157,28 @@
         </article>
 
         <article class="tarjeta p-6 sm:p-8">
-          <h2 class="text-xl font-bold text-brand-900">4. Base legal para el tratamiento</h2>
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion4Titulo">4. Base legal para el tratamiento</h2>
           <p class="mt-3 leading-relaxed">
             La base jurídica que legitima el tratamiento de tus datos es el <strong>consentimiento expreso</strong> que otorgas al marcar la casilla de verificación en el formulario de contacto y pulsar el botón de envío (conforme al artículo 6.1.a del RGPD).
           </p>
         </article>
 
         <article class="tarjeta p-6 sm:p-8">
-          <h2 class="text-xl font-bold text-brand-900">5. Plazo de conservación de los datos</h2>
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion5Titulo">5. Plazo de conservación de los datos</h2>
           <p class="mt-3 leading-relaxed">
             Conservaremos tus datos personales únicamente durante el tiempo estrictamente necesario para gestionar y dar respuesta a tu consulta o solicitud. Una vez resuelta, los datos serán eliminados o archivados bloqueados solo mientras pudieran derivarse responsabilidades legales aplicables.
           </p>
         </article>
 
         <article class="tarjeta p-6 sm:p-8">
-          <h2 class="text-xl font-bold text-brand-900">6. Comunicación a terceros</h2>
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion6Titulo">6. Comunicación a terceros</h2>
           <p class="mt-3 leading-relaxed">
             Tus datos no serán cedidos, vendidos ni transferidos a terceras personas ni entidades, salvo obligación legal expresa o requerimiento de autoridades competentes. Tampoco realizamos transferencias internacionales de datos fuera del Espacio Económico Europeo.
           </p>
         </article>
 
         <article class="tarjeta p-6 sm:p-8">
-          <h2 class="text-xl font-bold text-brand-900">7. Cuáles son tus derechos y cómo ejercerlos</h2>
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion7Titulo">7. Cuáles son tus derechos y cómo ejercerlos</h2>
           <p class="mt-3 leading-relaxed">
             Tienes pleno derecho a controlar tus datos personales. Puedes ejercitar en cualquier momento los siguientes derechos reconocidos por el RGPD:
           </p>

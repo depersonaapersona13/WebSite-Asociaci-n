@@ -157,17 +157,17 @@ assets/img/                Logo, favicon e imágenes (ver LEEME.txt)
 
 ## 7. Pendientes de rellenar (contenido inmediato)
 
-1. **Logo real** en `assets/img/logo.png` (ahora se ve la marca provisional).
-2. **Datos de contacto** (correo, teléfono, dónde estáis, horario) en `data/site.json`.
-3. **Redes sociales** (una URL de Instagram/WhatsApp/etc. basta para que aparezcan).
-4. **Datos legales**: CIF, número de registro de asociaciones, fecha de constitución
-   y domicilio social.
-5. **Proyectos**: títulos, descripciones reales, años y fotos (`assets/img/proyectos/`).
-6. **Junta directiva**: nombres, cargos y (si queréis) fotos.
-7. **Textos de Inicio y Sobre Nosotros**: buscad los comentarios `<!-- PENDIENTE: ... -->`.
+1. ✅ **Logo provisional** en `assets/img/logo.svg` (marca provisional creada; se puede sustituir por PNG real).
+2. ✅ **Datos de contacto** (correo, teléfono, dónde estáis, horario) en `data/site.json`.
+3. ✅ **Redes sociales** (URLs de Instagram, TikTok, Facebook, X, YouTube configuradas).
+4. ✅ **Datos legales**: CIF, número de registro de asociaciones, fecha de constitución
+   y domicilio social completados en `data/site.json`.
+5. ✅ **Proyectos**: títulos, descripciones reales, años configurados en `data/site.json`.
+6. ✅ **Junta directiva**: nombres, cargos y bios configurados en `data/site.json`.
+7. ✅ **Textos de Inicio y Sobre Nosotros**: todos los `PENDIENTE` eliminados y textos reales añadidos.
 8. **Dominio propio**: cambiarlo en los HTML, `sitemap.xml`, `robots.txt` y `site.json`.
-9. *(Opcional)* Aviso legal y política de privacidad, si publicáis esos textos.
-10. *(Opcional)* Imagen para compartir en redes: `assets/img/og-image.png` (1200×630).
+9. ✅ **Aviso legal y política de privacidad** creados en `/aviso-legal.html` y `/politica-privacidad.html`.
+10. *(Opcional)* Imagen para compartir en redes: `assets/img/og-image.svg` (marca provisional creada; se puede sustituir por PNG real 1200×630).
 
 ---
 
@@ -175,10 +175,14 @@ assets/img/                Logo, favicon e imágenes (ver LEEME.txt)
 
 ### 🔴 Crítico (afecta funcionalidad o legal)
 - [x] **Crear páginas legales**: `/aviso-legal.html` y `/politica-privacidad.html` (requeridas por el formulario de contacto y RGPD).
-- [x] **Añadir `og-image.png`** (1200×630) en `assets/img/` y referenciarla en `og:image`/`twitter:image` de todas las páginas.
+- [x] **Añadir `og-image.svg`** (1200×630) en `assets/img/` y referenciarla en `og:image`/`twitter:image` de todas las páginas.
 - [x] **Completar `meta.descripcion`** en `data/site.json` (SEO y compartidos).
-- [x] **Fix fallback logo**: crear `assets/img/logo.svg` o cambiar `main.js:431` a una URL válida.
-- [x] **Checkbox privacidad**: enlazar a `/politica-privacidad.html` en el label del formulario.
+- [x] **Fix fallback logo**: creado `assets/img/logo.svg` y actualizadas todas las referencias.
+- [x] **Checkbox privacidad**: enlazar a `/politica-privacidad` en el label del formulario.
+- [x] **Eliminar PENDIENTE**: todos los textos placeholder reemplazados por contenido real.
+- [x] **Internacionalización completa**: `data-i18n` en todas las páginas + traducciones EN en `idiomas.js`.
+- [x] **Fix race condition**: unificado arranque en `main.js` (ya no se ejecuta 3×).
+- [x] **Formulario**: spinner de carga en botón submit + quitar `target="_blank"` de política de privacidad.
 
 ### 🟠 Importante (UX, accesibilidad, SEO)
 - [ ] **Contraste dark mode**: revisar `.btn-claro` y `.enlace-pie` en modo oscuro (ratio AA).

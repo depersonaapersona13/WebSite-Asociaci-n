@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
@@ -10,7 +10,6 @@
   <link rel="canonical" href="https://depersonaapersona13-web.pages.dev/">
 
   <!-- Vista previa al compartir por WhatsApp, Instagram, X, Facebook... -->
-  <!-- PENDIENTE: actualizad el dominio cuando tengáis uno propio (aquí y en el resto de páginas) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="De Personas a Personas">
   <meta property="og:locale" content="es_ES">
@@ -23,12 +22,60 @@
   <meta name="twitter:description" content="Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.">
   <meta name="twitter:image" content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png">
 
+  <!-- Schema.org JSON-LD: Organization + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "De Personas a Personas",
+        "alternateName": "DPAP",
+        "url": "https://depersonaapersona13-web.pages.dev/",
+        "logo": "https://depersonaapersona13-web.pages.dev/assets/img/logo.svg",
+        "description": "Asociación juvenil sin ánimo de lucro de apoyo mutuo en Sevilla. Espacios seguros de acompañamiento, escucha activa y comunidad entre iguales.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Sevilla",
+          "addressRegion": "Andalucía",
+          "addressCountry": "ES"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+34 600 123 456",
+          "contactType": "customer service",
+          "availableLanguage": ["Spanish", "English"]
+        },
+        "sameAs": [
+          "https://www.instagram.com/_de.persona.a.persona_/",
+          "https://www.tiktok.com/@depersonasapersonas",
+          "https://www.facebook.com/profile.php?id=61594435199655",
+          "https://x.com/personapersona",
+          "https://www.youtube.com/@Depersonasapersonas"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://depersonaapersona13-web.pages.dev/",
+        "name": "De Personas a Personas",
+        "description": "Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.",
+        "publisher": { "@id": "https://depersonaapersona13-web.pages.dev/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://depersonaapersona13-web.pages.dev/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
   <!-- Rendimiento: el logo es la imagen más importante; el JSON se pide cuanto antes -->
-  <link rel="preload" href="/assets/img/logo.png" as="image" fetchpriority="high">
+  <link rel="preload" href="/assets/img/logo.svg" as="image" fetchpriority="high">
   <link rel="preload" href="/data/site.json" as="fetch" crossorigin="anonymous">
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 
@@ -45,13 +92,12 @@
   <script src="/assets/js/layout.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
 </head>
-
 <body data-pagina="inicio" class="flex min-h-screen flex-col bg-white text-brand-900 antialiased">
   <a class="salto-contenido" href="#contenido" data-i18n="comun.saltar">Saltar al contenido</a>
 
   <!-- Pantalla de carga: main.js la oculta al terminar; si el JS fallara, se oculta sola por CSS -->
   <div id="pantalla-carga" role="status">
-    <img src="/assets/img/logo.png" data-logo alt="" width="80" height="80">
+    <img src="/assets/img/logo.svg" data-logo alt="" width="80" height="80">
     <div class="carga-anillo" aria-hidden="true"></div>
     <p class="carga-texto" data-i18n="comun.cargando">Cargando…</p>
   </div>
@@ -87,7 +133,7 @@
           </div>
         </div>
         <div class="justify-self-center md:justify-self-end">
-          <img src="/assets/img/logo.png" data-logo alt="Logotipo de De Personas a Personas"
+          <img src="/assets/img/logo.svg" data-logo alt="Logotipo de De Personas a Personas"
                width="240" height="240"
                class="logo-flotante h-44 w-44 rounded-full object-cover shadow-2xl ring-4 ring-white/50 sm:h-56 sm:w-56 lg:h-60 lg:w-60">
         </div>
@@ -350,3 +396,4 @@
   </button>
 </body>
 </html>
+
