@@ -1,4 +1,4 @@
-{
+﻿{
   "_ayuda": "Todo lo que empiece por 'PENDIENTE' se muestra en el sitio como contenido pendiente. Al rellenarlo, desaparece el aviso automáticamente. No borres las comillas ni las comas.",
 
   "meta": {
@@ -8,7 +8,7 @@
     "urlBase": "https://depersonaapersona13-web.pages.dev",
     "descripcionCorta": "Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.",
     "descripcion": "Asociación juvenil sin ánimo de lucro de apoyo mutuo en Sevilla. Espacios seguros de acompañamiento, escucha activa y comunidad entre iguales.",
-    "logo": "/assets/img/logo.svg"
+    "logo": "/assets/img/logo.png"
   },
 
   "contacto": {

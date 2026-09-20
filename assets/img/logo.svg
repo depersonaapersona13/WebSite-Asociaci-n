@@ -1,17 +1,7 @@
-﻿<svg width= 240 height=240 viewBox=0 0 240 240 xmlns=http://www.w3.org/2000/svg>
-  <!-- Background circle -->
-  <circle cx=120 cy=120 r=110 fill=#8FB9E0/>
-  
-  <!-- Two hands forming a heart/support shape -->
-  <g fill=white transform=translate 40 40 >
-    <!-- Left hand -->
-    <path d= M40 120 Q40 80 80 60 Q100 40 120 60 Q140 80 120 120 Q100 140 80 140 Q60 140 40 120 Z opacity=0.9/>
-    <!-- Right hand -->
-    <path d=M120 120 Q120 80 160 60 Q180 40 200 60 Q220 80 200 120 Q180 140 160 140 Q140 140 120 120 Z opacity=0.9/>
-    <!-- Heart in the center where hands meet -->
-    <path d=M100 85 Q100 75 110 70 Q120 65 130 70 Q140 75 140 85 Q140 100 120 125 Q100 100 100 85 Z fill=#E8A87C/>
-  </g>
-  
-  <!-- Text -->
-  <text x=120 y=210 font-family=system-ui sans-serif font-size=14 font-weight=600 fill=#1E3A5F text-anchor=middle>De Personas a Personas</text>
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="De Personas a Personas">
+  <title>De Personas a Personas</title>
+  <rect width="32" height="32" rx="16" fill="#8FB9E0"/>
+  <circle cx="16" cy="16" r="14.4" fill="none" stroke="#FFFFFF" stroke-width="1.6" opacity="0.9"/>
+  <circle cx="13" cy="16" r="6.2" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="19" cy="16" r="6.2" fill="none" stroke="#FFFFFF" stroke-width="2"/>
 </svg>
