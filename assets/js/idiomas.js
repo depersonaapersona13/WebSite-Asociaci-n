@@ -36,7 +36,7 @@
         pendienteProyectos: "Pendiente de publicar los proyectos.",
         pendienteContacto: "Pendiente de confirmar los datos de contacto.",
         pendienteLegal: "Datos legales pendientes de publicar.",
-        pendienteJunta: "Pendiente de publicar la composición de la junta directiva.",
+        pendienteJunta: "Pendiente de publicar la composición del equipo.",
         pendienteRedes: "Pendiente de añadir las redes sociales.",
         pendienteTestimonios: "Pendiente de publicar los testimonios.",
         pendienteFila: "Pendiente de completar.",
@@ -52,11 +52,28 @@
         cerrarMenu: "Cerrar menú de navegación"
       },
       hero: {
+        badge: "✨ Asociación juvenil de apoyo mutuo · Sevilla",
         etiqueta: "Asociación juvenil",
         eslogan: "Jóvenes que se apoyan entre sí.",
         cta1: "Conócenos",
         cta2: "Ver proyectos",
         logoAlt: "Logotipo de De Personas a Personas"
+      },
+      stats: {
+        kicker: "Impacto y compromiso",
+        titulo: "Nuestra red en cifras",
+        cifra1Num: "4",
+        cifra1Etiqueta: "Personas cofundadoras",
+        cifra1Desc: "Jóvenes comprometidos impulsando la asociación.",
+        cifra2Num: "100%",
+        cifra2Etiqueta: "Apoyo mutuo y gratuito",
+        cifra2Desc: "Espacio seguro de escucha activa entre iguales.",
+        cifra3Num: "Sevilla",
+        cifra3Etiqueta: "Presencial y online",
+        cifra3Desc: "Actividades locales y red digital accesible.",
+        cifra4Num: "0€",
+        cifra4Etiqueta: "Coste para participar",
+        cifra4Desc: "Sin cuotas ni barreras para nadie."
       },
       queHacemos: {
         kicker: "Qué hacemos",
@@ -74,9 +91,18 @@
         ctaBoton2: "Cómo funcionamos"
       },
       testimonios: {
-        kicker: "Testimonios",
-        titulo: "Lo que dicen quienes ya participan",
-        intro: "Experiencias reales de personas que han pasado por la asociación."
+        kicker: "Comunidad",
+        titulo: "Lo que significa este espacio",
+        intro: "Palabras y reflexiones de quienes ya forman parte de nuestra red de apoyo.",
+        test1Cita: "«Encontrar un lugar donde hablar de lo que te pasa sin sentirte juzgado marca un antes y un después. Saber que no estás solo te devuelve las ganas.»",
+        test1Autor: "Compañero/a del grupo",
+        test1Rol: "Participante en encuentros",
+        test2Cita: "«No hace falta tener todas las respuestas para ayudar; a veces basta con sentarte a escuchar y decir: yo también he estado ahí.»",
+        test2Autor: "Integrante de la red",
+        test2Rol: "Acompañamiento entre iguales",
+        test3Cita: "«La fuerza de esta asociación es que la construimos de tú a tú. Nadie es más que nadie y cada idea cuenta.»",
+        test3Autor: "Colaborador/a joven",
+        test3Rol: "Talleres y actividades"
       },
       proyectos: {
         destacadosKicker: "Proyectos",
@@ -92,6 +118,21 @@
         ctaTitulo: "¿Tienes una idea para un proyecto?",
         ctaTexto: "Cuéntanosla y vemos entre todas cómo llevarla adelante.",
         ctaBoton: "Escríbenos"
+      },
+      faq: {
+        kicker: "Resolvemos tus dudas",
+        titulo: "Preguntas frecuentes",
+        intro: "Todo lo que necesitas saber antes de escribirnos o sumarte a los encuentros.",
+        q1: "¿Quién puede participar en la asociación?",
+        a1: "Cualquier persona joven con ganas de sentirse escuchada, de apoyar a otras personas o de proponer actividades comunitarias. No hay ningún requisito previo: la puerta está abierta para todo el mundo.",
+        q2: "¿Tiene algún coste o cuota mensual?",
+        a2: "No, en absoluto. Participar en la asociación y en nuestros encuentros y actividades es 100% gratuito. Creemos en un apoyo mutuo accesible y sin barreras económicas.",
+        q3: "¿Qué tipo de actividades y encuentros organizáis?",
+        a3: "Organizamos quedadas informales, espacios de conversación y escucha, talleres prácticos, dinámicas para compartir inquietudes y proyectos solidarios propuestos por los propios miembros.",
+        q4: "¿Tengo que vivir en Sevilla para participar?",
+        a4: "La asociación nació en Sevilla y realizamos quedadas presenciales en la ciudad, pero también contamos con canales y actividades online para acompañarnos sin importar la distancia.",
+        q5: "¿Cómo puedo proponer una idea o colaborar?",
+        a5: "¡Es muy fácil! Puedes escribirnos a través del formulario de la web o por mensaje directo en cualquiera de nuestras redes sociales. Te responderemos encantadas para hablar de tu idea."
       },
       contacto: {
         kicker: "Contacto",
@@ -113,7 +154,10 @@
         lblAsunto: "Asunto",
         lblMensaje: "Mensaje *",
         lblNoRellenar: "No rellenar este campo",
-        lblPrivacidad: "He leído y acepto que mis datos se usen únicamente para responder a este mensaje. *",
+        lblPrivacidad: "He leído y acepto la política de privacidad y que mis datos se usen únicamente para responder a este mensaje. *",
+        lblPrivacidadParte1: "He leído y acepto la",
+        lblPrivacidadEnlace: "política de privacidad",
+        lblPrivacidadParte2: "y que mis datos se usen únicamente para responder a este mensaje. *",
         enviar: "Enviar mensaje",
         placeholderNombre: "Tu nombre",
         placeholderEmail: "tu@email.com",
@@ -154,8 +198,8 @@
         valor3Texto: "Lo que decimos que vamos a hacer, lo hacemos. Con constancia y con tiempo.",
         valor4Titulo: "Transparencia",
         valor4Texto: "Publicamos quiénes somos y de dónde sale cada recurso que gestionamos.",
-        juntaTitulo: "Junta directiva",
-        juntaIntro: "Las personas que representan a la asociación. Podéis escribirnos para cualquier consulta.",
+        juntaTitulo: "Equipo",
+        juntaIntro: "Las cuatro personas cofundadoras que impulsamos la asociación.",
         transTitulo: "Datos y transparencia",
         transIntro: "Información legal y de contacto de la asociación.",
         ctaTitulo: "¿Te identificas con lo que hacemos?",
@@ -174,7 +218,9 @@
         navegacion: "Navegación",
         contactoTitulo: "Contacto",
         derechos: "Todos los derechos reservados.",
-        cta: "Escríbenos"
+        cta: "Escríbenos",
+        avisoLegal: "Aviso legal",
+        privacidad: "Política de privacidad"
       },
       error404: {
         kicker: "Error 404",
@@ -207,7 +253,7 @@
         pendienteProyectos: "Projects not published yet.",
         pendienteContacto: "Contact details to be confirmed.",
         pendienteLegal: "Legal details not published yet.",
-        pendienteJunta: "Board members not published yet.",
+        pendienteJunta: "Team members not published yet.",
         pendienteRedes: "Social networks not added yet.",
         pendienteTestimonios: "Testimonials not published yet.",
         pendienteFila: "To be completed.",
@@ -223,11 +269,28 @@
         cerrarMenu: "Close navigation menu"
       },
       hero: {
+        badge: "✨ Youth mutual support association · Seville",
         etiqueta: "Youth association",
         eslogan: "Young people supporting each other.",
         cta1: "About us",
         cta2: "See projects",
         logoAlt: "De Personas a Personas logo"
+      },
+      stats: {
+        kicker: "Impact & commitment",
+        titulo: "Our network in figures",
+        cifra1Num: "4",
+        cifra1Etiqueta: "Co-founders",
+        cifra1Desc: "Committed young people driving the association.",
+        cifra2Num: "100%",
+        cifra2Etiqueta: "Mutual & free support",
+        cifra2Desc: "A safe space for active listening among peers.",
+        cifra3Num: "Seville",
+        cifra3Etiqueta: "In-person & online",
+        cifra3Desc: "Local meetups and accessible digital community.",
+        cifra4Num: "0€",
+        cifra4Etiqueta: "Cost to take part",
+        cifra4Desc: "No fees, no barriers for anyone."
       },
       queHacemos: {
         kicker: "What we do",
@@ -245,9 +308,18 @@
         ctaBoton2: "How we work"
       },
       testimonios: {
-        kicker: "Testimonials",
-        titulo: "What the people involved say",
-        intro: "Real experiences from people who have taken part in the association."
+        kicker: "Community",
+        titulo: "What this space means",
+        intro: "Words and thoughts from people who are already part of our support network.",
+        test1Cita: "«Finding a place where you can talk about what's going on without feeling judged changes everything. Knowing you're not alone gives you hope again.»",
+        test1Autor: "Group member",
+        test1Rol: "Meetups participant",
+        test2Cita: "«You don't need all the answers to help; sometimes all it takes is sitting down to listen and saying: I've been there too.»",
+        test2Autor: "Network peer",
+        test2Rol: "Peer support",
+        test3Cita: "«The strength of this association is that we build it peer to peer. Nobody is above anyone else and every voice counts.»",
+        test3Autor: "Youth collaborator",
+        test3Rol: "Workshops & activities"
       },
       proyectos: {
         destacadosKicker: "Projects",
@@ -263,6 +335,21 @@
         ctaTitulo: "Do you have an idea for a project?",
         ctaTexto: "Tell us about it and we will look at how to make it happen together.",
         ctaBoton: "Get in touch"
+      },
+      faq: {
+        kicker: "Frequently asked",
+        titulo: "Frequently Asked Questions",
+        intro: "Everything you need to know before reaching out or joining our meetups.",
+        q1: "Who can take part in the association?",
+        a1: "Any young person who wants to feel heard, support others, or propose community activities. There are no prerequisites: our doors are open to everyone.",
+        q2: "Is there any membership fee or cost?",
+        a2: "None at all. Taking part in the association and our meetups is 100% free. We believe in accessible peer support without economic barriers.",
+        q3: "What kind of activities and meetups do you organize?",
+        a3: "We organize informal meetups, conversation and active listening circles, practical workshops, spaces to share concerns, and solidarity projects suggested by members.",
+        q4: "Do I have to live in Seville to participate?",
+        a4: "The association was founded in Seville and we hold in-person meetups there, but we also have online channels and digital activities so you can join from anywhere.",
+        q5: "How can I propose an idea or get involved?",
+        a5: "It's very easy! You can write to us via the contact form on this site or send us a direct message on our social media. We'll be thrilled to hear from you."
       },
       contacto: {
         kicker: "Contact",
@@ -284,7 +371,10 @@
         lblAsunto: "Subject",
         lblMensaje: "Message *",
         lblNoRellenar: "Do not fill in this field",
-        lblPrivacidad: "I have read and accept that my details will only be used to reply to this message. *",
+        lblPrivacidad: "I have read and agree to the privacy policy and that my data will be used solely to reply to this message. *",
+        lblPrivacidadParte1: "I have read and agree to the",
+        lblPrivacidadEnlace: "privacy policy",
+        lblPrivacidadParte2: "and that my data will be used solely to reply to this message. *",
         enviar: "Send message",
         placeholderNombre: "Your name",
         placeholderEmail: "your@email.com",
@@ -325,8 +415,8 @@
         valor3Texto: "What we say we will do, we do. With consistency and with time.",
         valor4Titulo: "Transparency",
         valor4Texto: "We publish who we are and where every resource we manage comes from.",
-        juntaTitulo: "Board",
-        juntaIntro: "The people who represent the association. Feel free to write to us with any question.",
+        juntaTitulo: "Team",
+        juntaIntro: "The four co-founders behind the association.",
         transTitulo: "Details and transparency",
         transIntro: "Legal and contact information of the association.",
         ctaTitulo: "Do you identify with what we do?",
@@ -345,7 +435,9 @@
         navegacion: "Navigation",
         contactoTitulo: "Contact",
         derechos: "All rights reserved.",
-        cta: "Get in touch"
+        cta: "Get in touch",
+        avisoLegal: "Legal notice",
+        privacidad: "Privacy policy"
       },
       error404: {
         kicker: "Error 404",

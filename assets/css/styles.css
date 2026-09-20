@@ -256,6 +256,229 @@ body { animation: aparecer .45s ease-out both; }
 /* Estrellas de los testimonios */
 .estrellas svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
 
+/* Barra de progreso de lectura en la cabecera */
+.barra-progreso {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand-500), var(--brand-700));
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 60;
+  transition: transform 0.08s linear;
+}
+
+/* Hero Aurora: iluminación y degradado dinámico */
+.hero-aurora {
+  position: relative;
+  background: linear-gradient(145deg, #8FB9E0 0%, #A3CAEA 50%, #C2DCF1 100%);
+  overflow: hidden;
+}
+.hero-aurora::before,
+.hero-aurora::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(75px);
+  pointer-events: none;
+  opacity: 0.55;
+}
+.hero-aurora::before {
+  top: -15%;
+  left: 5%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, #FFFFFF 0%, rgba(255, 255, 255, 0) 70%);
+  animation: aurora-flotar-1 14s ease-in-out infinite alternate;
+}
+.hero-aurora::after {
+  bottom: -10%;
+  right: 5%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, #4A87BE 0%, rgba(107, 163, 214, 0) 70%);
+  animation: aurora-flotar-2 18s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-flotar-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(35px, 25px) scale(1.08); }
+  100% { transform: translate(-25px, 40px) scale(0.95); }
+}
+
+@keyframes aurora-flotar-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, -20px) scale(1.12); }
+  100% { transform: translate(25px, -35px) scale(0.92); }
+}
+
+/* Badge o píldora de estilo glassmorphism */
+.badge-cristal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.05rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  color: var(--brand-900);
+  box-shadow: 0 8px 20px -6px rgba(22, 58, 92, 0.15);
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+.badge-cristal:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 12px 24px -6px rgba(22, 58, 92, 0.2);
+}
+
+/* Logotipo flotante suave */
+.logo-flotante {
+  animation: flotacion-logo 6s ease-in-out infinite alternate;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.logo-flotante:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 25px 45px -12px rgba(22, 58, 92, 0.4);
+}
+
+@keyframes flotacion-logo {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+/* Divisor orgánico en ola SVG */
+.ola-divisor {
+  display: block;
+  width: 100%;
+  height: 48px;
+  color: #ffffff;
+  fill: currentColor;
+}
+@media (min-width: 640px) {
+  .ola-divisor { height: 70px; }
+}
+
+/* Cifras de impacto / Stats Counter */
+.cifra-numero {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--brand-900) 0%, var(--brand-700) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Acordeón FAQ moderno */
+.acordeon-item {
+  border: 1px solid var(--brand-100);
+  background: #ffffff;
+  border-radius: var(--radio);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease;
+}
+.acordeon-item:hover {
+  border-color: var(--brand-300);
+  box-shadow: 0 10px 25px -10px rgba(22, 58, 92, 0.08);
+}
+.acordeon-item[data-abierto="true"] {
+  border-color: var(--brand-400);
+  box-shadow: 0 12px 30px -10px rgba(47, 107, 168, 0.12);
+}
+.acordeon-boton {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--brand-900);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.acordeon-boton:hover {
+  color: var(--brand-700);
+}
+.acordeon-icono {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--brand-50);
+  color: var(--brand-700);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease;
+}
+.acordeon-item[data-abierto="true"] .acordeon-icono {
+  transform: rotate(180deg);
+  background: var(--brand-700);
+  color: #ffffff;
+}
+.acordeon-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, padding 0.35s ease;
+  padding: 0 1.5rem;
+}
+.acordeon-item[data-abierto="true"] .acordeon-panel {
+  max-height: 400px;
+  opacity: 1;
+  padding-bottom: 1.25rem;
+}
+
+/* Tarjetas de testimonios */
+.tarjeta-testimonio {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--brand-100);
+  border-radius: var(--radio);
+  padding: 2rem;
+  box-shadow: 0 12px 30px -15px rgba(22, 58, 92, 0.08);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.tarjeta-testimonio:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-300);
+  box-shadow: 0 20px 35px -15px rgba(47, 107, 168, 0.16);
+}
+.comilla-adorno {
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  line-height: 1;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  color: var(--brand-200);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Avatar con iniciales en degradado */
+.avatar-iniciales {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-800) 100%);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 8px 20px -4px rgba(22, 58, 92, 0.25);
+  ring: 3px solid rgba(255, 255, 255, 0.8);
+}
+
 /* ==========================================================================
    Modo oscuro: remapeo de la paleta cuando <html> tiene la clase .modo-oscuro
    (así no hay que duplicar clases "dark:" en todo el HTML)
@@ -318,6 +541,25 @@ body { animation: aparecer .45s ease-out both; }
 }
 .modo-oscuro .boton-arriba { background: var(--brand-600); }
 
+/* Adaptaciones de nuevos componentes al modo oscuro */
+.modo-oscuro .barra-progreso { background: linear-gradient(90deg, var(--brand-500), #A3CAEA); }
+.modo-oscuro .hero-aurora { background: linear-gradient(145deg, #112B41 0%, #163A5C 50%, #1D4E7C 100%); }
+.modo-oscuro .hero-aurora::before { background: radial-gradient(circle, #4A87BE 0%, rgba(47, 107, 168, 0) 70%); opacity: 0.35; }
+.modo-oscuro .hero-aurora::after { background: radial-gradient(circle, #204F7E 0%, rgba(22, 58, 92, 0) 70%); opacity: 0.4; }
+.modo-oscuro .badge-cristal { background: rgba(13, 34, 54, 0.6); border-color: rgba(255, 255, 255, 0.15); color: #E3EEF8; }
+.modo-oscuro .ola-divisor { color: #0D2236; }
+.modo-oscuro .cifra-numero { background: linear-gradient(135deg, #FFFFFF 0%, var(--brand-300) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.modo-oscuro .acordeon-item { background: #0F2537; border-color: #1C3A55; }
+.modo-oscuro .acordeon-item:hover { border-color: #24445F; box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5); }
+.modo-oscuro .acordeon-item[data-abierto="true"] { border-color: var(--brand-600); }
+.modo-oscuro .acordeon-boton { color: #E3EEF8; }
+.modo-oscuro .acordeon-icono { background: #16324B; color: #8CC0EC; }
+.modo-oscuro .acordeon-item[data-abierto="true"] .acordeon-icono { background: var(--brand-600); color: #ffffff; }
+.modo-oscuro .tarjeta-testimonio { background: #0F2537; border-color: #1C3A55; }
+.modo-oscuro .tarjeta-testimonio:hover { border-color: var(--brand-600); box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.7); }
+.modo-oscuro .comilla-adorno { color: #16324B; }
+.modo-oscuro .avatar-iniciales { background: linear-gradient(135deg, var(--brand-400) 0%, var(--brand-700) 100%); ring-color: #24445F; }
+
 /* Respeto del movimiento reducido también en la capa de experiencia */
 @media (prefers-reduced-motion: reduce) {
   body { animation: none; }
@@ -326,4 +568,8 @@ body { animation: aparecer .45s ease-out both; }
   .enlace-red:hover, #boton-tema:hover, #boton-tema:active,
   .boton-arriba:hover, .boton-arriba:active { transform: none; }
   .esqueleto { animation: none; }
+  .hero-aurora::before, .hero-aurora::after, .logo-flotante { animation: none; }
+  .acordeon-panel, .acordeon-icono { transition: none; }
+  .barra-progreso { transition: none; }
+  .badge-cristal:hover, .tarjeta-testimonio:hover { transform: none; }
 }

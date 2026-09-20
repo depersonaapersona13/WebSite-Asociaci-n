@@ -17,11 +17,11 @@
   <meta property="og:title" content="De Personas a Personas · Jóvenes que se apoyan entre sí">
   <meta property="og:description" content="Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.">
   <meta property="og:url" content="https://depersonaapersona13-web.pages.dev/">
-  <meta property="og:image" content="https://depersonaapersona13-web.pages.dev/assets/img/logo.png">
+  <meta property="og:image" content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="De Personas a Personas · Jóvenes que se apoyan entre sí">
   <meta name="twitter:description" content="Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.">
-  <meta name="twitter:image" content="https://depersonaapersona13-web.pages.dev/assets/img/logo.png">
+  <meta name="twitter:image" content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png">
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
@@ -69,23 +69,62 @@
   <div data-layout="header" hidden></div>
 
   <main id="contenido" class="flex-1">
-    <!-- Portada -->
-    <section class="relative overflow-hidden bg-brand-400">
-      <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.15fr_auto] md:py-20">
+    <!-- Portada con efecto Aurora, badge cristal y ola curva orgánica -->
+    <section class="hero-aurora relative pt-12 pb-0 sm:pt-16 md:pt-20">
+      <div class="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-[1.2fr_auto] pb-12 sm:pb-16 md:pb-20">
         <div>
-          <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-900/70" data-i18n="hero.etiqueta">Asociación juvenil</p>
-          <h1 class="mt-4 text-4xl font-bold leading-tight text-brand-900 sm:text-5xl">De Personas a Personas</h1>
-          <p class="mt-4 text-xl font-semibold text-brand-900" data-i18n="hero.eslogan">Jóvenes que se apoyan entre sí.</p>
-          <p class="mt-5 max-w-2xl leading-relaxed text-brand-900/85" data-sitio="meta.descripcionCorta"></p>
+          <div class="mb-5">
+            <span class="badge-cristal" data-i18n="hero.badge">✨ Asociación juvenil de apoyo mutuo · Sevilla</span>
+          </div>
+          <h1 class="text-4xl font-extrabold leading-tight text-brand-900 sm:text-5xl lg:text-6xl">
+            De Personas <span class="block">a Personas</span>
+          </h1>
+          <p class="mt-4 text-xl font-bold text-brand-900/95 sm:text-2xl" data-i18n="hero.eslogan">Jóvenes que se apoyan entre sí.</p>
+          <p class="mt-5 max-w-2xl text-base leading-relaxed text-brand-900/85 sm:text-lg" data-sitio="meta.descripcionCorta"></p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <a class="btn btn-primario" href="/sobre-nosotros">Conócenos</a>
-            <a class="btn btn-claro" href="/proyectos">Ver proyectos</a>
+            <a class="btn btn-primario" href="/sobre-nosotros" data-i18n="hero.cta1">Conócenos</a>
+            <a class="btn btn-claro shadow-sm" href="/proyectos" data-i18n="hero.cta2">Ver proyectos</a>
           </div>
         </div>
         <div class="justify-self-center md:justify-self-end">
           <img src="/assets/img/logo.png" data-logo alt="Logotipo de De Personas a Personas"
-               width="224" height="224"
-               class="h-40 w-40 rounded-full object-cover shadow-2xl ring-4 ring-white/40 sm:h-56 sm:w-56">
+               width="240" height="240"
+               class="logo-flotante h-44 w-44 rounded-full object-cover shadow-2xl ring-4 ring-white/50 sm:h-56 sm:w-56 lg:h-60 lg:w-60">
+        </div>
+      </div>
+
+      <!-- Divisor orgánico en ola curva -->
+      <div class="relative w-full overflow-hidden leading-none">
+        <svg class="ola-divisor" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,40 L1200,120 L0,120 Z"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Cifras de impacto con contadores animados -->
+    <section class="border-b border-brand-100 bg-white py-12 sm:py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="grid grid-cols-2 gap-5 md:grid-cols-4 lg:gap-8">
+          <div class="revelar retraso-1 tarjeta p-6 text-center">
+            <p class="cifra-numero text-3xl font-extrabold sm:text-4xl lg:text-5xl" data-contador="4">0</p>
+            <p class="mt-2 text-sm font-bold text-brand-900" data-i18n="stats.cifra1Etiqueta">Personas cofundadoras</p>
+            <p class="mt-1 text-xs text-brand-900/70" data-i18n="stats.cifra1Desc">Jóvenes comprometidos impulsando la asociación.</p>
+          </div>
+          <div class="revelar retraso-2 tarjeta p-6 text-center">
+            <p class="cifra-numero text-3xl font-extrabold sm:text-4xl lg:text-5xl"><span data-contador="100">0</span>%</p>
+            <p class="mt-2 text-sm font-bold text-brand-900" data-i18n="stats.cifra2Etiqueta">Apoyo mutuo y gratuito</p>
+            <p class="mt-1 text-xs text-brand-900/70" data-i18n="stats.cifra2Desc">Espacio seguro de escucha activa entre iguales.</p>
+          </div>
+          <div class="revelar retraso-3 tarjeta p-6 text-center">
+            <p class="cifra-numero text-3xl font-extrabold sm:text-4xl lg:text-5xl" data-i18n="stats.cifra3Num">Sevilla</p>
+            <p class="mt-2 text-sm font-bold text-brand-900" data-i18n="stats.cifra3Etiqueta">Presencial y online</p>
+            <p class="mt-1 text-xs text-brand-900/70" data-i18n="stats.cifra3Desc">Actividades locales y red digital accesible.</p>
+          </div>
+          <div class="revelar retraso-4 tarjeta p-6 text-center">
+            <p class="cifra-numero text-3xl font-extrabold sm:text-4xl lg:text-5xl">0€</p>
+            <p class="mt-2 text-sm font-bold text-brand-900" data-i18n="stats.cifra4Etiqueta">Coste para participar</p>
+            <p class="mt-1 text-xs text-brand-900/70" data-i18n="stats.cifra4Desc">Sin cuotas ni barreras para nadie.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -96,14 +135,13 @@
         <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="queHacemos.kicker">Qué hacemos</p>
         <h2 class="mt-3 text-3xl font-bold text-brand-900" data-i18n="queHacemos.titulo">Apoyo real, entre iguales</h2>
         <p class="mt-4 text-brand-900/80" data-i18n="queHacemos.texto">
-          <!-- PENDIENTE: revisad y ajustad estas tres ideas a lo que hace la asociación -->
           Creamos espacios donde las personas jóvenes se encuentran, se escuchan y se
           acompañan sin sentirse juzgadas.
         </p>
       </div>
 
       <ul class="mt-12 grid gap-6 md:grid-cols-3">
-        <li class="revelar tarjeta h-full p-6">
+        <li class="revelar retraso-1 tarjeta h-full p-6">
           <span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-brand-700">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
@@ -114,7 +152,7 @@
             Acompañamos a quienes lo necesitan: escucha, orientación y ayuda práctica entre personas de edades parecidas.
           </p>
         </li>
-        <li class="revelar tarjeta h-full p-6">
+        <li class="revelar retraso-2 tarjeta h-full p-6">
           <span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-brand-700">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
@@ -125,7 +163,7 @@
             Organizamos quedadas, talleres y actividades para conocerse, aprender juntas y desconectar.
           </p>
         </li>
-        <li class="revelar tarjeta h-full p-6">
+        <li class="revelar retraso-3 tarjeta h-full p-6">
           <span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-brand-700">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -155,6 +193,137 @@
       </div>
     </section>
 
+    <!-- Testimonios / Comunidad -->
+    <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+      <div class="max-w-2xl">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="testimonios.kicker">Comunidad</p>
+        <h2 class="mt-3 text-3xl font-bold text-brand-900" data-i18n="testimonios.titulo">Lo que significa este espacio</h2>
+        <p class="mt-4 text-brand-900/80" data-i18n="testimonios.intro">
+          Palabras y reflexiones de quienes ya forman parte de nuestra red de apoyo.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <article class="revelar retraso-1 tarjeta-testimonio flex flex-col justify-between">
+          <span class="comilla-adorno" aria-hidden="true">&ldquo;</span>
+          <blockquote class="text-sm leading-relaxed text-brand-900/85 sm:text-base" data-i18n="testimonios.test1Cita">
+            «Encontrar un lugar donde hablar de lo que te pasa sin sentirte juzgado marca un antes y un después. Saber que no estás solo te devuelve las ganas.»
+          </blockquote>
+          <div class="mt-6 border-t border-brand-100 pt-4">
+            <p class="font-bold text-brand-900 text-sm" data-i18n="testimonios.test1Autor">Compañero/a del grupo</p>
+            <p class="text-xs text-brand-700" data-i18n="testimonios.test1Rol">Participante en encuentros</p>
+          </div>
+        </article>
+
+        <article class="revelar retraso-2 tarjeta-testimonio flex flex-col justify-between">
+          <span class="comilla-adorno" aria-hidden="true">&ldquo;</span>
+          <blockquote class="text-sm leading-relaxed text-brand-900/85 sm:text-base" data-i18n="testimonios.test2Cita">
+            «No hace falta tener todas las respuestas para ayudar; a veces basta con sentarte a escuchar y decir: yo también he estado ahí.»
+          </blockquote>
+          <div class="mt-6 border-t border-brand-100 pt-4">
+            <p class="font-bold text-brand-900 text-sm" data-i18n="testimonios.test2Autor">Integrante de la red</p>
+            <p class="text-xs text-brand-700" data-i18n="testimonios.test2Rol">Acompañamiento entre iguales</p>
+          </div>
+        </article>
+
+        <article class="revelar retraso-3 tarjeta-testimonio flex flex-col justify-between">
+          <span class="comilla-adorno" aria-hidden="true">&ldquo;</span>
+          <blockquote class="text-sm leading-relaxed text-brand-900/85 sm:text-base" data-i18n="testimonios.test3Cita">
+            «La fuerza de esta asociación es que la construimos de tú a tú. Nadie es más que nadie y cada idea cuenta.»
+          </blockquote>
+          <div class="mt-6 border-t border-brand-100 pt-4">
+            <p class="font-bold text-brand-900 text-sm" data-i18n="testimonios.test3Autor">Colaborador/a joven</p>
+            <p class="text-xs text-brand-700" data-i18n="testimonios.test3Rol">Talleres y actividades</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Preguntas Frecuentes (FAQ) en acordeón accesible -->
+    <section class="border-t border-brand-100 bg-brand-50/70 py-16 sm:py-20">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <div class="text-center">
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="faq.kicker">Resolvemos tus dudas</p>
+          <h2 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl" data-i18n="faq.titulo">Preguntas frecuentes</h2>
+          <p class="mx-auto mt-4 max-w-2xl text-brand-900/80" data-i18n="faq.intro">
+            Todo lo que necesitas saber antes de escribirnos o sumarte a los encuentros.
+          </p>
+        </div>
+
+        <div class="mt-12 space-y-4">
+          <div class="acordeon-item" data-abierto="false">
+            <button type="button" class="acordeon-boton" aria-expanded="false">
+              <span data-i18n="faq.q1">¿Quién puede participar en la asociación?</span>
+              <span class="acordeon-icono" aria-hidden="true">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="acordeon-panel">
+              <p class="text-sm leading-relaxed text-brand-900/80 sm:text-base" data-i18n="faq.a1">
+                Cualquier persona joven con ganas de sentirse escuchada, de apoyar a otras personas o de proponer actividades comunitarias. No hay ningún requisito previo: la puerta está abierta para todo el mundo.
+              </p>
+            </div>
+          </div>
+
+          <div class="acordeon-item" data-abierto="false">
+            <button type="button" class="acordeon-boton" aria-expanded="false">
+              <span data-i18n="faq.q2">¿Tiene algún coste o cuota mensual?</span>
+              <span class="acordeon-icono" aria-hidden="true">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="acordeon-panel">
+              <p class="text-sm leading-relaxed text-brand-900/80 sm:text-base" data-i18n="faq.a2">
+                No, en absoluto. Participar en la asociación y en nuestros encuentros y actividades es 100% gratuito. Creemos en un apoyo mutuo accesible y sin barreras económicas.
+              </p>
+            </div>
+          </div>
+
+          <div class="acordeon-item" data-abierto="false">
+            <button type="button" class="acordeon-boton" aria-expanded="false">
+              <span data-i18n="faq.q3">¿Qué tipo de actividades y encuentros organizáis?</span>
+              <span class="acordeon-icono" aria-hidden="true">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="acordeon-panel">
+              <p class="text-sm leading-relaxed text-brand-900/80 sm:text-base" data-i18n="faq.a3">
+                Organizamos quedadas informales, espacios de conversación y escucha, talleres prácticos, dinámicas para compartir inquietudes y proyectos solidarios propuestos por los propios miembros.
+              </p>
+            </div>
+          </div>
+
+          <div class="acordeon-item" data-abierto="false">
+            <button type="button" class="acordeon-boton" aria-expanded="false">
+              <span data-i18n="faq.q4">¿Tengo que vivir en Sevilla para participar?</span>
+              <span class="acordeon-icono" aria-hidden="true">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="acordeon-panel">
+              <p class="text-sm leading-relaxed text-brand-900/80 sm:text-base" data-i18n="faq.a4">
+                La asociación nació en Sevilla y realizamos quedadas presenciales en la ciudad, pero también contamos con canales y actividades online para acompañarnos sin importar la distancia.
+              </p>
+            </div>
+          </div>
+
+          <div class="acordeon-item" data-abierto="false">
+            <button type="button" class="acordeon-boton" aria-expanded="false">
+              <span data-i18n="faq.q5">¿Cómo puedo proponer una idea o colaborar?</span>
+              <span class="acordeon-icono" aria-hidden="true">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="acordeon-panel">
+              <p class="text-sm leading-relaxed text-brand-900/80 sm:text-base" data-i18n="faq.a5">
+                ¡Es muy fácil! Puedes escribirnos a través del formulario de la web o por mensaje directo en cualquiera de nuestras redes sociales. Te responderemos encantadas para hablar de tu idea.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Llamada a la acción -->
     <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
       <div class="overflow-hidden rounded-2xl bg-brand-700 p-8 text-center shadow-xl sm:p-12">
@@ -164,7 +333,7 @@
           nosotras si quieres proponer una actividad o colaborar con la asociación.
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-3">
-          <a class="rounded-full bg-white px-6 py-3 font-bold text-brand-800 transition-colors hover:bg-brand-50" href="/contacto" data-i18n="queHacemos.ctaBoton">Escríbenos</a>
+          <a class="rounded-full bg-white px-6 py-3 font-bold text-brand-800 transition-colors hover:bg-brand-50 shadow-md" href="/contacto" data-i18n="queHacemos.ctaBoton">Escríbenos</a>
           <a class="rounded-full border-2 border-white px-6 py-3 font-bold text-white transition-colors hover:bg-white/15" href="/sobre-nosotros" data-i18n="queHacemos.ctaBoton2">Cómo funcionamos</a>
         </div>
       </div>

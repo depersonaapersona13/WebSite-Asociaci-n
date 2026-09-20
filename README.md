@@ -155,7 +155,7 @@ assets/img/                Logo, favicon e imágenes (ver LEEME.txt)
 
 ---
 
-## 7. Pendientes de rellenar
+## 7. Pendientes de rellenar (contenido inmediato)
 
 1. **Logo real** en `assets/img/logo.png` (ahora se ve la marca provisional).
 2. **Datos de contacto** (correo, teléfono, dónde estáis, horario) en `data/site.json`.
@@ -168,3 +168,39 @@ assets/img/                Logo, favicon e imágenes (ver LEEME.txt)
 8. **Dominio propio**: cambiarlo en los HTML, `sitemap.xml`, `robots.txt` y `site.json`.
 9. *(Opcional)* Aviso legal y política de privacidad, si publicáis esos textos.
 10. *(Opcional)* Imagen para compartir en redes: `assets/img/og-image.png` (1200×630).
+
+---
+
+## 8. Mejoras técnicas y visuales (backlog priorizado)
+
+### 🔴 Crítico (afecta funcionalidad o legal)
+- [x] **Crear páginas legales**: `/aviso-legal.html` y `/politica-privacidad.html` (requeridas por el formulario de contacto y RGPD).
+- [x] **Añadir `og-image.png`** (1200×630) en `assets/img/` y referenciarla en `og:image`/`twitter:image` de todas las páginas.
+- [x] **Completar `meta.descripcion`** en `data/site.json` (SEO y compartidos).
+- [x] **Fix fallback logo**: crear `assets/img/logo.svg` o cambiar `main.js:431` a una URL válida.
+- [x] **Checkbox privacidad**: enlazar a `/politica-privacidad.html` en el label del formulario.
+
+### 🟠 Importante (UX, accesibilidad, SEO)
+- [ ] **Contraste dark mode**: revisar `.btn-claro` y `.enlace-pie` en modo oscuro (ratio AA).
+- [ ] **Sprite SVG iconos**: mover iconos inline a `assets/img/sprite.svg` y usar `<use href="#icono">`.
+- [ ] **Testimonios**: añadir sección en `index.html` + datos en `site.json["testimonios"]` (código ya listo en `main.js`).
+- [ ] **Junta directiva**: mejorar fallback visual cuando no hay fotos (avatar generado con iniciales + color de marca).
+- [ ] **Schema.org JSON-LD**: añadir `Organization` + `WebSite` en `<head>` de todas las páginas.
+- [ ] **Sitemap dinámico**: generar `sitemap.xml` en build con `lastmod` real.
+- [ ] **Autocomplete formulario**: mejorar `autocomplete` en campos (street-address, postal-code, etc.).
+
+### 🟡 Mejora de código y arquitectura
+- [ ] **Migrar Tailwind a build local**: `npm install -D tailwindcss @tailwindcss/cli` + `tailwind.config.js` → elimina `'unsafe-inline'` en CSP y reduce ~150KB.
+- [ ] **ES Modules + bundler**: Vite/esbuild para producción (tree-shaking, minificación, hash en assets).
+- [ ] **Tests E2E**: Playwright/Cypress para navegación, formulario, i18n, tema, filtros.
+- [ ] **CI/CD**: GitHub Action que valide HTML (html-validate), lint JS (eslint), y despliegue a Cloudflare Pages.
+- [ ] **Performance**: `loading="lazy"` en imágenes (parcialmente hecho), `fetchpriority="high"` en hero logo, preconnect a CDN.
+
+### 🟢 Nice-to-have
+- [ ] **Blog/noticias**: sección de actualizaciones con RSS.
+- [ ] **Newsletter**: integración con Buttondown/ConvertKit (formulario en footer).
+- [ ] **PWA**: `manifest.json` + service worker para offline.
+- [ ] **Analytics privativa**: Plausible/Umami self-hosted (sin cookies, GDPR-friendly).
+- [ ] **Donaciones**: botón Stripe/GoCardless en footer y página contacto.
+- [ ] **Calendario eventos**: página `/agenda` con `.ics` descargable.
+- [ ] **Área socios**: login simple (Netlify Identity / Cloudflare Access) para documentos internos.

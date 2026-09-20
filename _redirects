@@ -7,6 +7,8 @@
 /sobre-nosotros/   /sobre-nosotros.html   200
 /proyectos/        /proyectos.html        200
 /contacto/         /contacto.html         200
+/aviso-legal/      /aviso-legal.html      200
+/politica-privacidad/ /politica-privacidad.html 200
 /inicio/           /index.html            200
 
 # Ejemplo de redirección permanente (301) por si algún día cambiáis de dominio:

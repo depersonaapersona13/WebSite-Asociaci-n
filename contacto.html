@@ -15,11 +15,11 @@
   <meta property="og:title" content="Contacto · De Personas a Personas">
   <meta property="og:description" content="Escríbenos: correo, redes sociales y formulario de contacto.">
   <meta property="og:url" content="https://depersonaapersona13-web.pages.dev/contacto">
-  <meta property="og:image" content="https://depersonaapersona13-web.pages.dev/assets/img/logo.png">
+  <meta property="og:image" content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contacto · De Personas a Personas">
   <meta name="twitter:description" content="Escríbenos: correo, redes sociales y formulario de contacto.">
-  <meta name="twitter:image" content="https://depersonaapersona13-web.pages.dev/assets/img/logo.png">
+  <meta name="twitter:image" content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png">
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
@@ -130,8 +130,10 @@
             <div class="mt-6 flex items-start gap-3">
               <input class="mt-1 h-5 w-5 rounded border-brand-200" id="privacidad" name="privacidad"
                      type="checkbox" required aria-describedby="error-privacidad">
-              <label class="text-sm leading-relaxed text-brand-900/80" for="privacidad" data-i18n="contacto.lblPrivacidad">
-                He leído y acepto que mis datos se usen únicamente para responder a este mensaje. *
+              <label class="text-sm leading-relaxed text-brand-900/80" for="privacidad">
+                <span data-i18n="contacto.lblPrivacidadParte1">He leído y acepto la</span>
+                <a href="/politica-privacidad" class="enlace font-semibold" target="_blank" data-i18n="contacto.lblPrivacidadEnlace">política de privacidad</a>
+                <span data-i18n="contacto.lblPrivacidadParte2">y que mis datos se usen únicamente para responder a este mensaje. *</span>
               </label>
             </div>
             <p class="error-campo" id="error-privacidad" hidden></p>

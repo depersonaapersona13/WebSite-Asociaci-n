@@ -7,39 +7,44 @@
     "eslogan": "Jóvenes que se apoyan entre sí",
     "urlBase": "https://depersonaapersona13-web.pages.dev",
     "descripcionCorta": "Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.",
-    "descripcion": "PENDIENTE: descripción de 2 a 4 frases. Se usa en buscadores y en la web.",
+    "descripcion": "Asociación juvenil sin ánimo de lucro de apoyo mutuo en Sevilla. Espacios seguros de acompañamiento, escucha activa y comunidad entre iguales.",
     "logo": "/assets/img/logo.png"
   },
 
   "contacto": {
-    "email": "PENDIENTE: correo público de contacto",
-    "telefono": "PENDIENTE: teléfono de contacto",
-    "direccion": "PENDIENTE: sede o localidad",
-    "horario": "PENDIENTE: horario de atención",
+    "email": "depersonaapersona13@gmail.com",
+    "telefono": "",
+    "direccion": "Sevilla",
+    "horario": "",
     "formulario": {
       "_ayuda": "tipo 'mailto' abre el correo del visitante (funciona ya, sin servicios externos). Si algún día usáis Web3Forms/Formspree, poned su URL en 'endpoint'.",
       "tipo": "mailto",
       "endpoint": "",
-      "destino": "PENDIENTE: correo donde queréis recibir los mensajes"
+      "destino": "depersonaapersona13@gmail.com"
     }
   },
 
   "redes": [
-    { "nombre": "Instagram", "url": "", "icono": "instagram" },
-    { "nombre": "Facebook", "url": "", "icono": "facebook" },
-    { "nombre": "TikTok", "url": "", "icono": "tiktok" },
-    { "nombre": "WhatsApp", "url": "", "icono": "whatsapp" },
-    { "nombre": "YouTube", "url": "", "icono": "youtube" }
+    { "nombre": "Instagram", "url": "https://www.instagram.com/_de.persona.a.persona_/", "icono": "instagram" },
+    { "nombre": "TikTok", "url": "https://www.tiktok.com/@depersonasapersonas", "icono": "tiktok" },
+    { "nombre": "Facebook", "url": "https://www.facebook.com/profile.php?id=61594435199655", "icono": "facebook" },
+    { "nombre": "X", "url": "https://x.com/personapersona", "icono": "x" },
+    { "nombre": "YouTube", "url": "https://www.youtube.com/@Depersonasapersonas", "icono": "youtube" }
   ],
 
   "legal": {
-    "nif": "PENDIENTE: CIF/NIF de la asociación",
-    "registro": "PENDIENTE: número de inscripción en el Registro de Asociaciones",
-    "fundacion": "PENDIENTE: fecha de constitución",
-    "sede": "PENDIENTE: domicilio social"
+    "nif": "",
+    "registro": "",
+    "fundacion": "2026-09-13",
+    "sede": "Sevilla (sin sede física, actividad online y en espacios cedidos)"
   },
 
-  "junta": [],
+  "junta": [
+    { "nombre": "Cofundador/a 1", "cargo": "Cofundador/a", "foto": "", "bio": "Cofundador/a de De Personas a Personas." },
+    { "nombre": "Cofundador/a 2", "cargo": "Cofundador/a", "foto": "", "bio": "Cofundador/a de De Personas a Personas." },
+    { "nombre": "Cofundador/a 3", "cargo": "Cofundador/a", "foto": "", "bio": "Cofundador/a de De Personas a Personas." },
+    { "nombre": "Cofundador/a 4", "cargo": "Cofundador/a", "foto": "", "bio": "Cofundador/a de De Personas a Personas." }
+  ],
 
   "proyectos": [
     {
