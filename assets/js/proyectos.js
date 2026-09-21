@@ -31,9 +31,11 @@
           return filtroActual === "todos" || estadoNormalizado(proyecto) === filtroActual;
         });
 
-        lista.innerHTML = visibles.map(function (proyecto) {
-          return "<li>" + window.plantillaProyecto(proyecto) + "</li>";
+        lista.classList.add("proyectos-cambiando");
+        lista.innerHTML = visibles.map(function (proyecto, indice) {
+          return '<li class="proyecto-entrada" style="--proyecto-delay:' + (indice * 55) + 'ms">' + window.plantillaProyecto(proyecto) + "</li>";
         }).join("");
+        window.requestAnimationFrame(function () { lista.classList.remove("proyectos-cambiando"); });
 
         if (cuenta) {
           cuenta.textContent = proyectos.length
@@ -63,6 +65,13 @@
       });
 
       pintar();
+    }).catch(function (error) {
+      console.error("[proyectos] No se pudo cargar el listado:", error);
+      lista.innerHTML = "";
+      if (cuenta) cuenta.textContent = "";
+      if (aviso) {
+        aviso.innerHTML = '<p class="pendiente" role="alert">No hemos podido cargar los proyectos. Inténtalo de nuevo en unos instantes.</p>';
+      }
     });
   }
 

@@ -57,6 +57,18 @@ html {
 .tarjeta-enlace { transition: transform .2s ease, border-color .2s ease; }
 .tarjeta-enlace:hover { transform: translateY(-3px); border-color: var(--brand-300); }
 
+/* Entrada de tarjetas dinámicas en la página de proyectos */
+.proyecto-entrada {
+  animation: proyecto-entra .42s cubic-bezier(.16, 1, .3, 1) both;
+  animation-delay: var(--proyecto-delay, 0ms);
+}
+.proyectos-cambiando { opacity: .72; transition: opacity .16s ease; }
+
+@keyframes proyecto-entra {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
 /* Etiquetas de estado de proyecto */
 .etiqueta {
   display: inline-flex; align-items: center; font-size: .7rem; font-weight: 700;
@@ -132,6 +144,8 @@ html {
   html { scroll-behavior: auto; }
   .revelar { opacity: 1; transform: none; transition: none; }
   .tarjeta-enlace:hover { transform: none; }
+  .proyecto-entrada { animation: none; }
+  .proyectos-cambiando { transition: none; }
   .btn, .enlace-red { transition: none; }
 }
 
