@@ -51,11 +51,19 @@ html {
 
 /* Tarjetas */
 .tarjeta {
-  background: #fff; border: 1px solid var(--brand-100); border-radius: var(--radio);
-  box-shadow: 0 14px 34px -28px rgba(22, 58, 92, .65);
+  background: #fff;
+  border: 1px solid var(--brand-100);
+  border-radius: var(--radio);
+  box-shadow: 0 10px 30px -12px rgba(22, 58, 92, .12), 0 2px 6px -1px rgba(22, 58, 92, .04);
+  transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s ease, border-color .28s ease;
 }
-.tarjeta-enlace { transition: transform .2s ease, border-color .2s ease; }
-.tarjeta-enlace:hover { transform: translateY(-3px); border-color: var(--brand-300); }
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 40px -14px rgba(22, 58, 92, .18), 0 6px 12px -2px rgba(22, 58, 92, .06);
+  border-color: var(--brand-300);
+}
+.tarjeta-enlace { transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), border-color .25s ease, box-shadow .25s ease; }
+.tarjeta-enlace:hover { transform: translateY(-5px); border-color: var(--brand-400); box-shadow: 0 22px 42px -12px rgba(47, 107, 168, .22); }
 
 /* Etiquetas de estado de proyecto */
 .etiqueta {
@@ -314,6 +322,149 @@ body { animation: aparecer .45s ease-out both; }
   100% { transform: translate(25px, -35px) scale(0.92); }
 }
 
+/* ==========================================================================
+   Hero Cinematográfico con Vídeo en Bucle y Oscurecido (Overlay)
+   ========================================================================== */
+.hero-video-seccion {
+  position: relative;
+  background-color: #0b1a2c;
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.hero-video-elemento {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Capa de oscurecido cinematográfico: combina tinte azul marino profundo + viñeta + gradiente vertical */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: 
+    radial-gradient(ellipse at center, rgba(14, 34, 58, 0.45) 0%, rgba(8, 20, 36, 0.88) 100%),
+    linear-gradient(180deg, rgba(10, 22, 38, 0.78) 0%, rgba(14, 32, 55, 0.55) 50%, rgba(7, 18, 32, 0.94) 100%);
+  pointer-events: none;
+}
+
+/* Badge translúcido con efecto cristal sobre el vídeo */
+.badge-cristal-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+.badge-cristal-hero:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+/* Botón primario en Hero: azul vibrante con resplandor suave y reflejo */
+.btn-primario-hero {
+  background: linear-gradient(135deg, #2F6BA8 0%, #1e558c 100%);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 20px -2px rgba(47, 107, 168, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+.btn-primario-hero:hover {
+  background: linear-gradient(135deg, #3d7cb9 0%, #22619e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px -2px rgba(47, 107, 168, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.35) inset;
+  color: #ffffff !important;
+}
+
+/* Botón secundario en Hero: cristal translúcido de alto contraste */
+.btn-cristal-hero {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.22s ease, background-color 0.22s ease, border-color 0.22s ease;
+}
+.btn-cristal-hero:hover {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.65);
+  transform: translateY(-2px);
+  color: #ffffff !important;
+}
+
+/* Halo de resplandor tras el logotipo flotante */
+.logo-resplandor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 125%;
+  height: 125%;
+  background: radial-gradient(circle, rgba(74, 135, 190, 0.45) 0%, rgba(74, 135, 190, 0) 70%);
+  border-radius: 9999px;
+  filter: blur(28px);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Botón de control de vídeo (pausar/reanudar) */
+.btn-control-video {
+  position: absolute;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 25;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 9999px;
+  background: rgba(14, 28, 48, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.btn-control-video:hover {
+  background: rgba(47, 107, 168, 0.9);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(47, 107, 168, 0.5);
+}
+@media (max-width: 640px) {
+  .btn-control-video {
+    bottom: 4.5rem;
+    right: 1rem;
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+}
+
 /* Badge o píldora de estilo glassmorphism */
 .badge-cristal {
   display: inline-flex;
@@ -488,6 +639,7 @@ body { animation: aparecer .45s ease-out both; }
 
 .modo-oscuro .bg-white { background-color: #0F2537; }
 .modo-oscuro .bg-white\/95 { background-color: rgba(13, 34, 54, .95); }
+.modo-oscuro .bg-white\/90 { background-color: rgba(13, 34, 54, .90); }
 .modo-oscuro .bg-brand-50 { background-color: #112B41; }
 .modo-oscuro .bg-brand-100 { background-color: #16324B; }
 .modo-oscuro .bg-brand-400 { background-color: #1D4E7C; }
@@ -559,6 +711,7 @@ body { animation: aparecer .45s ease-out both; }
 .modo-oscuro .tarjeta-testimonio:hover { border-color: var(--brand-600); box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.7); }
 .modo-oscuro .comilla-adorno { color: #16324B; }
 .modo-oscuro .avatar-iniciales { background: linear-gradient(135deg, var(--brand-400) 0%, var(--brand-700) 100%); ring-color: #24445F; }
+.modo-oscuro .hero-video-seccion { background-color: #060e17; }
 
 /* Respeto del movimiento reducido también en la capa de experiencia */
 @media (prefers-reduced-motion: reduce) {
@@ -571,5 +724,6 @@ body { animation: aparecer .45s ease-out both; }
   .hero-aurora::before, .hero-aurora::after, .logo-flotante { animation: none; }
   .acordeon-panel, .acordeon-icono { transition: none; }
   .barra-progreso { transition: none; }
-  .badge-cristal:hover, .tarjeta-testimonio:hover { transform: none; }
+  .badge-cristal:hover, .badge-cristal-hero:hover, .tarjeta-testimonio:hover { transform: none; }
+  .btn-primario-hero:hover, .btn-cristal-hero:hover { transform: none; }
 }

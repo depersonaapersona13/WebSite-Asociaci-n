@@ -74,8 +74,9 @@
   <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
-  <!-- Rendimiento: el logo es la imagen más importante; el JSON se pide cuanto antes -->
-  <link rel="preload" href="/assets/img/logo.png" as="image" fetchpriority="high">
+  <!-- Rendimiento: logo y poster de hero prioritarios; el JSON se pide cuanto antes -->
+  <link rel="preload" href="/assets/img/hero-poster.jpg" as="image" fetchpriority="high">
+  <link rel="preload" href="/assets/img/logo.png" as="image">
   <link rel="preload" href="/data/site.json" as="fetch" crossorigin="anonymous">
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 
@@ -115,32 +116,57 @@
   <div data-layout="header" hidden></div>
 
   <main id="contenido" class="flex-1">
-    <!-- Portada con efecto Aurora, badge cristal y ola curva orgánica -->
-    <section class="hero-aurora relative pt-12 pb-0 sm:pt-16 md:pt-20">
-      <div class="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-[1.2fr_auto] pb-12 sm:pb-16 md:pb-20">
-        <div>
-          <div class="mb-5">
-            <span class="badge-cristal" data-i18n="hero.badge">✨ Asociación juvenil de apoyo mutuo · Sevilla</span>
+    <!-- Portada con Vídeo en Bucle Cinematográfico, Overlay de Marca y Control Interactivo -->
+    <section class="hero-video-seccion relative pt-12 pb-0 sm:pt-16 md:pt-20">
+      <!-- Vídeo de fondo en bucle -->
+      <video id="video-hero" class="hero-video-elemento"
+             autoplay loop muted playsinline preload="auto"
+             poster="/assets/img/hero-poster.jpg"
+             aria-hidden="true">
+        <source src="/assets/video/hero.mp4" type="video/mp4">
+      </video>
+
+      <!-- Capa de oscurecido cinematográfico (Overlay) para legibilidad y elegancia visual -->
+      <div class="hero-video-overlay" aria-hidden="true"></div>
+
+      <!-- Contenido destacado del Hero -->
+      <div class="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-[1.2fr_auto] pb-14 sm:pb-20 md:pb-24">
+        <div class="revelar visible">
+          <div class="mb-5 flex items-center gap-3">
+            <span class="badge-cristal-hero" data-i18n="hero.badge">✨ Asociación juvenil de apoyo mutuo · Sevilla</span>
           </div>
-          <h1 class="text-4xl font-extrabold leading-tight text-brand-900 sm:text-5xl lg:text-6xl">
-            De Personas <span class="block">a Personas</span>
+          <h1 class="text-4xl font-extrabold leading-tight text-white drop-shadow-md sm:text-5xl lg:text-6xl">
+            De Personas <span class="block bg-gradient-to-r from-blue-200 via-sky-200 to-white bg-clip-text text-transparent">a Personas</span>
           </h1>
-          <p class="mt-4 text-xl font-bold text-brand-900/95 sm:text-2xl" data-i18n="hero.eslogan">Jóvenes que se apoyan entre sí.</p>
-          <p class="mt-5 max-w-2xl text-base leading-relaxed text-brand-900/85 sm:text-lg" data-sitio="meta.descripcionCorta"></p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a class="btn btn-primario" href="/sobre-nosotros" data-i18n="hero.cta1">Conócenos</a>
-            <a class="btn btn-claro shadow-sm" href="/proyectos" data-i18n="hero.cta2">Ver proyectos</a>
+          <p class="mt-4 text-xl font-bold text-sky-100 drop-shadow sm:text-2xl" data-i18n="hero.eslogan">Jóvenes que se apoyan entre sí.</p>
+          <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-100/90 drop-shadow-sm sm:text-lg" data-sitio="meta.descripcionCorta"></p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a class="btn btn-primario-hero" href="/sobre-nosotros" data-i18n="hero.cta1">Conócenos</a>
+            <a class="btn btn-cristal-hero" href="/proyectos" data-i18n="hero.cta2">Ver proyectos</a>
           </div>
         </div>
-        <div class="justify-self-center md:justify-self-end">
+        <div class="justify-self-center md:justify-self-end relative">
+          <div class="logo-resplandor" aria-hidden="true"></div>
           <img src="/assets/img/logo.png" data-logo alt="Logotipo de De Personas a Personas"
                width="240" height="240"
-               class="logo-flotante h-44 w-44 rounded-full object-cover shadow-2xl ring-4 ring-white/50 sm:h-56 sm:w-56 lg:h-60 lg:w-60">
+               class="logo-flotante relative z-10 h-44 w-44 rounded-full object-cover shadow-2xl ring-4 ring-white/30 backdrop-blur-sm sm:h-56 sm:w-56 lg:h-64 lg:w-64">
         </div>
       </div>
 
+      <!-- Botón discreto y accesible para pausar / reanudar vídeo -->
+      <button type="button" id="btn-control-video" class="btn-control-video"
+              aria-label="Pausar vídeo de fondo" data-i18n-aria-label="hero.pausarVideo"
+              title="Pausar o reanudar vídeo">
+        <svg class="icono-pausa h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+        </svg>
+        <svg class="icono-reproducir hidden h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </button>
+
       <!-- Divisor orgánico en ola curva -->
-      <div class="relative w-full overflow-hidden leading-none">
+      <div class="relative w-full overflow-hidden leading-none z-10">
         <svg class="ola-divisor" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,40 L1200,120 L0,120 Z"></path>
         </svg>
