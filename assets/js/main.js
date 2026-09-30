@@ -108,16 +108,16 @@
     var imagen = valor(proyecto.imagen);
     var enlace = valor(proyecto.enlace);
 
+    var textoImagenPendiente = escapar(textoDe("comun.imagenPendiente", "Imagen pendiente"));
     var media = imagen
-      ? '<img class="h-44 w-full object-cover" src="' + escapar(imagen) + '" alt="" loading="lazy">'
-      : '<div class="flex h-44 w-full items-center justify-center bg-brand-100 text-brand-700">' +
-        '<span class="text-[0.7rem] font-bold uppercase tracking-[0.18em]">' + escapar(textoDe("comun.imagenPendiente", "Imagen pendiente")) + "</span></div>";
+      ? '<div class="proyecto-visual"><img class="proyecto-imagen" src="' + escapar(imagen) + '" alt="" loading="lazy" decoding="async"></div>'
+      : '<div class="proyecto-visual proyecto-visual-pendiente"><span class="proyecto-etiqueta-visual">' + textoImagenPendiente + "</span></div>";
 
     var resumen = esPendiente(proyecto.resumen)
       ? avisoPendiente(textoDe("comun.pendienteFila", "Descripción pendiente de completar."))
       : '<p class="mt-3 text-sm leading-relaxed text-brand-900/80">' + escapar(proyecto.resumen) + "</p>";
 
-    return '<article class="tarjeta tarjeta-enlace flex h-full flex-col overflow-hidden">' + media +
+    return '<article class="tarjeta tarjeta-enlace tarjeta-proyecto flex h-full flex-col overflow-hidden">' + media +
       '<div class="flex flex-1 flex-col p-5">' +
       '<div class="flex flex-wrap items-center gap-3">' +
       '<span class="' + claseEtiqueta + '">' + etiqueta + "</span>" +
@@ -286,7 +286,7 @@
         nodo.innerHTML = avisoPendiente(textoDe("comun.pendienteProyectos", "Pendiente de publicar los proyectos."));
         return;
       }
-      nodo.innerHTML = '<ul class="grid gap-6 md:grid-cols-3">' + proyectos.slice(0, 3).map(function (proyecto) {
+      nodo.innerHTML = '<ul class="grid gap-6 md:grid-cols-3 lista-proyectos-portada">' + proyectos.slice(0, 3).map(function (proyecto) {
         return "<li>" + plantillaProyecto(proyecto) + "</li>";
       }).join("") + "</ul>";
     });
@@ -516,48 +516,29 @@
     });
   }
 
-  /* Control de reproducción/pausa del vídeo de fondo del Hero */
-  function inicializarControlVideo() {
+  /* El vídeo decorativo se detiene si el sistema solicita movimiento reducido. */
+  function respetarMovimientoVideo() {
     var video = document.getElementById("video-hero");
-    var boton = document.getElementById("btn-control-video");
-    if (!video || !boton || boton.dataset.videoListo === "si") return;
-    boton.dataset.videoListo = "si";
+    if (!video || !window.matchMedia) return;
+    var preferencia = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    var iconoPausa = boton.querySelector(".icono-pausa");
-    var iconoPlay = boton.querySelector(".icono-reproducir");
-
-    function actualizarIconos(estaPausado) {
-      if (iconoPausa && iconoPlay) {
-        if (estaPausado) {
-          iconoPausa.classList.add("hidden");
-          iconoPlay.classList.remove("hidden");
-          boton.setAttribute("aria-label", textoDe("hero.reanudarVideo", "Reproducir vídeo de fondo"));
-        } else {
-          iconoPausa.classList.remove("hidden");
-          iconoPlay.classList.add("hidden");
-          boton.setAttribute("aria-label", textoDe("hero.pausarVideo", "Pausar vídeo de fondo"));
+    function aplicarPreferencia() {
+      if (preferencia.matches) {
+        video.pause();
+      } else if (video.autoplay && video.paused) {
+        var reproduccion = video.play();
+        if (reproduccion && typeof reproduccion.catch === "function") {
+          reproduccion.catch(function () {});
         }
       }
     }
 
-    // Respeto a usuarios con reducción de movimiento
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      try { video.pause(); } catch (e) {}
-      actualizarIconos(true);
+    aplicarPreferencia();
+    if (typeof preferencia.addEventListener === "function") {
+      preferencia.addEventListener("change", aplicarPreferencia);
+    } else if (typeof preferencia.addListener === "function") {
+      preferencia.addListener(aplicarPreferencia);
     }
-
-    boton.addEventListener("click", function () {
-      if (video.paused) {
-        video.play().then(function () {
-          actualizarIconos(false);
-        }).catch(function () {
-          actualizarIconos(true);
-        });
-      } else {
-        video.pause();
-        actualizarIconos(true);
-      }
-    });
   }
 
   /* Animación de entrada al hacer scroll (se desactiva si el sistema pide menos movimiento) */
@@ -767,7 +748,7 @@
     inicializarBarraProgreso();
     inicializarContadores();
     inicializarAcordeon();
-    inicializarControlVideo();
+    respetarMovimientoVideo();
     ponerAnio();
     arreglarLogo();
     animarEntrada();

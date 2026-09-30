@@ -138,7 +138,7 @@ html {
 /* Anclas: hueco para el encabezado pegajoso */
 [id] { scroll-margin-top: 6rem; }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html { scroll-behavior: auto !important; }
   html.animaciones-listas .revelar:not(.visible) { opacity: 1; visibility: visible; transform: none; transition: none; }
   html.animaciones-listas .revelar.visible { transition: none; }
   .tarjeta-enlace:hover { transform: none; }
@@ -153,6 +153,107 @@ html {
 /* Redes sociales sobre fondo claro (página de contacto) */
 .enlace-red-claro { background: var(--brand-100); color: var(--brand-700); }
 .enlace-red-claro:hover { background: var(--brand-200); color: var(--brand-800); }
+
+/* Proyectos: marcos editoriales preparados para recibir las fotos reales */
+.proyecto-visual {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 11rem;
+  flex: 0 0 11rem;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(135deg, #E8F2FA, #C5DCEE 58%, #A8C9E3);
+}
+.proyecto-imagen {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  transform: scale(1.04);
+  transition: transform .7s cubic-bezier(.2, .75, .25, 1);
+}
+.tarjeta-proyecto:hover .proyecto-imagen,
+.tarjeta-proyecto:focus-within .proyecto-imagen { transform: scale(1.09); }
+.proyecto-visual-pendiente {
+  background:
+    radial-gradient(ellipse at 24% 28%, rgba(255,255,255,.92), transparent 54%),
+    linear-gradient(135deg, #EAF3FA 0%, #D6E7F4 48%, #B8D2E8 100%);
+}
+.proyecto-visual-pendiente::before,
+.proyecto-visual-pendiente::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 10rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(47,107,168,.17);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.1rem rgba(255,255,255,.12), 0 0 0 2.2rem rgba(47,107,168,.045);
+}
+.proyecto-visual-pendiente::before { top: -5.5rem; right: -2rem; }
+.proyecto-visual-pendiente::after {
+  bottom: -7rem;
+  left: 10%;
+  width: 8rem;
+  border-color: rgba(47,107,168,.11);
+}
+.proyecto-etiqueta-visual {
+  position: relative;
+  z-index: 1;
+  padding: .42rem .8rem;
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 999px;
+  background: rgba(255,255,255,.55);
+  color: var(--brand-700);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+/* Más aire para las tarjetas en tablet vertical: 2 + 1 centrada, no tres columnas estrechas. */
+@media (min-width: 768px) and (max-width: 959.98px) {
+  .lista-proyectos-portada.grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lista-proyectos-portada > li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: min(100%, calc((100% - 1.5rem) / 2));
+    justify-self: center;
+  }
+}
+
+/* Desfase editorial ligero: mantiene el movimiento acotado y el scroll natural. */
+@media (min-width: 960px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .lista-proyectos-portada { align-items: start; }
+  .lista-proyectos-portada > li:nth-child(2) { margin-top: 1.25rem; }
+  .lista-proyectos-portada > li:nth-child(3) { margin-top: .35rem; }
+}
+
+@keyframes proyecto-foto-scroll {
+  from { object-position: center 18%; }
+  to { object-position: center 82%; }
+}
+@keyframes proyecto-placeholder-scroll {
+  from { transform: translate3d(-4%, -3%, 0) rotate(-8deg); }
+  to { transform: translate3d(5%, 4%, 0) rotate(7deg); }
+}
+@supports (animation-timeline: view()) {
+  @media (min-width: 960px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .tarjeta-proyecto .proyecto-imagen {
+      animation: proyecto-foto-scroll linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+    .tarjeta-proyecto .proyecto-visual-pendiente::before {
+      animation: proyecto-placeholder-scroll linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
 
 /* ==========================================================================
    Capa de experiencia: animaciones, microinteracciones e idiomas
@@ -431,41 +532,38 @@ body { animation: aparecer .45s ease-out both; }
   pointer-events: none;
 }
 
-/* Botón de control de vídeo (pausar/reanudar) */
-.btn-control-video {
+/* Indicación discreta para continuar el recorrido; nunca impone scroll-snap. */
+.hero-scroll-cue {
   position: absolute;
-  bottom: 5.5rem;
-  right: 1.5rem;
-  z-index: 25;
-  display: inline-flex;
+  z-index: 20;
+  bottom: 4.55rem;
+  left: 50%;
+  display: none;
   align-items: center;
-  justify-content: center;
-  width: 2.6rem;
-  height: 2.6rem;
-  border-radius: 9999px;
-  background: rgba(14, 28, 48, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  color: #ffffff;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  gap: .6rem;
+  min-height: 2.75rem;
+  padding: .45rem .9rem;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 999px;
+  background: rgba(14,28,48,.42);
+  color: rgba(255,255,255,.9);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-decoration: none;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  transition: background-color .2s ease, border-color .2s ease;
 }
-.btn-control-video:hover {
-  background: rgba(47, 107, 168, 0.9);
-  border-color: rgba(255, 255, 255, 0.6);
-  transform: scale(1.08);
-  box-shadow: 0 6px 20px rgba(47, 107, 168, 0.5);
+.hero-scroll-cue:hover { background: rgba(47,107,168,.65); border-color: rgba(255,255,255,.45); }
+.hero-scroll-cue svg { width: 1rem; height: 1rem; animation: hero-scroll-nudge 1.5s ease-in-out infinite; }
+@keyframes hero-scroll-nudge {
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(3px); }
 }
-@media (max-width: 640px) {
-  .btn-control-video {
-    bottom: 4.5rem;
-    right: 1rem;
-    width: 2.3rem;
-    height: 2.3rem;
-  }
-}
+@media (min-width: 768px) { .hero-scroll-cue { display: inline-flex; } }
+@media (max-height: 540px) { .hero-scroll-cue { display: none; } }
 
 /* Badge o píldora de estilo glassmorphism */
 .badge-cristal {
@@ -728,6 +826,24 @@ body { animation: aparecer .45s ease-out both; }
   .barra-progreso { transition: none; }
   .badge-cristal:hover, .badge-cristal-hero:hover, .tarjeta-testimonio:hover { transform: none; }
   .btn-primario-hero:hover, .btn-cristal-hero:hover { transform: none; }
-  .tarjeta:hover, .tarjeta-enlace:hover, .logo-flotante:hover, .btn-control-video:hover { transform: none; }
+  .tarjeta:hover, .tarjeta-enlace:hover, .logo-flotante:hover { transform: none; }
+  .proyecto-imagen, .hero-scroll-cue svg { animation: none; transition: none; }
   .carga-anillo { animation: none; }
+}
+
+
+/* Compacta la cabecera en móviles muy estrechos sin ocultar sus controles. */
+@media (max-width: 360px) {
+  header > .mx-auto { gap: .5rem; padding-left: .625rem; padding-right: .625rem; }
+  .header-brand { gap: .5rem; }
+  .header-brand img { width: 2.25rem; height: 2.25rem; }
+  .brand-heading { max-width: 5.3rem; }
+  .brand-name { max-width: 5.3rem; font-size: .76rem; line-height: 1.1; }
+  .header-actions { flex-shrink: 0; gap: .35rem; }
+  .selector-idioma { gap: 0; padding: 1px; }
+  .idioma-btn { min-width: 1.85rem; padding: .25rem .32rem; font-size: .66rem; }
+  #boton-tema, #boton-menu { width: 2.25rem; height: 2.25rem; flex-shrink: 0; }
+  #boton-menu svg { width: 1.2rem; height: 1.2rem; }
+  .hero-video-seccion > .mx-auto.grid { row-gap: 1.25rem; }
+  .hero-video-seccion .logo-flotante { width: 8rem; height: 8rem; }
 }

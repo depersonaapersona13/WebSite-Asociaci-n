@@ -119,7 +119,7 @@
   <div data-layout="header" hidden></div>
 
   <main id="contenido" class="flex-1">
-    <!-- Portada con Vídeo en Bucle Cinematográfico, Overlay de Marca y Control Interactivo -->
+    <!-- Portada con vídeo de fondo, capa de marca y navegación al siguiente bloque -->
     <section class="hero-video-seccion relative pt-12 pb-0 sm:pt-16 md:pt-20">
       <!-- Vídeo de fondo en bucle -->
       <video id="video-hero" class="hero-video-elemento"
@@ -156,17 +156,10 @@
         </div>
       </div>
 
-      <!-- Botón discreto y accesible para pausar / reanudar vídeo -->
-      <button type="button" id="btn-control-video" class="btn-control-video"
-              aria-label="Pausar vídeo de fondo" data-i18n-aria-label="hero.pausarVideo"
-              title="Pausar o reanudar vídeo">
-        <svg class="icono-pausa h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
-        </svg>
-        <svg class="icono-reproducir hidden h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M8 5v14l11-7z"/>
-        </svg>
-      </button>
+      <a class="hero-scroll-cue" href="#impacto" data-i18n-aria-label="hero.scrollCue" aria-label="Desliza para descubrir">
+        <span data-i18n="hero.scrollCue">Desliza para descubrir</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14m0 0 6-6m-6 6-6-6"/></svg>
+      </a>
 
       <!-- Divisor orgánico en ola curva -->
       <div class="relative w-full overflow-hidden leading-none z-10">
@@ -177,7 +170,7 @@
     </section>
 
     <!-- Cifras de impacto con contadores animados -->
-    <section class="border-b border-brand-100 bg-white py-12 sm:py-16">
+    <section id="impacto" class="border-b border-brand-100 bg-white py-12 sm:py-16">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="grid grid-cols-2 gap-5 md:grid-cols-4 lg:gap-8">
           <div class="revelar retraso-1 tarjeta p-6 text-center">
@@ -425,4 +418,3 @@
   </button>
 </body>
 </html>
-

@@ -2,13 +2,13 @@
   <div id="barra-progreso" class="barra-progreso" aria-hidden="true"></div>
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
 
-    <a href="/" class="flex items-center gap-3">
+    <a href="/" class="header-brand flex min-w-0 items-center gap-3">
       <!-- El logo real vive en assets/img/logo.png -->
       <img src="/assets/img/logo.png" data-logo alt="Logotipo de De Personas a Personas"
            width="48" height="48"
            class="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-brand-100 sm:h-12 sm:w-12">
-      <span class="leading-tight">
-        <span class="block text-sm font-bold tracking-tight text-brand-900 sm:text-base">De Personas a Personas</span>
+      <span class="brand-heading min-w-0 leading-tight">
+        <span class="brand-name block text-sm font-bold tracking-tight text-brand-900 sm:text-base">De Personas a Personas</span>
         <span class="hidden text-xs text-brand-700 sm:block">Jóvenes que se apoyan entre sí</span>
       </span>
     </a>
@@ -22,7 +22,7 @@
       </ul>
     </nav>
 
-    <div class="flex items-center gap-2">
+    <div class="header-actions flex items-center gap-2">
       <a href="/contacto" class="hidden rounded-full bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-800 lg:inline-flex" data-i18n="nav.cta">Escríbenos</a>
       <div class="selector-idioma" role="group" data-i18n-aria-label="comun.cambiarIdioma" aria-label="Cambiar de idioma">
         <button type="button" class="idioma-btn" data-idioma="es" aria-pressed="true">ES</button>

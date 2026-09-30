@@ -61,8 +61,7 @@
         eslogan: "Jóvenes que se apoyan entre sí.",
         cta1: "Conócenos",
         cta2: "Ver proyectos",
-        pausarVideo: "Pausar vídeo de fondo",
-        reanudarVideo: "Reproducir vídeo de fondo",
+        scrollCue: "Desliza para descubrir",
         logoAlt: "Logotipo de De Personas a Personas"
       },
       stats: {
@@ -307,8 +306,7 @@
         eslogan: "Young people supporting each other.",
         cta1: "About us",
         cta2: "See projects",
-        pausarVideo: "Pause background video",
-        reanudarVideo: "Play background video",
+        scrollCue: "Scroll to explore",
         logoAlt: "De Personas a Personas logo"
       },
       stats: {
