@@ -561,10 +561,10 @@
   }
 
   /* Animación de entrada al hacer scroll (se desactiva si el sistema pide menos movimiento) */
+  var observadorEntrada = null;
   function animarEntrada() {
-    var elementos = document.querySelectorAll(".revelar");
-    if (!elementos.length || document.documentElement.dataset.revelado === "si") return;
-    document.documentElement.dataset.revelado = "si";
+    var elementos = document.querySelectorAll(".revelar:not(.visible)");
+    if (!elementos.length) return;
 
     var reducirMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducirMovimiento || !("IntersectionObserver" in window)) {
@@ -572,16 +572,24 @@
       return;
     }
 
-    var observador = new IntersectionObserver(function (entradas) {
-      entradas.forEach(function (entrada) {
-        if (entrada.isIntersecting) {
-          entrada.target.classList.add("visible");
-          observador.unobserve(entrada.target);
-        }
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    if (!observadorEntrada) {
+      observadorEntrada = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (entrada) {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("visible");
+            entrada.target.removeAttribute("data-revelar-observado");
+            observadorEntrada.unobserve(entrada.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+      document.documentElement.classList.add("animaciones-listas");
+    }
 
-    elementos.forEach(function (elemento) { observador.observe(elemento); });
+    elementos.forEach(function (elemento) {
+      if (elemento.hasAttribute("data-revelar-observado")) return;
+      elemento.setAttribute("data-revelar-observado", "si");
+      observadorEntrada.observe(elemento);
+    });
   }
 
   /* ---------------------------------------------------- formulario de contacto */
@@ -776,6 +784,7 @@
       rellenarDestacados(sitio);
       rellenarTestimonios(sitio);
       inicializarFormulario(sitio);
+      animarEntrada();
       document.dispatchEvent(new CustomEvent("datos:cargados"));
     });
   }

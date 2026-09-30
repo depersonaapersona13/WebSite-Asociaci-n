@@ -128,17 +128,19 @@ html {
 .campo:focus { outline: none; border-color: var(--brand-700); box-shadow: 0 0 0 3px rgba(47, 107, 168, .2); }
 .campo[aria-invalid="true"] { border-color: #B3261E; }
 .error-campo { color: #B3261E; font-size: .85rem; margin-top: .25rem; }
-
 /* Animación de entrada */
-.revelar { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
-.revelar.visible { opacity: 1; transform: none; }
-
+.revelar { opacity: 1; transform: none; transition: opacity .55s cubic-bezier(.22, 1, .36, 1), transform .55s cubic-bezier(.22, 1, .36, 1); }
+.animaciones-listas .revelar:not(.visible) {
+  opacity: 0; visibility: hidden; transform: translate3d(0, 1rem, 0);
+  transition: opacity .55s cubic-bezier(.22, 1, .36, 1), transform .55s cubic-bezier(.22, 1, .36, 1), visibility 0s linear .55s;
+}
+.animaciones-listas .revelar.visible { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 /* Anclas: hueco para el encabezado pegajoso */
 [id] { scroll-margin-top: 6rem; }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .revelar { opacity: 1; transform: none; transition: none; }
+  html.animaciones-listas .revelar:not(.visible) { opacity: 1; visibility: visible; transform: none; transition: none; }
+  html.animaciones-listas .revelar.visible { transition: none; }
   .tarjeta-enlace:hover { transform: none; }
   .btn, .enlace-red { transition: none; }
 }
@@ -726,4 +728,6 @@ body { animation: aparecer .45s ease-out both; }
   .barra-progreso { transition: none; }
   .badge-cristal:hover, .badge-cristal-hero:hover, .tarjeta-testimonio:hover { transform: none; }
   .btn-primario-hero:hover, .btn-cristal-hero:hover { transform: none; }
+  .tarjeta:hover, .tarjeta-enlace:hover, .logo-flotante:hover, .btn-control-video:hover { transform: none; }
+  .carga-anillo { animation: none; }
 }
