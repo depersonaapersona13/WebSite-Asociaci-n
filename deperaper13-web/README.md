@@ -218,7 +218,7 @@ assets/img/                Logo, favicon e imágenes (ver LEEME.txt)
   (`up`, `left`, `right`, `zoom`, `blur`, `mask`), escalonado con `retraso-1…4` y `data-rewind="false"`
   para que un elemento no rebobine. Los `<h2>` y las tarjetas de junta/proyectos se animan solos.
 - **Hero ligado al scroll** con `data-scrub` (variable CSS `--p`), cabecera que se esconde al bajar,
-  transición suave entre páginas (View Transitions) y pausa/reproducción de los vídeos de fondo.
+  transición suave entre páginas (View Transitions), parallax en los vídeos de fondo de FAQ y CTA, contadores que cuentan y rebobinan (`data-contador`), apertura en círculo del logotipo (`data-reveal="iris"`), botón «volver arriba» y subrayado animado en el menú. Los vídeos de fondo solo se reproducen mientras se ven, y con «reducir movimiento» no se reproducen.
 - **Encabezado y pie dentro del HTML** (marcadores `<!-- layout:header:start -->`). Si cambias
   `partials/header.html` o `partials/footer.html`, ejecuta `python tools/inyectar-layout.py`.
 - Cada página tiene su propio `<title>`, descripción, canonical y datos de compartir. Al añadir una

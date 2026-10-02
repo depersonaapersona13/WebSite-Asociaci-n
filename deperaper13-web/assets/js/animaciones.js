@@ -1,8 +1,19 @@
-/* animaciones.js — scroll reveal con "rewind", hero ligado al scroll, cabecera inteligente
- * y gestión de los vídeos de fondo (carga diferida, pausa fuera de pantalla, botón de pausa).
+/* animaciones.js — scroll reveal con "rewind", contadores, parallax, cabecera inteligente,
+ * gestión de vídeos de fondo y botón "volver arriba".
  *
  * Sin dependencias. Se carga con "defer" ANTES de main.js (ver <head> de cada página).
  * Estilos asociados: assets/css/animaciones.css
+ *
+ * Cómo usarlo en el HTML:
+ *   class="revelar"                       → entra al hacer scroll y rebobina al subir
+ *   data-reveal="up|left|right|zoom|blur|mask|iris"   → tipo de entrada (por defecto "up")
+ *   data-rewind="false"                   → no rebobina: se queda visible una vez que aparece
+ *   class="retraso-1 … retraso-4"         → escalonado manual (o style="--d:.2s")
+ *   data-scrub="hero"                     → hero ligado al scroll (variable CSS --p)
+ *   data-scrub="paralaje"                 → fondo con parallax (variable CSS --q)
+ *   data-contador="100"                   → cuenta de 0 al valor y rebobina a 0
+ * Además se animan solos: títulos h2, etiquetas, párrafos de introducción, tarjetas,
+ * acordeones, tarjetas de junta/proyectos (las crea main.js) y el pie de página.
  */
 (function () {
   "use strict";
@@ -11,7 +22,6 @@
   var reducir = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   var hayObservador = "IntersectionObserver" in window;
 
-  /* Activa los estilos de animación y desactiva el reveal antiguo de main.js */
   raiz.classList.add("js");
   raiz.dataset.revelado = "si";
 
@@ -20,63 +30,86 @@
   var observador = null;
   var registrados = typeof WeakSet !== "undefined" ? new WeakSet() : null;
 
+  function mostrar(el) {
+    el.classList.add("visible");
+    window.clearTimeout(el._listo);
+    /* Cuando acaba la entrada, "listo" devuelve al elemento sus transiciones rápidas (hover) */
+    el._listo = window.setTimeout(function () { el.classList.add("listo"); }, 1400);
+  }
+  function ocultar(el) {
+    window.clearTimeout(el._listo);
+    el.classList.remove("visible", "listo");
+  }
+
   function crearObservador() {
     observador = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (entrada) {
         var el = entrada.target;
-        if (entrada.isIntersecting) {
-          el.classList.add("visible");
-          return;
-        }
+        if (entrada.isIntersecting) { mostrar(el); return; }
         if (el.getAttribute("data-rewind") === "false") return;
-        /* REWIND: si el elemento quedó por DEBAJO de la pantalla, el visitante está subiendo;
-           se quita .visible y la animación se reproduce a la inversa. Si salió por arriba
-           (está bajando) se queda visible para no parpadear. */
+        /* REWIND: si quedó por DEBAJO de la pantalla, el visitante está subiendo: se
+           reproduce la animación a la inversa. Si salió por arriba (bajando) se queda. */
         var limite = entrada.rootBounds ? entrada.rootBounds.bottom : window.innerHeight;
-        if (entrada.boundingClientRect.top >= limite - 1) el.classList.remove("visible");
+        if (entrada.boundingClientRect.top >= limite - 1) ocultar(el);
       });
     }, { rootMargin: "0px 0px -10% 0px", threshold: 0 });
   }
 
-  /* Elementos que se animan sin tener que marcarlos a mano en el HTML */
-  var AUTO = "main h2, [data-junta] li, [data-proyectos] > li, [data-proyectos-destacados] li";
-  var LISTAS = "[data-junta], [data-proyectos], [data-proyectos-destacados]";
+  /* [selector, tipo de entrada, ¿escalonar entre hermanos?] */
+  var AUTO = [
+    ["main h2", "mask", false],
+    ["main p.uppercase", "up", false],
+    ["main .max-w-2xl > p:not(.uppercase), main p.max-w-2xl", "up", false],
+    ["[data-junta] li", "up", true],
+    ["[data-proyectos] > li", "up", true],
+    ["[data-proyectos-destacados] li", "up", true],
+    ["main .tarjeta", "up", true],
+    [".acordeon-item", "up", true],
+    ["footer .grid > div", "up", true]
+  ];
+
+  function escalonar(el) {
+    if (el.hasAttribute("data-d") || /\bretraso-\d/.test(el.className)) return;
+    var hermanos = el.parentNode ? el.parentNode.children : [];
+    var i = Array.prototype.indexOf.call(hermanos, el);
+    el.setAttribute("data-d", "1");
+    el.style.setProperty("--d", ((i % 4) * 0.1).toFixed(2) + "s");
+  }
 
   function escanear() {
-    document.querySelectorAll(AUTO).forEach(function (el) {
-      if (el.classList.contains("revelar")) return;
-      if (el.tagName === "H2") {
-        if (el.closest(".revelar")) return;          /* ya viaja dentro de un bloque animado */
-        el.setAttribute("data-reveal", "mask");
+    AUTO.forEach(function (regla) {
+      var lista;
+      try { lista = document.querySelectorAll(regla[0]); } catch (e) { return; }
+      for (var i = 0; i < lista.length; i++) {
+        var el = lista[i];
+        if (el.classList.contains("revelar")) continue;
+        if (el.closest(".hero-entrada, .hero-video-seccion")) continue;
+        /* si viaja dentro de un bloque ya animado, no se anima dos veces
+           (las listas de tarjetas generadas por JS sí se animan una a una) */
+        var padre = el.parentNode && el.parentNode.closest ? el.parentNode.closest(".revelar") : null;
+        if (padre && el.tagName !== "LI") continue;
+        el.classList.add("revelar");
+        if (regla[1] !== "up") el.setAttribute("data-reveal", regla[1]);
+        if (regla[2]) escalonar(el);
+        if (el.matches("p.uppercase")) el.classList.add("kicker-anim");
       }
-      el.classList.add("revelar");
-    });
-
-    /* Escalonado de las tarjetas que se pintan desde data/site.json */
-    document.querySelectorAll(LISTAS).forEach(function (lista) {
-      lista.querySelectorAll("li.revelar").forEach(function (li, i) {
-        if (!li.hasAttribute("data-d")) {
-          li.setAttribute("data-d", "1");
-          li.style.setProperty("--d", ((i % 4) * 0.1).toFixed(2) + "s");
-        }
-      });
     });
 
     var nuevos = document.querySelectorAll(".revelar");
-    for (var i = 0; i < nuevos.length; i++) {
-      var el = nuevos[i];
-      if (registrados) { if (registrados.has(el)) continue; registrados.add(el); }
+    for (var k = 0; k < nuevos.length; k++) {
+      var e2 = nuevos[k];
+      if (registrados) { if (registrados.has(e2)) continue; registrados.add(e2); }
       if (reducir || !hayObservador) {
-        el.classList.add("visible");
+        e2.classList.add("visible", "listo");
       } else {
         if (!observador) crearObservador();
-        observador.observe(el);
+        observador.observe(e2);
       }
     }
+    escanearContadores();
   }
 
-  /* Las tarjetas de junta, proyectos y testimonios se crean DESPUÉS (fetch de site.json):
-     se vigila el documento para animarlas también. */
+  /* Las tarjetas de junta, proyectos y testimonios se crean DESPUÉS (fetch de site.json) */
   function vigilarContenidoNuevo() {
     if (!("MutationObserver" in window)) return;
     var temporizador = null;
@@ -86,29 +119,85 @@
     }).observe(document.body, { childList: true, subtree: true });
   }
 
-  /* ------------------------------------------------ 2. Hero ligado al scroll (scrub) */
+  /* ------------------------------------------------ 2. Contadores con rewind */
+
+  var contadoresVistos = typeof WeakSet !== "undefined" ? new WeakSet() : null;
+  var observadorContadores = null;
+
+  function animarContador(el) {
+    var fin = parseInt(el.getAttribute("data-contador"), 10);
+    if (isNaN(fin)) return;
+    window.cancelAnimationFrame(el._raf);
+    var inicio = null, duracion = 1500;
+    function paso(t) {
+      if (inicio === null) inicio = t;
+      var p = Math.min(1, (t - inicio) / duracion);
+      var suave = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(fin * suave));
+      if (p < 1) el._raf = window.requestAnimationFrame(paso);
+    }
+    el._raf = window.requestAnimationFrame(paso);
+  }
+
+  function escanearContadores() {
+    var lista = document.querySelectorAll("[data-contador]");
+    for (var i = 0; i < lista.length; i++) {
+      var el = lista[i];
+      if (contadoresVistos) { if (contadoresVistos.has(el)) continue; contadoresVistos.add(el); }
+      if (reducir || !hayObservador) { el.textContent = el.getAttribute("data-contador"); continue; }
+      if (!observadorContadores) {
+        observadorContadores = new IntersectionObserver(function (entradas) {
+          entradas.forEach(function (entrada) {
+            var c = entrada.target;
+            if (entrada.isIntersecting) { animarContador(c); return; }
+            var limite = entrada.rootBounds ? entrada.rootBounds.bottom : window.innerHeight;
+            if (entrada.boundingClientRect.top >= limite - 1) {
+              window.cancelAnimationFrame(c._raf);
+              c.textContent = "0";
+            }
+          });
+        }, { threshold: 0.6 });
+      }
+      observadorContadores.observe(el);
+    }
+  }
+
+  /* ------------------------------------------------ 3. Scrub y parallax */
 
   function iniciarScrub() {
+    /* Los vídeos de las secciones FAQ y CTA se mueven con parallax */
+    document.querySelectorAll(".faq-video-elemento, .cta-video-elemento").forEach(function (v) {
+      var s = v.closest("section");
+      if (s && !s.hasAttribute("data-scrub")) s.setAttribute("data-scrub", "paralaje");
+    });
     var elementos = [].slice.call(document.querySelectorAll("[data-scrub]"));
     if (!elementos.length || reducir) return;
     var pendiente = false;
 
     function actualizar() {
       pendiente = false;
+      var vh = window.innerHeight;
       elementos.forEach(function (el) {
         var caja = el.getBoundingClientRect();
-        if (caja.bottom < -50 || caja.top > window.innerHeight + 50) return;
-        var p = Math.min(1, Math.max(0, -caja.top / Math.max(1, caja.height * 0.9)));
-        el.style.setProperty("--p", p.toFixed(3));
+        if (caja.bottom < -80 || caja.top > vh + 80) return;
+        if (el.getAttribute("data-scrub") === "paralaje") {
+          /* 0 cuando la sección asoma por abajo, 1 cuando sale por arriba */
+          var q = (vh - caja.top) / (vh + caja.height);
+          el.style.setProperty("--q", Math.min(1, Math.max(0, q)).toFixed(3));
+        } else {
+          var p = -caja.top / Math.max(1, caja.height * 0.9);
+          el.style.setProperty("--p", Math.min(1, Math.max(0, p)).toFixed(3));
+        }
       });
     }
     window.addEventListener("scroll", function () {
       if (!pendiente) { pendiente = true; window.requestAnimationFrame(actualizar); }
     }, { passive: true });
+    window.addEventListener("resize", actualizar);
     actualizar();
   }
 
-  /* ------------------------------------------------ 3. Cabecera: baja y sube con el scroll */
+  /* ------------------------------------------------ 4. Cabecera: baja y sube con el scroll */
 
   function iniciarCabecera() {
     var cabecera = document.querySelector("header.sticky");
@@ -134,22 +223,11 @@
     }, { passive: true });
   }
 
-  /* ------------------------------------------------ 4. Vídeos de fondo */
-
-  function texto(clave, reserva) {
-    if (typeof window.textoSitio === "function") {
-      var t = window.textoSitio(clave);
-      if (t) return t;
-    }
-    return reserva;
-  }
+  /* ------------------------------------------------ 5. Vídeos de fondo */
 
   function iniciarVideos() {
     var videos = [].slice.call(document.querySelectorAll("video"));
     if (!videos.length) return;
-
-    var boton = document.getElementById("btn-video-fondo");
-    var pausadoPorUsuario = reducir;   /* con "reducir movimiento" empiezan en pausa */
 
     function cargar(video) {
       var fuente = video.querySelector("source[data-src]");
@@ -158,50 +236,53 @@
         video.load();
       }
     }
-    function reproducir(video) {
-      if (pausadoPorUsuario) return;
-      cargar(video);
-      var promesa = video.play();
-      if (promesa && promesa.catch) promesa.catch(function () { });
-    }
-    function pintarBoton() {
-      if (!boton) return;
-      var pausa = boton.querySelector(".icono-pausa");
-      var play = boton.querySelector(".icono-reproducir");
-      if (pausa) pausa.classList.toggle("oculto", pausadoPorUsuario);
-      if (play) play.classList.toggle("oculto", !pausadoPorUsuario);
-      boton.setAttribute("aria-pressed", String(pausadoPorUsuario));
-      boton.setAttribute("aria-label", pausadoPorUsuario
-        ? texto("hero.reanudarVideo", "Reproducir vídeo de fondo")
-        : texto("hero.pausarVideo", "Pausar vídeo de fondo"));
-    }
+    /* Con "reducir movimiento" los vídeos de fondo no se reproducen (se ve el póster) */
+    if (reducir) { videos.forEach(function (v) { try { v.pause(); } catch (e) { } }); return; }
 
-    if (hayObservador) {
-      /* Se reproducen solo los vídeos que se ven (ahorra batería y datos) */
-      var vigilante = new IntersectionObserver(function (entradas) {
-        entradas.forEach(function (entrada) {
-          var video = entrada.target;
-          video._visible = entrada.isIntersecting;
-          if (entrada.isIntersecting) reproducir(video); else video.pause();
-        });
-      }, { rootMargin: "200px 0px" });
-      videos.forEach(function (v) { vigilante.observe(v); });
-    }
-
-    if (pausadoPorUsuario) videos.forEach(function (v) { try { v.pause(); } catch (e) { } });
-
-    if (boton) {
-      boton.addEventListener("click", function () {
-        pausadoPorUsuario = !pausadoPorUsuario;
-        videos.forEach(function (v) {
-          if (pausadoPorUsuario) v.pause();
-          else if (v._visible !== false) reproducir(v);
-        });
-        pintarBoton();
+    if (!hayObservador) { videos.forEach(function (v) { cargar(v); }); return; }
+    /* Solo se reproducen los vídeos que se ven (ahorra batería y datos) */
+    var vigilante = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (entrada) {
+        var video = entrada.target;
+        if (entrada.isIntersecting) {
+          cargar(video);
+          var promesa = video.play();
+          if (promesa && promesa.catch) promesa.catch(function () { });
+        } else {
+          video.pause();
+        }
       });
-      document.addEventListener("idioma:cambiado", pintarBoton);
-      pintarBoton();
+    }, { rootMargin: "200px 0px" });
+    videos.forEach(function (v) { vigilante.observe(v); });
+  }
+
+  /* ------------------------------------------------ 6. Botón "volver arriba" */
+
+  function iniciarVolverArriba() {
+    var boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "volver-arriba";
+    var en = (raiz.lang || "es").slice(0, 2) === "en";
+    boton.setAttribute("aria-label", en ? "Back to top" : "Volver arriba");
+    boton.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+    document.body.appendChild(boton);
+
+    var pendiente = false;
+    function revisar() {
+      pendiente = false;
+      boton.classList.toggle("visible", window.scrollY > 700);
     }
+    window.addEventListener("scroll", function () {
+      if (!pendiente) { pendiente = true; window.requestAnimationFrame(revisar); }
+    }, { passive: true });
+    boton.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reducir ? "auto" : "smooth" });
+    });
+    /* El idioma se cambia desde idiomas.js, que actualiza <html lang> */
+    document.addEventListener("idioma:cambiado", function () {
+      boton.setAttribute("aria-label", (raiz.lang || "es").slice(0, 2) === "en" ? "Back to top" : "Volver arriba");
+    });
+    revisar();
   }
 
   /* ------------------------------------------------ arranque */
@@ -212,6 +293,7 @@
     iniciarScrub();
     iniciarCabecera();
     iniciarVideos();
+    iniciarVolverArriba();
     window.DPAPAnim = { escanear: escanear };
   }
 

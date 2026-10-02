@@ -453,7 +453,7 @@
 
   /* Cifras de impacto con animación de conteo numérico progresivo */
   function inicializarContadores() {
-    var contadores = document.querySelectorAll("[data-contador]");
+    var contadores = []; /* los contadores los gestiona animaciones.js (con rewind) */
     if (!contadores.length) return;
     var reducirMovimiento = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducirMovimiento || !("IntersectionObserver" in window)) {
@@ -512,48 +512,6 @@
   }
 
   /* Control de reproducción/pausa del vídeo de fondo del Hero */
-  function inicializarControlVideo() {
-    var video = document.getElementById("video-hero");
-    var boton = document.getElementById("btn-control-video");
-    if (!video || !boton || boton.dataset.videoListo === "si") return;
-    boton.dataset.videoListo = "si";
-
-    var iconoPausa = boton.querySelector(".icono-pausa");
-    var iconoPlay = boton.querySelector(".icono-reproducir");
-
-    function actualizarIconos(estaPausado) {
-      if (iconoPausa && iconoPlay) {
-        if (estaPausado) {
-          iconoPausa.classList.add("hidden");
-          iconoPlay.classList.remove("hidden");
-          boton.setAttribute("aria-label", textoDe("hero.reanudarVideo", "Reproducir vídeo de fondo"));
-        } else {
-          iconoPausa.classList.remove("hidden");
-          iconoPlay.classList.add("hidden");
-          boton.setAttribute("aria-label", textoDe("hero.pausarVideo", "Pausar vídeo de fondo"));
-        }
-      }
-    }
-
-    // Respeto a usuarios con reducción de movimiento
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      try { video.pause(); } catch (e) {}
-      actualizarIconos(true);
-    }
-
-    boton.addEventListener("click", function () {
-      if (video.paused) {
-        video.play().then(function () {
-          actualizarIconos(false);
-        }).catch(function () {
-          actualizarIconos(true);
-        });
-      } else {
-        video.pause();
-        actualizarIconos(true);
-      }
-    });
-  }
 
   /* Animación de entrada al hacer scroll (se desactiva si el sistema pide menos movimiento) */
   function animarEntrada() {
@@ -754,7 +712,6 @@
     inicializarBarraProgreso();
     inicializarContadores();
     inicializarAcordeon();
-    inicializarControlVideo();
     ponerAnio();
     arreglarLogo();
     animarEntrada();

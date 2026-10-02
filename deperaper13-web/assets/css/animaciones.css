@@ -4,7 +4,7 @@
  *   - Cualquier elemento con la clase .revelar entra con animación al aparecer en pantalla.
  *   - REWIND: si el visitante vuelve a subir, el elemento "rebobina" (sale con la animación
  *     inversa) y vuelve a entrar al bajar de nuevo. Se desactiva con data-rewind="false".
- *   - Variantes con data-reveal: up (por defecto) | left | right | zoom | blur | mask.
+ *   - Variantes con data-reveal: up (por defecto) | left | right | zoom | blur | mask | iris.
  *   - Escalonado: .retraso-1 … .retraso-4, o data-d="0.2s" a mano.
  *   - data-scrub: el hero ligado al scroll (parallax) mediante la variable --p (0 → 1).
  *
@@ -57,6 +57,23 @@
     transition-delay: var(--d, 0s);  /* el escalonado solo cuenta al entrar */
     will-change: auto;
   }
+  /* "iris": el logotipo se abre en círculo desde el centro */
+  .js .revelar[data-reveal="iris"] { opacity: 1; transform: scale(.88); clip-path: circle(0% at 50% 50%); }
+  .js .revelar[data-reveal="iris"].visible { transform: none; clip-path: circle(75% at 50% 50%); }
+  /* Terminada la entrada, el elemento recupera sus transiciones rápidas (hover de tarjetas, etc.) */
+  .js .revelar.visible.listo {
+    transition: transform .28s var(--ease-salida), box-shadow .28s ease, border-color .28s ease,
+                background-color .2s ease, color .2s ease, opacity .3s ease;
+    transition-delay: 0s;
+  }
+  /* Etiquetas: el filete se dibuja al aparecer */
+  .js .kicker-anim::before {
+    content: ""; display: inline-block; width: 0; height: 2px; margin-right: 0;
+    background: currentColor; vertical-align: middle;
+    transition: width .8s var(--ease-salida) .2s, margin-right .8s var(--ease-salida) .2s;
+  }
+  .js .kicker-anim.visible::before { width: 1.75rem; margin-right: .7rem; }
+  html { scroll-behavior: smooth; }
 }
 
 /* ------------------------------------------------------- hero: entrada y scrub */
@@ -82,6 +99,17 @@
     transform: translate3d(0, calc(var(--p, 0) * 14%), 0) scale(calc(1.03 + var(--p, 0) * .12));
     will-change: transform;
   }
+  /* El logotipo se mueve a otra velocidad que el texto: da sensación de profundidad */
+  .hero-video-seccion[data-scrub] .hero-logo-entrada { translate: 0 calc(var(--p, 0) * 60px); }
+
+  /* Parallax de los vídeos de fondo de las secciones FAQ y CTA */
+  [data-scrub="paralaje"] { position: relative; overflow: hidden; }
+  [data-scrub="paralaje"] .faq-video-elemento,
+  [data-scrub="paralaje"] .cta-video-elemento {
+    transform: translate3d(0, calc((var(--q, .5) - .5) * -16%), 0) scale(1.2);
+    will-change: transform;
+  }
+
   .hero-video-seccion[data-scrub] .hero-contenido {
     transform: translate3d(0, calc(var(--p, 0) * -70px), 0);
     opacity: calc(1 - var(--p, 0) * 1.5);
@@ -96,34 +124,40 @@
   header.sticky.cabecera-oculta { transform: translateY(-100%); }
 }
 
-/* ------------------------------------------------ botón para pausar los vídeos de fondo */
-.btn-video-control {
-  position: absolute;
-  right: 1rem;
-  bottom: 5.5rem;
-  z-index: 20;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 9999px;
-  color: #fff;
-  background: rgba(255, 255, 255, .14);
-  border: 1px solid rgba(255, 255, 255, .4);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  cursor: pointer;
-  transition: background .2s, transform .2s;
+/* ------------------------------------------------ detalles de interacción */
+
+/* Menú: el subrayado se dibuja al pasar el ratón */
+header nav[aria-label="Principal"] .nav-enlace:not([aria-current="page"])::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+  background: currentColor; border-radius: 2px;
+  transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease-salida);
 }
-.btn-video-control:hover { background: rgba(255, 255, 255, .28); transform: scale(1.06); }
-.btn-video-control svg { width: 1.15rem; height: 1.15rem; }
-.btn-video-control .oculto { display: none; }
+header nav[aria-label="Principal"] .nav-enlace:not([aria-current="page"]):hover::after { transform: scaleX(1); }
+
+/* Tarjetas: el icono da un pequeño giro al pasar el ratón */
+.tarjeta > span.inline-flex { transition: transform .35s var(--ease-salida), background-color .25s ease, color .25s ease; }
+.tarjeta:hover > span.inline-flex { transform: scale(1.1) rotate(-6deg); background-color: var(--brand-700); color: #fff; }
+
+/* Botón "volver arriba" */
+.volver-arriba {
+  position: fixed; right: 1rem; bottom: 1rem; z-index: 40;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.75rem; height: 2.75rem; border: 0; border-radius: 9999px;
+  background: var(--brand-700); color: #fff; cursor: pointer;
+  box-shadow: 0 8px 20px -8px rgba(22, 58, 92, .6);
+  opacity: 0; transform: translateY(14px); pointer-events: none;
+  transition: opacity .3s ease, transform .35s var(--ease-salida), background-color .2s ease;
+}
+.volver-arriba.visible { opacity: 1; transform: none; pointer-events: auto; }
+.volver-arriba:hover { background: var(--brand-800); }
 
 /* Movimiento reducido: nada se desplaza ni desaparece */
 @media (prefers-reduced-motion: reduce) {
   .revelar, .hero-entrada > *, .hero-logo-entrada { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; animation: none !important; }
   header.sticky.cabecera-oculta { transform: none; }
+  .kicker-anim::before { width: 1.75rem !important; margin-right: .7rem !important; }
+  .volver-arriba { transition: none; }
+  html { scroll-behavior: auto; }
   @view-transition { navigation: none; }
 }
 

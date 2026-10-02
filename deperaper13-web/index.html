@@ -197,34 +197,26 @@
       <!-- Capa de oscurecido cinematográfico (Overlay) para legibilidad y elegancia visual -->
       <div class="hero-video-overlay" aria-hidden="true"></div>
 
-      <!-- Control de reproducción de los vídeos de fondo (accesibilidad: contenido en movimiento) -->
-      <button type="button" id="btn-video-fondo" class="btn-video-control" aria-pressed="false"
-              aria-label="Pausar vídeo de fondo" data-i18n-aria-label="hero.pausarVideo">
-        <svg class="icono-pausa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-        <svg class="icono-reproducir oculto" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
-      </button>
-
       <!-- Contenido destacado del Hero -->
       <div class="hero-contenido relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-[1.2fr_auto] pb-14 sm:pb-20 md:pb-24">
         <div class="hero-entrada">
           <div class="mb-5 flex items-center gap-3">
-            <span class="badge-cristal-hero" data-i18n="hero.badge">✨ Asociación juvenil de apoyo mutuo · Sevilla</span>
+            <span class="kicker-hero" data-i18n="hero.badge">Asociación juvenil de apoyo mutuo · Sevilla</span>
           </div>
-          <h1 class="text-4xl font-extrabold leading-tight text-white drop-shadow-md sm:text-5xl lg:text-6xl">
-            De Personas <span class="block bg-gradient-to-r from-blue-200 via-sky-200 to-white bg-clip-text text-transparent">a Personas</span>
+          <h1 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
+            De Personas <span class="block text-sky-200">a Personas</span>
           </h1>
-          <p class="mt-4 text-xl font-bold text-sky-100 drop-shadow sm:text-2xl" data-i18n="hero.eslogan">Jóvenes que se apoyan entre sí.</p>
-          <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-100/90 drop-shadow-sm sm:text-lg" data-sitio="meta.descripcionCorta"></p>
+          <p class="mt-4 text-xl font-bold text-sky-100 sm:text-2xl" data-i18n="hero.eslogan">Jóvenes que se apoyan entre sí.</p>
+          <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-100/90 sm:text-lg" data-sitio="meta.descripcionCorta"></p>
           <div class="mt-8 flex flex-wrap items-center gap-4">
             <a class="btn btn-primario-hero" href="/sobre-nosotros" data-i18n="hero.cta1">Conócenos</a>
-            <a class="btn btn-cristal-hero" href="/proyectos" data-i18n="hero.cta2">Ver proyectos</a>
+            <a class="btn btn-contorno-hero" href="/proyectos" data-i18n="hero.cta2">Ver proyectos</a>
           </div>
         </div>
         <div class="hero-logo-entrada justify-self-center md:justify-self-end relative">
-          <div class="logo-resplandor" aria-hidden="true"></div>
           <img src="/assets/img/logo.png" data-logo alt="Logotipo de De Personas a Personas"
                width="240" height="240"
-               class="logo-flotante relative z-10 h-44 w-44 rounded-full object-cover shadow-2xl ring-4 ring-white/30 backdrop-blur-sm sm:h-56 sm:w-56 lg:h-64 lg:w-64">
+               class="relative z-10 h-44 w-44 rounded-full object-cover shadow-2xl ring-4 ring-white/40 sm:h-56 sm:w-56 lg:h-64 lg:w-64">
         </div>
       </div>
 
@@ -340,7 +332,6 @@
 
       <div class="mt-12 grid gap-6 md:grid-cols-3">
         <article data-reveal="left" class="revelar retraso-1 tarjeta-testimonio flex flex-col justify-between">
-          <span class="comilla-adorno" aria-hidden="true">&ldquo;</span>
           <blockquote class="text-sm leading-relaxed text-brand-900/85 sm:text-base" data-i18n="testimonios.test1Cita">
             «Encontrar un lugar donde hablar de lo que te pasa sin sentirte juzgado marca un antes y un después. Saber que no estás solo te devuelve las ganas.»
           </blockquote>
@@ -351,7 +342,6 @@
         </article>
 
         <article class="revelar retraso-2 tarjeta-testimonio flex flex-col justify-between">
-          <span class="comilla-adorno" aria-hidden="true">&ldquo;</span>
           <blockquote class="text-sm leading-relaxed text-brand-900/85 sm:text-base" data-i18n="testimonios.test2Cita">
             «No hace falta tener todas las respuestas para ayudar; a veces basta con sentarte a escuchar y decir: yo también he estado ahí.»
           </blockquote>
@@ -362,7 +352,6 @@
         </article>
 
         <article data-reveal="right" class="revelar retraso-3 tarjeta-testimonio flex flex-col justify-between">
-          <span class="comilla-adorno" aria-hidden="true">&ldquo;</span>
           <blockquote class="text-sm leading-relaxed text-brand-900/85 sm:text-base" data-i18n="testimonios.test3Cita">
             «La fuerza de esta asociación es que la construimos de tú a tú. Nadie es más que nadie y cada idea cuenta.»
           </blockquote>
@@ -375,7 +364,7 @@
     </section>
 
     <!-- Preguntas Frecuentes (FAQ) en acordeón accesible -->
-    <section class="seccion-video-faq border-t border-brand-100">
+    <section class="seccion-video-faq border-t border-brand-100" data-scrub="paralaje">
       <!-- Vídeo de fondo -->
       <video class="faq-video-elemento" muted loop playsinline preload="none" aria-hidden="true">
         <source data-src="/assets/video/hero-community.mp4" type="video/mp4">
@@ -385,7 +374,7 @@
 
       <div class="relative z-10 mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24">
         <div class="text-center">
-          <span class="badge-cristal-faq" data-i18n="faq.kicker">✨ Resolvemos tus dudas</span>
+          <span class="kicker-faq" data-i18n="faq.kicker">Resolvemos tus dudas</span>
           <h2 class="mt-5 text-3xl font-bold text-white sm:text-4xl md:text-5xl" data-i18n="faq.titulo">Preguntas frecuentes</h2>
           <p class="mx-auto mt-4 max-w-2xl text-white/80 text-base sm:text-lg" data-i18n="faq.intro">
             Todo lo que necesitas saber antes de escribirnos o sumarte a los encuentros.
@@ -467,7 +456,7 @@
     </section>
 
     <!-- Llamada a la acción -->
-    <section class="seccion-cta-video revelar">
+    <section class="seccion-cta-video" data-scrub="paralaje">
       <!-- Vídeo de fondo -->
       <video class="cta-video-elemento" muted loop playsinline preload="none" aria-hidden="true">
         <source data-src="/assets/video/hero.mp4" type="video/mp4">
