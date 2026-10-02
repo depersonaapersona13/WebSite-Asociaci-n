@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Política de privacidad · De Personas a Personas</title>
+  <meta name="description" content="Cómo trata De Personas a Personas tus datos personales: finalidad, derechos y contacto, conforme al RGPD.">
+  <meta name="theme-color" content="#8FB9E0">
+  <link rel="canonical" href="https://depersonaapersona13-web.pages.dev/politica-privacidad">
+
+  <!-- Vista previa al compartir por WhatsApp, Instagram, X, Facebook... -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="De Personas a Personas">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Política de privacidad · De Personas a Personas">
+  <meta property="og:description" content="Cómo trata De Personas a Personas tus datos personales: finalidad, derechos y contacto, conforme al RGPD.">
+  <meta property="og:url" content="https://depersonaapersona13-web.pages.dev/politica-privacidad">
+  <meta property="og:image" content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Política de privacidad · De Personas a Personas">
+  <meta name="twitter:description" content="Cómo trata De Personas a Personas tus datos personales: finalidad, derechos y contacto, conforme al RGPD.">
+  <meta name="twitter:image" content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png">
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <!-- Rendimiento: el logo es la imagen más importante; el JSON se pide cuanto antes -->
+  <link rel="preload" href="/assets/img/logo.png" as="image" fetchpriority="high">
+  <link rel="preload" href="/data/site.json" as="fetch" crossorigin="anonymous">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+
+  <!-- Tema visual (modo oscuro) antes de pintar, para evitar el destello blanco -->
+  <script src="/assets/js/tema-visual.js"></script>
+
+  <!-- Tailwind por CDN + tema de marca (colores en assets/js/tema.js) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/js/tema.js"></script>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/animaciones.css">
+
+  <!-- Selector de idioma (antes de main.js) + encabezado/pie compartidos + lógica general -->
+  <script src="/assets/js/animaciones.js" defer></script>
+  <script src="/assets/js/idiomas.js" defer></script>
+  <script src="/assets/js/layout.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body data-pagina="politica-privacidad" class="flex min-h-screen flex-col bg-white text-brand-900 antialiased">
+  <a class="salto-contenido" href="#contenido" data-i18n="comun.saltar">Saltar al contenido</a>
+
+  <noscript>
+    <div class="border-b border-brand-100 bg-brand-50 px-4 py-3 text-sm sm:px-6">
+      <a class="enlace mr-5 font-semibold" href="/">Inicio</a>
+      <a class="enlace mr-5 font-semibold" href="/sobre-nosotros">Sobre Nosotros</a>
+      <a class="enlace mr-5 font-semibold" href="/proyectos">Proyectos</a>
+      <a class="enlace font-semibold" href="/contacto">Contacto</a>
+    </div>
+  </noscript>
+
+  <!-- layout:header:start -->
+<header class="sticky top-0 z-50 border-b border-brand-100/80 bg-white/90 backdrop-blur-md transition-colors duration-200">
+  <div id="barra-progreso" class="barra-progreso" aria-hidden="true"></div>
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+
+    <a href="/" class="flex items-center gap-3">
+      <!-- El logo real vive en assets/img/logo.png -->
+      <img src="/assets/img/logo.png" data-logo alt="Logotipo de De Personas a Personas"
+           width="48" height="48"
+           class="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-brand-100 sm:h-12 sm:w-12">
+      <span class="leading-tight">
+        <span class="block text-sm font-bold tracking-tight text-brand-900 sm:text-base">De Personas a Personas</span>
+        <span class="hidden text-xs text-brand-700 sm:block">Jóvenes que se apoyan entre sí</span>
+      </span>
+    </a>
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-7 text-sm">
+        <li><a class="nav-enlace" href="/" data-nav="inicio" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a class="nav-enlace" href="/sobre-nosotros" data-nav="sobre-nosotros" data-i18n="nav.sobre">Sobre Nosotros</a></li>
+        <li><a class="nav-enlace" href="/proyectos" data-nav="proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+        <li><a class="nav-enlace" href="/contacto" data-nav="contacto" data-i18n="nav.contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/contacto" class="hidden rounded-full bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-800 lg:inline-flex" data-i18n="nav.cta">Escríbenos</a>
+      <div class="selector-idioma" role="group" data-i18n-aria-label="comun.cambiarIdioma" aria-label="Cambiar de idioma">
+        <button type="button" class="idioma-btn" data-idioma="es" aria-pressed="true">ES</button>
+        <button type="button" class="idioma-btn" data-idioma="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" id="boton-tema" aria-pressed="false" data-i18n-aria-label="comun.temaClaro" aria-label="Activar el modo oscuro">
+        <svg class="icono-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg class="icono-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+      </button>
+      <button type="button" id="boton-menu" aria-expanded="false" aria-controls="menu-movil"
+              data-i18n-aria-label="nav.abrirMenu" aria-label="Abrir menú de navegación"
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 text-brand-800 lg:hidden">
+        <span class="sr-only" data-i18n="nav.abrirMenu">Abrir menú de navegación</span>
+        <svg class="icono-abrir h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+        </svg>
+        <svg class="icono-cerrar h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="menu-movil" hidden class="border-t border-brand-100 bg-white lg:hidden">
+    <nav aria-label="Menú móvil" class="mx-auto max-w-6xl px-4 py-3 sm:px-6">
+      <ul class="space-y-1 text-base">
+        <li><a class="nav-enlace block py-2" href="/" data-nav="inicio" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a class="nav-enlace block py-2" href="/sobre-nosotros" data-nav="sobre-nosotros" data-i18n="nav.sobre">Sobre Nosotros</a></li>
+        <li><a class="nav-enlace block py-2" href="/proyectos" data-nav="proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+        <li><a class="nav-enlace block py-2" href="/contacto" data-nav="contacto" data-i18n="nav.contacto">Contacto</a></li>
+        <li class="pt-2"><a href="/contacto" class="btn btn-primario w-full" data-i18n="nav.cta">Escríbenos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- layout:header:end -->
+
+  <main id="contenido" class="flex-1">
+    <!-- Cabecera de página -->
+    <section class="border-b border-brand-100 bg-brand-50">
+      <div class="mx-auto max-w-4xl px-4 py-14 sm:px-6">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="privacidad.kicker">Protección de datos (RGPD)</p>
+        <h1 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl" data-i18n="privacidad.titulo">Política de Privacidad</h1>
+        <p class="mt-4 text-base text-brand-900/80" data-i18n="privacidad.intro">
+          En la Asociación Juvenil De Personas a Personas nos tomamos muy en serio tu privacidad. Te explicamos de forma transparente cómo tratamos tus datos de acuerdo con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD).
+        </p>
+      </div>
+    </section>
+
+    <!-- Contenido legal -->
+    <section class="mx-auto max-w-4xl px-4 py-12 sm:px-6 md:py-16">
+      <div class="prose max-w-none space-y-10 text-brand-900/85">
+
+        <article class="tarjeta p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion1Titulo">1. Responsable del tratamiento</h2>
+          <ul class="mt-4 list-inside list-disc space-y-1 text-sm leading-relaxed">
+            <li><strong>Responsable:</strong> Asociación Juvenil De Personas a Personas</li>
+            <li><strong>Ámbito:</strong> Sevilla, Andalucía (España)</li>
+            <li><strong>Correo de contacto para privacidad:</strong> <a class="enlace" href="mailto:depersonaapersona13@gmail.com">depersonaapersona13@gmail.com</a></li>
+          </ul>
+        </article>
+
+        <article class="tarjeta p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion2Titulo">2. Qué datos recopilamos y cómo</h2>
+          <p class="mt-3 leading-relaxed">
+            Este sitio web recopila únicamente los datos que nos facilitas voluntariamente a través del <strong>formulario de contacto</strong> o al escribirnos un correo electrónico:
+          </p>
+          <ul class="mt-4 list-inside list-disc space-y-2 text-sm leading-relaxed">
+            <li><strong>Datos identificativos y de contacto:</strong> nombre, dirección de correo electrónico y cualquier detalle que decidas incluir en el asunto o mensaje.</li>
+            <li><strong>Sin rastreadores ni cookies intrusivas:</strong> este sitio web no utiliza cookies de seguimiento, herramientas de analítica invasiva ni publicidad de terceros.</li>
+          </ul>
+        </article>
+
+        <article class="tarjeta p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion3Titulo">3. Finalidad del tratamiento</h2>
+          <p class="mt-3 leading-relaxed">
+            Los datos que nos envías se utilizan única y exclusivamente para:
+          </p>
+          <ul class="mt-4 list-inside list-disc space-y-2 text-sm leading-relaxed">
+            <li>Responder a tus dudas, preguntas o solicitudes de acompañamiento e información.</li>
+            <li>Atender propuestas de colaboración, voluntariado o participación en las actividades de la asociación.</li>
+          </ul>
+          <p class="mt-3 text-sm font-semibold text-brand-800">
+            No utilizaremos tus datos para fines publicitarios no solicitados ni elaboraremos perfiles comerciales.
+          </p>
+        </article>
+
+        <article class="tarjeta p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion4Titulo">4. Base legal para el tratamiento</h2>
+          <p class="mt-3 leading-relaxed">
+            La base jurídica que legitima el tratamiento de tus datos es el <strong>consentimiento expreso</strong> que otorgas al marcar la casilla de verificación en el formulario de contacto y pulsar el botón de envío (conforme al artículo 6.1.a del RGPD).
+          </p>
+        </article>
+
+        <article class="tarjeta p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion5Titulo">5. Plazo de conservación de los datos</h2>
+          <p class="mt-3 leading-relaxed">
+            Conservaremos tus datos personales únicamente durante el tiempo estrictamente necesario para gestionar y dar respuesta a tu consulta o solicitud. Una vez resuelta, los datos serán eliminados o archivados bloqueados solo mientras pudieran derivarse responsabilidades legales aplicables.
+          </p>
+        </article>
+
+        <article class="tarjeta p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion6Titulo">6. Comunicación a terceros</h2>
+          <p class="mt-3 leading-relaxed">
+            Tus datos no serán cedidos, vendidos ni transferidos a terceras personas ni entidades, salvo obligación legal expresa o requerimiento de autoridades competentes. Tampoco realizamos transferencias internacionales de datos fuera del Espacio Económico Europeo.
+          </p>
+        </article>
+
+        <article class="tarjeta p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-brand-900" data-i18n="privacidad.seccion7Titulo">7. Cuáles son tus derechos y cómo ejercerlos</h2>
+          <p class="mt-3 leading-relaxed">
+            Tienes pleno derecho a controlar tus datos personales. Puedes ejercitar en cualquier momento los siguientes derechos reconocidos por el RGPD:
+          </p>
+          <ul class="mt-4 list-inside list-disc space-y-2 text-sm leading-relaxed">
+            <li><strong>Acceso:</strong> conocer qué datos tenemos sobre ti y cómo los tratamos.</li>
+            <li><strong>Rectificación:</strong> corregir o actualizar datos inexactos o incompletos.</li>
+            <li><strong>Supresión («derecho al olvido»):</strong> solicitar que eliminemos tus datos cuando ya no sean necesarios.</li>
+            <li><strong>Oposición:</strong> oponerte a que continuemos tratando tus datos en determinadas circunstancias.</li>
+            <li><strong>Limitación del tratamiento:</strong> solicitar que suspendamos temporalmente el tratamiento en los casos previstos por la ley.</li>
+            <li><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado y de uso común.</li>
+          </ul>
+          <p class="mt-4 leading-relaxed">
+            Para ejercer cualquiera de estos derechos, basta con enviar un mensaje de correo a <a class="enlace font-semibold" href="mailto:depersonaapersona13@gmail.com">depersonaapersona13@gmail.com</a> indicando en el asunto «Protección de Datos» y especificando qué derecho deseas ejercer.
+          </p>
+          <p class="mt-3 text-sm text-brand-900/80">
+            Si consideras que tus derechos no han sido atendidos debidamente, tienes derecho a presentar una reclamación ante la <a class="enlace" href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española de Protección de Datos (AEPD)</a>.
+          </p>
+          <p class="mt-6 text-xs text-brand-900/60">
+            Última actualización: Septiembre de 2026.
+          </p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- layout:footer:start -->
+<!-- partials/footer.html — pie compartido. Lo inyecta assets/js/layout.js
+     Los datos de contacto, redes y legales los rellena main.js desde data/site.json -->
+<footer class="mt-20 bg-brand-900 text-brand-100">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
+
+    <div>
+      <div class="flex items-center gap-3">
+        <img src="/assets/img/logo.png" data-logo alt="" width="48" height="48"
+             class="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-white/20">
+        <p class="font-bold leading-tight text-white">
+          De Personas a Personas
+          <span class="mt-1 block text-xs font-medium text-brand-200">Jóvenes que se apoyan entre sí</span>
+        </p>
+      </div>
+      <p class="mt-5 text-sm leading-relaxed text-brand-200" data-sitio="meta.descripcionCorta"></p>
+    </div>
+
+    <nav aria-label="Pie de página">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-white" data-i18n="footer.navegacion">Navegación</h2>
+      <ul class="mt-5 space-y-3 text-sm">
+        <li><a class="enlace-pie" href="/" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a class="enlace-pie" href="/sobre-nosotros" data-i18n="nav.sobre">Sobre Nosotros</a></li>
+        <li><a class="enlace-pie" href="/proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+        <li><a class="enlace-pie" href="/contacto" data-i18n="nav.contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="text-xs font-bold uppercase tracking-widest text-white" data-i18n="footer.contactoTitulo">Contacto</h2>
+      <ul class="mt-5 space-y-3 text-sm" data-contacto></ul>
+      <div class="mt-4">
+        <a class="btn btn-claro w-full text-sm" href="/contacto" data-i18n="footer.cta">Escríbenos</a>
+      </div>
+      <div class="mt-6" data-redes></div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-xs text-brand-200 sm:px-6 md:flex-row md:items-center md:justify-between">
+      <p>© <span data-anio>2026</span> De Personas a Personas · Todos los derechos reservados.</p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a class="enlace-pie" href="/aviso-legal" data-i18n="footer.avisoLegal">Aviso legal</a>
+        <span aria-hidden="true" class="text-white/20">·</span>
+        <a class="enlace-pie" href="/politica-privacidad" data-i18n="footer.privacidad">Política de privacidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- layout:footer:end -->
+</body>
+</html>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Actualiza la URL cuando tengáis dominio propio
+Sitemap: https://depersonaapersona13-web.pages.dev/sitemap.xml

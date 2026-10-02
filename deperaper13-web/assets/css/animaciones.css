@@ -1,0 +1,131 @@
+/* animaciones.css — sistema de animaciones al hacer scroll (scroll reveal + rewind).
+ *
+ * Cómo funciona (la lógica está en assets/js/animaciones.js):
+ *   - Cualquier elemento con la clase .revelar entra con animación al aparecer en pantalla.
+ *   - REWIND: si el visitante vuelve a subir, el elemento "rebobina" (sale con la animación
+ *     inversa) y vuelve a entrar al bajar de nuevo. Se desactiva con data-rewind="false".
+ *   - Variantes con data-reveal: up (por defecto) | left | right | zoom | blur | mask.
+ *   - Escalonado: .retraso-1 … .retraso-4, o data-d="0.2s" a mano.
+ *   - data-scrub: el hero ligado al scroll (parallax) mediante la variable --p (0 → 1).
+ *
+ * Sin JavaScript (no hay clase .js en <html>) todo el contenido se ve normal.
+ * Con "reducir movimiento" activado en el sistema, no hay desplazamientos ni parallax.
+ */
+
+:root { --ease-salida: cubic-bezier(.22, 1, .36, 1); }
+
+/* Transición suave entre páginas (navegadores que lo soportan; el resto navega normal) */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: .28s ease both vt-salir; }
+::view-transition-new(root) { animation: .38s ease both vt-entrar; }
+@keyframes vt-salir { to { opacity: 0; } }
+@keyframes vt-entrar { from { opacity: 0; } }
+
+.retraso-1 { --d: .08s; }
+.retraso-2 { --d: .16s; }
+.retraso-3 { --d: .24s; }
+.retraso-4 { --d: .32s; }
+
+/* ------------------------------------------------------------ scroll reveal */
+@media (prefers-reduced-motion: no-preference) {
+  .js .revelar {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+    transition:
+      opacity .9s var(--ease-salida),
+      transform .9s var(--ease-salida),
+      filter .9s var(--ease-salida),
+      clip-path .9s var(--ease-salida);
+    transition-delay: 0s;            /* al rebobinar no hay escalonado */
+    will-change: opacity, transform;
+  }
+  .js .revelar[data-reveal="left"]  { transform: translate3d(-56px, 0, 0); }
+  .js .revelar[data-reveal="right"] { transform: translate3d(56px, 0, 0); }
+  .js .revelar[data-reveal="zoom"]  { transform: scale(.9); }
+  .js .revelar[data-reveal="blur"]  { filter: blur(12px); transform: translate3d(0, 16px, 0); }
+  /* "mask": el título se desvela de abajo arriba, como una cortinilla */
+  .js .revelar[data-reveal="mask"]  {
+    opacity: 1;
+    transform: translate3d(0, .35em, 0);
+    clip-path: inset(-.15em -.15em 100% -.15em);
+  }
+  .js .revelar.visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: inset(-.15em);
+    transition-delay: var(--d, 0s);  /* el escalonado solo cuenta al entrar */
+    will-change: auto;
+  }
+}
+
+/* ------------------------------------------------------- hero: entrada y scrub */
+@keyframes hero-entra {
+  from { opacity: 0; transform: translate3d(0, 28px, 0); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+@keyframes hero-zoom {
+  from { opacity: 0; transform: scale(.82) rotate(-4deg); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-entrada > * { opacity: 0; animation: hero-entra 1s var(--ease-salida) forwards; }
+  .hero-entrada > *:nth-child(1) { animation-delay: .10s; }
+  .hero-entrada > *:nth-child(2) { animation-delay: .22s; }
+  .hero-entrada > *:nth-child(3) { animation-delay: .34s; }
+  .hero-entrada > *:nth-child(4) { animation-delay: .46s; }
+  .hero-entrada > *:nth-child(5) { animation-delay: .58s; }
+  .hero-logo-entrada { animation: hero-zoom 1.2s .30s var(--ease-salida) both; }
+
+  /* Scrub: al bajar, el vídeo se acerca y el texto se desvanece; al subir, todo rebobina */
+  .hero-video-seccion[data-scrub] .hero-video-elemento {
+    transform: translate3d(0, calc(var(--p, 0) * 14%), 0) scale(calc(1.03 + var(--p, 0) * .12));
+    will-change: transform;
+  }
+  .hero-video-seccion[data-scrub] .hero-contenido {
+    transform: translate3d(0, calc(var(--p, 0) * -70px), 0);
+    opacity: calc(1 - var(--p, 0) * 1.5);
+  }
+}
+
+/* ------------------------------------------- cabecera: se esconde al bajar, vuelve al subir */
+@media (prefers-reduced-motion: no-preference) {
+  header.sticky {
+    transition: transform .4s var(--ease-salida), background-color .2s, border-color .2s;
+  }
+  header.sticky.cabecera-oculta { transform: translateY(-100%); }
+}
+
+/* ------------------------------------------------ botón para pausar los vídeos de fondo */
+.btn-video-control {
+  position: absolute;
+  right: 1rem;
+  bottom: 5.5rem;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  color: #fff;
+  background: rgba(255, 255, 255, .14);
+  border: 1px solid rgba(255, 255, 255, .4);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.btn-video-control:hover { background: rgba(255, 255, 255, .28); transform: scale(1.06); }
+.btn-video-control svg { width: 1.15rem; height: 1.15rem; }
+.btn-video-control .oculto { display: none; }
+
+/* Movimiento reducido: nada se desplaza ni desaparece */
+@media (prefers-reduced-motion: reduce) {
+  .revelar, .hero-entrada > *, .hero-logo-entrada { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; animation: none !important; }
+  header.sticky.cabecera-oculta { transform: none; }
+  @view-transition { navigation: none; }
+}
+
+/* Las tarjetas que entran desde un lado (data-reveal="left|right") no deben crear scroll horizontal */
+main { overflow-x: clip; }
