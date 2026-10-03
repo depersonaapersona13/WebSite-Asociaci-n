@@ -126,7 +126,7 @@ contacto.html         Contacto        _headers                Cabeceras HTTP de 
 robots.txt            Instrucciones   sitemap.xml             Mapa del sitio
 
 assets/css/styles.css      Estilos propios, colores de marca en :root
-assets/js/tema.js          Paleta que usa Tailwind (clases brand-*)
+tailwind.config.js         Paleta de marca para Tailwind (clases brand-*)
 assets/js/layout.js        Carga partials y marca la página activa
 assets/js/main.js          Datos, menú móvil, animaciones y formulario
 assets/js/proyectos.js     Listado y filtros de proyectos
@@ -220,7 +220,33 @@ assets/img/                Logo, favicon e imágenes (ver LEEME.txt)
 - **Hero ligado al scroll** con `data-scrub` (variable CSS `--p`), cabecera que se esconde al bajar,
   transición suave entre páginas (View Transitions), parallax en los vídeos de fondo de FAQ y CTA, contadores que cuentan y rebobinan (`data-contador`), apertura en círculo del logotipo (`data-reveal="iris"`), botón «volver arriba» y subrayado animado en el menú. Los vídeos de fondo solo se reproducen mientras se ven, y con «reducir movimiento» no se reproducen.
 - **Encabezado y pie dentro del HTML** (marcadores `<!-- layout:header:start -->`). Si cambias
-  `partials/header.html` o `partials/footer.html`, ejecuta `python tools/inyectar-layout.py`.
+  `partials/header.html` o `partials/footer.html`, ejecuta `python tools/construir.py`.
 - Cada página tiene su propio `<title>`, descripción, canonical y datos de compartir. Al añadir una
   página nueva, copia el `<head>` de otra y cambia esos campos, y añádela a `sitemap.xml`.
 - Vídeos recomprimidos (de ~16 MB a ~1 MB en total) y el poster del hero (de 700 KB a ~30 KB).
+
+
+---
+
+## 10. Idiomas, tema y Tailwind (revisión de octubre de 2026)
+
+**Idiomas (para Google).** Ya no se traduce con un botón: cada idioma tiene sus propias páginas.
+Español en la raíz (`/`, `/sobre-nosotros`…) e inglés en `/en/` (`/en/about-us`, `/en/projects`,
+`/en/contact`, `/en/legal-notice`, `/en/privacy-policy`). Cada página lleva `hreflang`, canonical propio,
+datos estructurados en su idioma y aparece en `sitemap.xml` en las dos versiones. El selector ES/EN del
+encabezado son enlaces normales. El nombre de la entidad y el eslogan se quedan en español en inglés.
+
+- **Los textos en inglés se escriben en `data/textos.json`** (y en `data/site.json`, usando
+  `{"es": "…", "en": "…"}` en cualquier campo). Las páginas `/en/` NO se editan a mano.
+- Después de cambiar textos, HTML, `partials/` o `data/textos.json`, ejecuta:  `python tools/construir.py`
+  (necesita `pip install beautifulsoup4`). El script regenera `/en/`, el sitemap y `assets/js/idiomas.js`, y
+  avisa si queda algo en español sin traducir en inglés.
+- Si cambias el dominio, cambia `BASE` en `tools/construir.py` y vuelve a ejecutarlo.
+
+**Tema claro/oscuro.** Sigue siempre al dispositivo (`prefers-color-scheme`), sin botón ni preferencia
+guardada, y cambia solo si el sistema cambia.
+
+**Tailwind sin CDN.** El CSS se compila a `assets/css/tailwind.css`. Cuando añadas clases de Tailwind
+nuevas en el HTML o el JS, recompila:  `npm install` (una vez) y `npm run css`.
+`npm run todo` hace los dos pasos (construir + CSS). Para verla en local: `npm run servir`.
+La web no funciona abriendo `index.html` con doble clic (rutas absolutas y `fetch`): hay que servirla.

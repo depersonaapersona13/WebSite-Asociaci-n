@@ -1,5 +1,5 @@
 /* animaciones.js — scroll reveal con "rewind", contadores, parallax, cabecera inteligente,
- * gestión de vídeos de fondo y botón "volver arriba".
+ * y gestión de vídeos de fondo.
  *
  * Sin dependencias. Se carga con "defer" ANTES de main.js (ver <head> de cada página).
  * Estilos asociados: assets/css/animaciones.css
@@ -24,6 +24,14 @@
 
   raiz.classList.add("js");
   raiz.dataset.revelado = "si";
+
+  function texto(clave, reserva) {
+    if (typeof window.textoSitio === "function") {
+      var t = window.textoSitio(clave);
+      if (t) return t;
+    }
+    return reserva;
+  }
 
   /* ------------------------------------------------ 1. Scroll reveal + rewind */
 
@@ -256,35 +264,6 @@
     videos.forEach(function (v) { vigilante.observe(v); });
   }
 
-  /* ------------------------------------------------ 6. Botón "volver arriba" */
-
-  function iniciarVolverArriba() {
-    var boton = document.createElement("button");
-    boton.type = "button";
-    boton.className = "volver-arriba";
-    var en = (raiz.lang || "es").slice(0, 2) === "en";
-    boton.setAttribute("aria-label", en ? "Back to top" : "Volver arriba");
-    boton.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
-    document.body.appendChild(boton);
-
-    var pendiente = false;
-    function revisar() {
-      pendiente = false;
-      boton.classList.toggle("visible", window.scrollY > 700);
-    }
-    window.addEventListener("scroll", function () {
-      if (!pendiente) { pendiente = true; window.requestAnimationFrame(revisar); }
-    }, { passive: true });
-    boton.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: reducir ? "auto" : "smooth" });
-    });
-    /* El idioma se cambia desde idiomas.js, que actualiza <html lang> */
-    document.addEventListener("idioma:cambiado", function () {
-      boton.setAttribute("aria-label", (raiz.lang || "es").slice(0, 2) === "en" ? "Back to top" : "Volver arriba");
-    });
-    revisar();
-  }
-
   /* ------------------------------------------------ arranque */
 
   function iniciar() {
@@ -293,7 +272,6 @@
     iniciarScrub();
     iniciarCabecera();
     iniciarVideos();
-    iniciarVolverArriba();
     window.DPAPAnim = { escanear: escanear };
   }
 

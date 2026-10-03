@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Contact · De Personas a Personas</title>
+<meta content="Write to us to take part, suggest an activity or collaborate with De Personas a Personas, a youth mutual support association in Seville." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="#8FB9E0" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#0D2236" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<link href="https://depersonaapersona13-web.pages.dev/en/contact" rel="canonical"/>
+<link href="https://depersonaapersona13-web.pages.dev/contacto" hreflang="es" rel="alternate"/>
+<link href="https://depersonaapersona13-web.pages.dev/en/contact" hreflang="en" rel="alternate"/>
+<link href="https://depersonaapersona13-web.pages.dev/contacto" hreflang="x-default" rel="alternate"/>
+<!-- Vista previa al compartir por WhatsApp, Instagram, X, Facebook... -->
+<meta content="website" property="og:type"/>
+<meta content="De Personas a Personas" property="og:site_name"/>
+<meta content="en_GB" property="og:locale"/>
+<meta content="es_ES" property="og:locale:alternate"/>
+<meta content="Contact · De Personas a Personas" property="og:title"/>
+<meta content="Write to us to take part, suggest an activity or collaborate with De Personas a Personas, a youth mutual support association in Seville." property="og:description"/>
+<meta content="https://depersonaapersona13-web.pages.dev/en/contact" property="og:url"/>
+<meta content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Contact · De Personas a Personas" name="twitter:title"/>
+<meta content="Write to us to take part, suggest an activity or collaborate with De Personas a Personas, a youth mutual support association in Seville." name="twitter:description"/>
+<meta content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png" name="twitter:image"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://depersonaapersona13-web.pages.dev/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact",
+      "item": "https://depersonaapersona13-web.pages.dev/en/contact"
+    }
+  ]
+}
+  </script>
+<link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<!-- Rendimiento: el logo es la imagen más importante; el JSON se pide cuanto antes -->
+<link as="image" fetchpriority="high" href="/assets/img/logo.png" rel="preload"/>
+<link as="fetch" crossorigin="anonymous" href="/data/site.json" rel="preload"/>
+<!-- Tema claro/oscuro según el dispositivo, antes de pintar (evita el destello) -->
+<script src="/assets/js/tema-visual.js"></script>
+<link href="/assets/css/styles.css" rel="stylesheet"/>
+<link href="/assets/css/animaciones.css" rel="stylesheet"/>
+<!-- Tailwind compilado en local (sin CDN). Va el último, como hacía el CDN. Recompilar: ver README -->
+<link href="/assets/css/tailwind.css" rel="stylesheet"/>
+<!-- Animaciones, textos del sitio (idiomas.js: lo genera tools/construir.py) y lógica general -->
+<script defer="" src="/assets/js/animaciones.js"></script>
+<script defer="" src="/assets/js/idiomas.js"></script>
+<script defer="" src="/assets/js/layout.js"></script>
+<script defer="" src="/assets/js/main.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-white text-brand-900 antialiased" data-pagina="contacto">
+<a class="salto-contenido" data-i18n="comun.saltar" href="#contenido">Skip to content</a>
+<!-- layout:header:start -->
+<header class="sticky top-0 z-50 border-b border-brand-100/80 bg-white/90 backdrop-blur-md transition-colors duration-200">
+<div aria-hidden="true" class="barra-progreso" id="barra-progreso"></div>
+<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+<a class="flex items-center gap-3" href="/en/">
+<!-- El logo real vive en assets/img/logo.png -->
+<img alt="De Personas a Personas logo" class="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-brand-100 sm:h-12 sm:w-12" data-logo="" height="48" src="/assets/img/logo.png" width="48"/>
+<span class="leading-tight">
+<span class="block text-sm font-bold tracking-tight text-brand-900 sm:text-base">De Personas a Personas</span>
+<span class="hidden text-xs text-brand-700 sm:block">Jóvenes que se apoyan entre sí</span>
+</span>
+</a>
+<nav aria-label="Main" class="hidden lg:block">
+<ul class="flex items-center gap-7 text-sm">
+<li><a class="nav-enlace" data-i18n="nav.inicio" data-nav="inicio" href="/en/">Home</a></li>
+<li><a class="nav-enlace" data-i18n="nav.sobre" data-nav="sobre-nosotros" href="/en/about-us">About Us</a></li>
+<li><a class="nav-enlace" data-i18n="nav.proyectos" data-nav="proyectos" href="/en/projects">Projects</a></li>
+<li><a aria-current="page" class="nav-enlace" data-i18n="nav.contacto" data-nav="contacto" href="/en/contact">Contact</a></li>
+</ul>
+</nav>
+<div class="flex items-center gap-2">
+<a class="hidden rounded-full bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-800 lg:inline-flex" data-i18n="nav.cta" href="/en/contact">Get in touch</a>
+<!-- Idiomas: enlaces normales a la versión equivalente (los pone tools/construir.py) -->
+<div aria-label="Idioma / Language" class="selector-idioma" role="group">
+<a class="idioma-btn" data-idioma="es" href="/contacto" hreflang="es" lang="es">ES</a>
+<a aria-current="true" class="idioma-btn" data-idioma="en" href="/en/contact" hreflang="en" lang="en">EN</a>
+</div>
+<button aria-controls="menu-movil" aria-expanded="false" aria-label="Open navigation menu" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 text-brand-800 lg:hidden" data-i18n-aria-label="nav.abrirMenu" id="boton-menu" type="button">
+<span class="sr-only" data-i18n="nav.abrirMenu">Open navigation menu</span>
+<svg aria-hidden="true" class="icono-abrir h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+</svg>
+<svg aria-hidden="true" class="icono-cerrar h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<div class="border-t border-brand-100 bg-white lg:hidden" hidden="" id="menu-movil">
+<nav aria-label="Mobile menu" class="mx-auto max-w-6xl px-4 py-3 sm:px-6">
+<ul class="space-y-1 text-base">
+<li><a class="nav-enlace block py-2" data-i18n="nav.inicio" data-nav="inicio" href="/en/">Home</a></li>
+<li><a class="nav-enlace block py-2" data-i18n="nav.sobre" data-nav="sobre-nosotros" href="/en/about-us">About Us</a></li>
+<li><a class="nav-enlace block py-2" data-i18n="nav.proyectos" data-nav="proyectos" href="/en/projects">Projects</a></li>
+<li><a aria-current="page" class="nav-enlace block py-2" data-i18n="nav.contacto" data-nav="contacto" href="/en/contact">Contact</a></li>
+<li class="pt-2"><a class="btn btn-primario w-full" data-i18n="nav.cta" href="/en/contact">Get in touch</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<!-- layout:header:end -->
+<main class="flex-1" id="contenido">
+<!-- Cabecera de página -->
+<section class="border-b border-brand-100 bg-brand-50">
+<div class="hero-entrada mx-auto max-w-6xl px-4 py-14 sm:px-6">
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="contacto.kicker">Contact</p>
+<h1 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl" data-i18n="contacto.titulo">Let's talk</h1>
+<p class="mt-4 max-w-3xl text-lg text-brand-900/80" data-i18n="contacto.intro">Would you like to take part, suggest something or just ask us a question? Write to us in whatever way suits you best.</p>
+</div>
+</section>
+<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+<div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+<div class="revelar" data-reveal="left">
+<h2 class="text-2xl font-bold text-brand-900" data-i18n="contacto.datosTitulo">Contact details</h2>
+<div class="mt-6" data-contacto-detalle=""></div>
+<h2 class="mt-10 text-lg font-bold text-brand-900" data-i18n="contacto.redesTitulo">Social networks</h2>
+<div class="mt-4" data-redes-claro=""></div>
+<div class="mt-10">
+<h2 class="text-lg font-bold text-brand-900" data-i18n="contacto.antesTitulo">Before you write to us</h2>
+<p class="mt-3 text-sm leading-relaxed text-brand-900/80" data-i18n="contacto.antesTexto">We use the information you send us only to reply to you, and we never share it with third parties. If you ask about activities, we will write back from the association's email address.</p>
+</div>
+</div>
+<div class="revelar" data-reveal="right">
+<form class="tarjeta p-6 sm:p-8" data-formulario-contacto="" novalidate="">
+<h2 class="text-2xl font-bold text-brand-900" data-i18n="contacto.formTitulo">Write to us</h2>
+<p class="mt-2 text-sm text-brand-900/70" data-i18n="contacto.formAviso">Fields marked with * are required.</p>
+<div class="mt-6 grid gap-5 sm:grid-cols-2">
+<div>
+<label class="block text-sm font-semibold text-brand-900" data-i18n="contacto.lblNombre" for="nombre">Name *</label>
+<input aria-describedby="error-nombre" autocomplete="name" class="campo mt-2" data-i18n-placeholder="contacto.placeholderNombre" id="nombre" name="nombre" placeholder="Your name" required="" type="text"/>
+<p class="error-campo" hidden="" id="error-nombre"></p>
+</div>
+<div>
+<label class="block text-sm font-semibold text-brand-900" data-i18n="contacto.lblEmail" for="email">Email *</label>
+<input aria-describedby="error-email" autocomplete="email" class="campo mt-2" data-i18n-placeholder="contacto.placeholderEmail" id="email" name="email" placeholder="your@email.com" required="" type="email"/>
+<p class="error-campo" hidden="" id="error-email"></p>
+</div>
+</div>
+<div class="mt-5">
+<label class="block text-sm font-semibold text-brand-900" data-i18n="contacto.lblAsunto" for="asunto">Subject</label>
+<input autocomplete="off" class="campo mt-2" data-i18n-placeholder="contacto.placeholderAsunto" id="asunto" name="asunto" placeholder="What would you like to write about?" type="text"/>
+</div>
+<div class="mt-5">
+<label class="block text-sm font-semibold text-brand-900" data-i18n="contacto.lblMensaje" for="mensaje">Message *</label>
+<textarea aria-describedby="error-mensaje" autocomplete="off" class="campo mt-2" data-i18n-placeholder="contacto.placeholderMensaje" id="mensaje" name="mensaje" placeholder="Tell us what you need..." required="" rows="6"></textarea>
+<p class="error-campo" hidden="" id="error-mensaje"></p>
+</div>
+<!-- Trampa anti-spam: invisible para las personas, los bots sí la rellenan -->
+<div aria-hidden="true" class="hidden">
+<label data-i18n="contacto.lblNoRellenar" for="empresa">Do not fill in this field</label>
+<input autocomplete="off" id="empresa" name="empresa" tabindex="-1" type="text"/>
+</div>
+<div class="mt-6 flex items-start gap-3">
+<input aria-describedby="error-privacidad" class="mt-1 h-5 w-5 rounded border-brand-200" id="privacidad" name="privacidad" required="" type="checkbox"/>
+<label class="text-sm leading-relaxed text-brand-900/80" for="privacidad">
+<span data-i18n="contacto.lblPrivacidadParte1">I have read and agree to the</span>
+<a class="enlace font-semibold" data-i18n="contacto.lblPrivacidadEnlace" href="/en/privacy-policy">privacy policy</a>
+<span data-i18n="contacto.lblPrivacidadParte2">and that my data will be used solely to reply to this message. *</span>
+</label>
+</div>
+<p class="error-campo" hidden="" id="error-privacidad"></p>
+<button class="btn btn-primario mt-6 w-full" data-i18n="contacto.btnEnviar" type="submit">Send message</button>
+<div aria-live="polite" class="mt-4" data-aviso=""></div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- layout:footer:start -->
+<!-- partials/footer.html — pie compartido. Lo copia dentro de cada página tools/construir.py
+     Los datos de contacto, redes y legales los rellena main.js desde data/site.json -->
+<footer class="mt-20 bg-brand-900 text-brand-100">
+<div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
+<div>
+<div class="flex items-center gap-3">
+<img alt="" class="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-white/20" data-logo="" height="48" src="/assets/img/logo.png" width="48"/>
+<p class="font-bold leading-tight text-white">
+          De Personas a Personas
+          <span class="mt-1 block text-xs font-medium text-brand-200">Jóvenes que se apoyan entre sí</span>
+</p>
+</div>
+<p class="mt-5 text-sm leading-relaxed text-brand-200" data-sitio="meta.descripcionCorta"></p>
+</div>
+<nav aria-label="Footer">
+<h2 class="text-xs font-bold uppercase tracking-widest text-white" data-i18n="footer.navegacion">Navigation</h2>
+<ul class="mt-5 space-y-3 text-sm">
+<li><a class="enlace-pie" data-i18n="nav.inicio" href="/en/">Home</a></li>
+<li><a class="enlace-pie" data-i18n="nav.sobre" href="/en/about-us">About Us</a></li>
+<li><a class="enlace-pie" data-i18n="nav.proyectos" href="/en/projects">Projects</a></li>
+<li><a class="enlace-pie" data-i18n="nav.contacto" href="/en/contact">Contact</a></li>
+</ul>
+</nav>
+<div>
+<h2 class="text-xs font-bold uppercase tracking-widest text-white" data-i18n="footer.contactoTitulo">Contact</h2>
+<ul class="mt-5 space-y-3 text-sm" data-contacto=""></ul>
+<div class="mt-4">
+<a class="btn btn-claro w-full text-sm" data-i18n="footer.cta" href="/en/contact">Get in touch</a>
+</div>
+<div class="mt-6" data-redes=""></div>
+</div>
+</div>
+<div class="border-t border-white/10">
+<div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-xs text-brand-200 sm:px-6 md:flex-row md:items-center md:justify-between">
+<p>© <span data-anio="">2026</span> De Personas a Personas · All rights reserved.</p>
+<div class="flex flex-wrap items-center gap-4">
+<a class="enlace-pie" data-i18n="footer.avisoLegal" href="/en/legal-notice">Legal notice</a>
+<span aria-hidden="true" class="text-white/20">·</span>
+<a class="enlace-pie" data-i18n="footer.privacidad" href="/en/privacy-policy">Privacy policy</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- layout:footer:end -->
+</body>
+</html>

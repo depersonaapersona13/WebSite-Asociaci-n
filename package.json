@@ -1,0 +1,14 @@
+{
+  "name": "deperaper13-web",
+  "private": true,
+  "description": "Web de De Personas a Personas",
+  "scripts": {
+    "css": "tailwindcss -c tailwind.config.js -i src/tailwind-entrada.css -o assets/css/tailwind.css --minify",
+    "construir": "python tools/construir.py",
+    "todo": "npm run construir && npm run css",
+    "servir": "npx serve ."
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

@@ -239,26 +239,15 @@ body { animation: aparecer .45s ease-out both; }
   border: 1px solid var(--brand-200); background: #fff;
 }
 .idioma-btn {
-  min-width: 2.4rem; padding: .3rem .55rem; border: 0; border-radius: 9999px;
+  display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
+  min-width: 2.6rem; min-height: 2.25rem; padding: .3rem .6rem; border: 0; border-radius: 9999px;
   background: transparent; color: var(--brand-800);
   font-size: .72rem; font-weight: 700; letter-spacing: .04em; cursor: pointer;
   transition: background-color .2s ease, color .2s ease;
 }
-.idioma-btn:hover[aria-pressed="false"] { background: var(--brand-100); }
-.idioma-btn[aria-pressed="true"] { background: var(--brand-700); color: #fff; }
+.idioma-btn:hover:not([aria-current="true"]) { background: var(--brand-100); }
+.idioma-btn[aria-current="true"] { background: var(--brand-700); color: #fff; }
 
-/* Botón de tema claro/oscuro */
-#boton-tema {
-  display: inline-flex; width: 2.5rem; height: 2.5rem; align-items: center; justify-content: center;
-  border-radius: 9999px; border: 1px solid var(--brand-200); background: #fff; color: var(--brand-800);
-  cursor: pointer; transition: background-color .2s ease, transform .15s ease, color .2s ease;
-}
-#boton-tema:hover { background: var(--brand-50); transform: translateY(-1px); }
-#boton-tema:active { transform: scale(.94); }
-#boton-tema svg { width: 1.15rem; height: 1.15rem; }
-.icono-sol { display: none; }
-.modo-oscuro .icono-sol { display: block; }
-.modo-oscuro .icono-luna { display: none; }
 
 /* Estrellas de los testimonios */
 .estrellas svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
@@ -283,7 +272,8 @@ body { animation: aparecer .45s ease-out both; }
 .hero-video-seccion {
   position: relative;
   background-color: #0b1a2c;
-  min-height: 82vh;
+  min-height: min(82vh, 46rem);
+  min-height: min(82svh, 46rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -507,9 +497,7 @@ body { animation: aparecer .45s ease-out both; }
 .modo-oscuro .enlace-red-claro:hover { background: #1E4062; color: #B9D4EC; }
 .modo-oscuro .selector-idioma { background: #0F2537; border-color: #24445F; }
 .modo-oscuro .idioma-btn { color: #B9D4EC; }
-.modo-oscuro .idioma-btn:hover[aria-pressed="false"] { background: #16324B; }
-.modo-oscuro #boton-tema { background: #0F2537; border-color: #24445F; color: #E3EEF8; }
-.modo-oscuro #boton-tema:hover { background: #16324B; }
+.modo-oscuro .idioma-btn:hover:not([aria-current="true"]) { background: #16324B; }
 .modo-oscuro #pantalla-carga { background: #1D4E7C; color: #E3EEF8; }
 .modo-oscuro #menu-movil { background: #0F2537; border-color: #1C3A55; }
 .modo-oscuro .esqueleto {
@@ -538,7 +526,7 @@ body { animation: aparecer .45s ease-out both; }
   body { animation: none; }
   #menu-movil:not([hidden]) { animation: none; }
   .btn:hover, .btn:active { transform: none; }
-  .enlace-red:hover, #boton-tema:hover, #boton-tema:active,
+  .enlace-red:hover,
   .boton-arriba:hover, .boton-arriba:active { transform: none; }
   .esqueleto { animation: none; }
   .acordeon-panel, .acordeon-icono { transition: none; }
@@ -672,4 +660,14 @@ body { animation: aparecer .45s ease-out both; }
 @media (prefers-reduced-motion: reduce) {
   .faq-video-elemento,
   .cta-video-elemento { animation: none; }
-}
+}
+
+
+/* Tipografía: los titulares reparten las líneas por igual (sin palabras sueltas al final) */
+h1, h2, h3, .cifra-numero, blockquote { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+/* Pantallas táctiles: enlaces sueltos con un área de toque cómoda */
+@media (pointer: coarse) {
+  .enlace-pie, [data-contacto] a { display: inline-block; padding-block: 0.45rem; }
+}

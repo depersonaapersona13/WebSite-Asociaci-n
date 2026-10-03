@@ -11,5 +11,13 @@
 /politica-privacidad/ /politica-privacidad.html 200
 /inicio/           /                      301
 
+# Versión en inglés (/en/): barra final y /en sin barra
+/en                    /en/                   301
+/en/about-us/          /en/about-us.html      200
+/en/projects/          /en/projects.html      200
+/en/contact/           /en/contact.html       200
+/en/legal-notice/      /en/legal-notice.html  200
+/en/privacy-policy/    /en/privacy-policy.html 200
+
 # Ejemplo de redirección permanente (301) por si algún día cambiáis de dominio:
 # /antiguo/        https://depersonaapersona13-web.pages.dev/   301

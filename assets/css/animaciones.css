@@ -138,25 +138,11 @@ header nav[aria-label="Principal"] .nav-enlace:not([aria-current="page"]):hover:
 .tarjeta > span.inline-flex { transition: transform .35s var(--ease-salida), background-color .25s ease, color .25s ease; }
 .tarjeta:hover > span.inline-flex { transform: scale(1.1) rotate(-6deg); background-color: var(--brand-700); color: #fff; }
 
-/* Botón "volver arriba" */
-.volver-arriba {
-  position: fixed; right: 1rem; bottom: 1rem; z-index: 40;
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 2.75rem; height: 2.75rem; border: 0; border-radius: 9999px;
-  background: var(--brand-700); color: #fff; cursor: pointer;
-  box-shadow: 0 8px 20px -8px rgba(22, 58, 92, .6);
-  opacity: 0; transform: translateY(14px); pointer-events: none;
-  transition: opacity .3s ease, transform .35s var(--ease-salida), background-color .2s ease;
-}
-.volver-arriba.visible { opacity: 1; transform: none; pointer-events: auto; }
-.volver-arriba:hover { background: var(--brand-800); }
-
 /* Movimiento reducido: nada se desplaza ni desaparece */
 @media (prefers-reduced-motion: reduce) {
   .revelar, .hero-entrada > *, .hero-logo-entrada { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; animation: none !important; }
   header.sticky.cabecera-oculta { transform: none; }
   .kicker-anim::before { width: 1.75rem !important; margin-right: .7rem !important; }
-  .volver-arriba { transition: none; }
   html { scroll-behavior: auto; }
   @view-transition { navigation: none; }
 }

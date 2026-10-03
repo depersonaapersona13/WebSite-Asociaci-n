@@ -60,6 +60,22 @@
 
   var peticionSitio = null;
 
+  /* Cualquier valor de site.json puede ser un texto simple o {"es": "...", "en": "..."}:
+     aquí se deja solo el texto del idioma de la página (<html lang>). */
+  function resolverIdioma(nodo) {
+    var lang = typeof window.idiomaSitio === "function" ? window.idiomaSitio() : "es";
+    if (Array.isArray(nodo)) return nodo.map(resolverIdioma);
+    if (nodo && typeof nodo === "object") {
+      if (typeof nodo.es === "string" && Object.keys(nodo).every(function (k) { return k === "es" || k === "en"; })) {
+        return typeof nodo[lang] === "string" && nodo[lang] ? nodo[lang] : nodo.es;
+      }
+      var salida = {};
+      Object.keys(nodo).forEach(function (k) { salida[k] = resolverIdioma(nodo[k]); });
+      return salida;
+    }
+    return nodo;
+  }
+
   window.obtenerSitio = function () {
     if (!peticionSitio) {
       peticionSitio = fetch(RAIZ + "data/site.json", { cache: "no-cache" })
@@ -67,6 +83,7 @@
           if (!respuesta.ok) throw new Error("HTTP " + respuesta.status);
           return respuesta.json();
         })
+        .then(function (datos) { return resolverIdioma(datos); })
         .catch(function (error) {
           console.error("[datos] No se pudo leer data/site.json:", error);
           return null;
@@ -731,16 +748,6 @@
       document.dispatchEvent(new CustomEvent("datos:cargados"));
     });
   }
-
-  /* Al cambiar de idioma se re-renderiza todo lo que viene de site.json */
-  var idiomaTimer = null;
-  document.addEventListener("idioma:cambiado", function () {
-    if (idiomaTimer) window.clearTimeout(idiomaTimer);
-    idiomaTimer = window.setTimeout(function () {
-      idiomaTimer = null;
-      arrancarDatos();
-    }, 60);
-  });
 
   /* El encabezado y el pie se inyectan de forma asíncrona: cuando ya están en el
      documento se inicializan los elementos que contienen (menú, contacto, redes...). */

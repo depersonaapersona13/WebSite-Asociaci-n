@@ -14,6 +14,11 @@
       : "activo";
   }
 
+  function t(clave, reserva) {
+    var texto = typeof window.textoSitio === "function" ? window.textoSitio(clave) : "";
+    return texto || reserva;
+  }
+
   function iniciar() {
     var lista = document.querySelector("[data-proyectos]");
     if (!lista || typeof window.obtenerSitio !== "function") return;
@@ -37,15 +42,15 @@
 
         if (cuenta) {
           cuenta.textContent = proyectos.length
-            ? "Mostrando " + visibles.length + " de " + proyectos.length + " proyectos."
+            ? window.interpolarSitio(t("comun.cuentaProyectos", "Mostrando {a} de {b} proyectos."), { a: visibles.length, b: proyectos.length })
             : "";
         }
 
         if (aviso) {
           if (!proyectos.length) {
-            aviso.innerHTML = '<p class="pendiente">Pendiente de publicar los proyectos: se añaden en data/site.json.</p>';
+            aviso.innerHTML = '<p class="pendiente">' + t("comun.pendienteProyectos", "Pendiente de publicar los proyectos.") + "</p>";
           } else if (!visibles.length) {
-            aviso.innerHTML = '<p class="pendiente">Todavía no hay proyectos con este filtro.</p>';
+            aviso.innerHTML = '<p class="pendiente">' + t("comun.sinResultados", "Todavía no hay proyectos con este filtro.") + "</p>";
           } else {
             aviso.innerHTML = "";
           }

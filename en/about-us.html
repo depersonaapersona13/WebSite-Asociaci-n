@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>About us · De Personas a Personas</title>
+<meta content="Who we are, what drives us and who makes up the team of De Personas a Personas, a youth mutual support association in Seville." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="#8FB9E0" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#0D2236" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<link href="https://depersonaapersona13-web.pages.dev/en/about-us" rel="canonical"/>
+<link href="https://depersonaapersona13-web.pages.dev/sobre-nosotros" hreflang="es" rel="alternate"/>
+<link href="https://depersonaapersona13-web.pages.dev/en/about-us" hreflang="en" rel="alternate"/>
+<link href="https://depersonaapersona13-web.pages.dev/sobre-nosotros" hreflang="x-default" rel="alternate"/>
+<!-- Vista previa al compartir por WhatsApp, Instagram, X, Facebook... -->
+<meta content="website" property="og:type"/>
+<meta content="De Personas a Personas" property="og:site_name"/>
+<meta content="en_GB" property="og:locale"/>
+<meta content="es_ES" property="og:locale:alternate"/>
+<meta content="About us · De Personas a Personas" property="og:title"/>
+<meta content="Who we are, what drives us and who makes up the team of De Personas a Personas, a youth mutual support association in Seville." property="og:description"/>
+<meta content="https://depersonaapersona13-web.pages.dev/en/about-us" property="og:url"/>
+<meta content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="About us · De Personas a Personas" name="twitter:title"/>
+<meta content="Who we are, what drives us and who makes up the team of De Personas a Personas, a youth mutual support association in Seville." name="twitter:description"/>
+<meta content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png" name="twitter:image"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://depersonaapersona13-web.pages.dev/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "About us",
+      "item": "https://depersonaapersona13-web.pages.dev/en/about-us"
+    }
+  ]
+}
+  </script>
+<link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<!-- Rendimiento: el logo es la imagen más importante; el JSON se pide cuanto antes -->
+<link as="image" fetchpriority="high" href="/assets/img/logo.png" rel="preload"/>
+<link as="fetch" crossorigin="anonymous" href="/data/site.json" rel="preload"/>
+<!-- Tema claro/oscuro según el dispositivo, antes de pintar (evita el destello) -->
+<script src="/assets/js/tema-visual.js"></script>
+<link href="/assets/css/styles.css" rel="stylesheet"/>
+<link href="/assets/css/animaciones.css" rel="stylesheet"/>
+<!-- Tailwind compilado en local (sin CDN). Va el último, como hacía el CDN. Recompilar: ver README -->
+<link href="/assets/css/tailwind.css" rel="stylesheet"/>
+<!-- Animaciones, textos del sitio (idiomas.js: lo genera tools/construir.py) y lógica general -->
+<script defer="" src="/assets/js/animaciones.js"></script>
+<script defer="" src="/assets/js/idiomas.js"></script>
+<script defer="" src="/assets/js/layout.js"></script>
+<script defer="" src="/assets/js/main.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-white text-brand-900 antialiased" data-pagina="sobre-nosotros">
+<a class="salto-contenido" data-i18n="comun.saltar" href="#contenido">Skip to content</a>
+<!-- layout:header:start -->
+<header class="sticky top-0 z-50 border-b border-brand-100/80 bg-white/90 backdrop-blur-md transition-colors duration-200">
+<div aria-hidden="true" class="barra-progreso" id="barra-progreso"></div>
+<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+<a class="flex items-center gap-3" href="/en/">
+<!-- El logo real vive en assets/img/logo.png -->
+<img alt="De Personas a Personas logo" class="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-brand-100 sm:h-12 sm:w-12" data-logo="" height="48" src="/assets/img/logo.png" width="48"/>
+<span class="leading-tight">
+<span class="block text-sm font-bold tracking-tight text-brand-900 sm:text-base">De Personas a Personas</span>
+<span class="hidden text-xs text-brand-700 sm:block">Jóvenes que se apoyan entre sí</span>
+</span>
+</a>
+<nav aria-label="Main" class="hidden lg:block">
+<ul class="flex items-center gap-7 text-sm">
+<li><a class="nav-enlace" data-i18n="nav.inicio" data-nav="inicio" href="/en/">Home</a></li>
+<li><a aria-current="page" class="nav-enlace" data-i18n="nav.sobre" data-nav="sobre-nosotros" href="/en/about-us">About Us</a></li>
+<li><a class="nav-enlace" data-i18n="nav.proyectos" data-nav="proyectos" href="/en/projects">Projects</a></li>
+<li><a class="nav-enlace" data-i18n="nav.contacto" data-nav="contacto" href="/en/contact">Contact</a></li>
+</ul>
+</nav>
+<div class="flex items-center gap-2">
+<a class="hidden rounded-full bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-800 lg:inline-flex" data-i18n="nav.cta" href="/en/contact">Get in touch</a>
+<!-- Idiomas: enlaces normales a la versión equivalente (los pone tools/construir.py) -->
+<div aria-label="Idioma / Language" class="selector-idioma" role="group">
+<a class="idioma-btn" data-idioma="es" href="/sobre-nosotros" hreflang="es" lang="es">ES</a>
+<a aria-current="true" class="idioma-btn" data-idioma="en" href="/en/about-us" hreflang="en" lang="en">EN</a>
+</div>
+<button aria-controls="menu-movil" aria-expanded="false" aria-label="Open navigation menu" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 text-brand-800 lg:hidden" data-i18n-aria-label="nav.abrirMenu" id="boton-menu" type="button">
+<span class="sr-only" data-i18n="nav.abrirMenu">Open navigation menu</span>
+<svg aria-hidden="true" class="icono-abrir h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+</svg>
+<svg aria-hidden="true" class="icono-cerrar h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<div class="border-t border-brand-100 bg-white lg:hidden" hidden="" id="menu-movil">
+<nav aria-label="Mobile menu" class="mx-auto max-w-6xl px-4 py-3 sm:px-6">
+<ul class="space-y-1 text-base">
+<li><a class="nav-enlace block py-2" data-i18n="nav.inicio" data-nav="inicio" href="/en/">Home</a></li>
+<li><a aria-current="page" class="nav-enlace block py-2" data-i18n="nav.sobre" data-nav="sobre-nosotros" href="/en/about-us">About Us</a></li>
+<li><a class="nav-enlace block py-2" data-i18n="nav.proyectos" data-nav="proyectos" href="/en/projects">Projects</a></li>
+<li><a class="nav-enlace block py-2" data-i18n="nav.contacto" data-nav="contacto" href="/en/contact">Contact</a></li>
+<li class="pt-2"><a class="btn btn-primario w-full" data-i18n="nav.cta" href="/en/contact">Get in touch</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<!-- layout:header:end -->
+<main class="flex-1" id="contenido">
+<!-- Cabecera de página -->
+<section class="border-b border-brand-100 bg-brand-50">
+<div class="hero-entrada mx-auto max-w-6xl px-4 py-14 sm:px-6">
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="sobre.kicker">About Us</p>
+<h1 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl" data-i18n="sobre.titulo">Who we are</h1>
+<p class="mt-4 max-w-3xl text-lg text-brand-900/80" data-i18n="sobre.intro">We are an association of young people who support each other. We came together to look out for one another, share what we know and build things together.</p>
+</div>
+</section>
+<!-- Historia -->
+<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+<div class="grid gap-12 md:grid-cols-[1.3fr_1fr]">
+<div class="revelar">
+<h2 class="text-2xl font-bold text-brand-900" data-i18n="sobre.historiaTitulo">Our story</h2>
+<p class="mt-4 leading-relaxed text-brand-900/80" data-i18n="sobre.historiaP1">We were born from something very simple: a group of young people who decided not to leave anyone behind. We started by getting together to talk about what was on our minds, and little by little that space became an association.</p>
+<p class="mt-4 leading-relaxed text-brand-900/80" data-i18n="sobre.historiaP2">Today we keep the same idea: that supporting each other should feel natural, that asking for help should never be embarrassing, and that what one person learns should also help the rest.</p>
+</div>
+<div class="revelar">
+<img alt="De Personas a Personas logo" class="revelar mx-auto h-44 w-44 rounded-full object-cover shadow-xl ring-4 ring-brand-100 sm:h-52 sm:w-52" data-logo="" data-reveal="iris" height="224" src="/assets/img/logo.png" width="224"/>
+<p class="mt-6 text-center text-lg font-semibold text-brand-700" data-i18n="sobre.cita">«Jóvenes que se apoyan entre sí»</p>
+</div>
+</div>
+</section>
+<!-- Misión y visión -->
+<section class="border-y border-brand-100 bg-brand-50">
+<div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+<div class="grid gap-6 md:grid-cols-2">
+<div class="revelar tarjeta h-full p-8">
+<h2 class="text-xl font-bold text-brand-900" data-i18n="sobre.mision">Our mission</h2>
+<p class="mt-4 leading-relaxed text-brand-900/80" data-i18n="sobre.misionTexto">To stand by young people who need support, creating safe spaces for listening, learning and mutual aid where no one feels alone.</p>
+</div>
+<div class="revelar tarjeta h-full p-8">
+<h2 class="text-xl font-bold text-brand-900" data-i18n="sobre.vision">Our vision</h2>
+<p class="mt-4 leading-relaxed text-brand-900/80" data-i18n="sobre.visionTexto">A community where supporting each other is the norm: young people holding each other up, with a network strong enough for anyone to find help when they need it.</p>
+</div>
+</div>
+<h2 class="mt-14 text-2xl font-bold text-brand-900" data-i18n="sobre.valoresTitulo">Our values</h2>
+<p class="mt-3 max-w-2xl text-brand-900/80" data-i18n="sobre.valoresIntro">These are the principles that guide everything we do:</p>
+<ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+<li class="revelar tarjeta h-full p-6">
+<h3 class="font-bold text-brand-900" data-i18n="sobre.valor1Titulo">Mutual support</h3>
+<p class="mt-2 text-sm leading-relaxed text-brand-900/80" data-i18n="sobre.valor1Texto">We look after each other as equals: asking for help and offering it is part of who we are.</p>
+</li>
+<li class="revelar tarjeta h-full p-6">
+<h3 class="font-bold text-brand-900" data-i18n="sobre.valor2Titulo">Closeness</h3>
+<p class="mt-2 text-sm leading-relaxed text-brand-900/80" data-i18n="sobre.valor2Texto">We speak plainly, without jargon or judgement, and we address every person by name.</p>
+</li>
+<li class="revelar tarjeta h-full p-6">
+<h3 class="font-bold text-brand-900" data-i18n="sobre.valor3Titulo">Commitment</h3>
+<p class="mt-2 text-sm leading-relaxed text-brand-900/80" data-i18n="sobre.valor3Texto">What we say we will do, we do. With consistency and with time.</p>
+</li>
+<li class="revelar tarjeta h-full p-6">
+<h3 class="font-bold text-brand-900" data-i18n="sobre.valor4Titulo">Transparency</h3>
+<p class="mt-2 text-sm leading-relaxed text-brand-900/80" data-i18n="sobre.valor4Texto">We publish who we are and where every resource we manage comes from.</p>
+</li>
+</ul>
+</div>
+</section>
+<!-- Equipo -->
+<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+<h2 class="text-2xl font-bold text-brand-900" data-i18n="sobre.juntaTitulo">Team</h2>
+<p class="mt-3 max-w-2xl text-brand-900/80" data-i18n="sobre.juntaIntro">The four co-founders behind the association.</p>
+<!-- Se rellena desde data/site.json -> "junta" -->
+<div class="mt-8" data-junta=""></div>
+</section>
+<!-- Transparencia y datos legales -->
+</main>
+<!-- layout:footer:start -->
+<!-- partials/footer.html — pie compartido. Lo copia dentro de cada página tools/construir.py
+     Los datos de contacto, redes y legales los rellena main.js desde data/site.json -->
+<footer class="mt-20 bg-brand-900 text-brand-100">
+<div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
+<div>
+<div class="flex items-center gap-3">
+<img alt="" class="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-white/20" data-logo="" height="48" src="/assets/img/logo.png" width="48"/>
+<p class="font-bold leading-tight text-white">
+          De Personas a Personas
+          <span class="mt-1 block text-xs font-medium text-brand-200">Jóvenes que se apoyan entre sí</span>
+</p>
+</div>
+<p class="mt-5 text-sm leading-relaxed text-brand-200" data-sitio="meta.descripcionCorta"></p>
+</div>
+<nav aria-label="Footer">
+<h2 class="text-xs font-bold uppercase tracking-widest text-white" data-i18n="footer.navegacion">Navigation</h2>
+<ul class="mt-5 space-y-3 text-sm">
+<li><a class="enlace-pie" data-i18n="nav.inicio" href="/en/">Home</a></li>
+<li><a class="enlace-pie" data-i18n="nav.sobre" href="/en/about-us">About Us</a></li>
+<li><a class="enlace-pie" data-i18n="nav.proyectos" href="/en/projects">Projects</a></li>
+<li><a class="enlace-pie" data-i18n="nav.contacto" href="/en/contact">Contact</a></li>
+</ul>
+</nav>
+<div>
+<h2 class="text-xs font-bold uppercase tracking-widest text-white" data-i18n="footer.contactoTitulo">Contact</h2>
+<ul class="mt-5 space-y-3 text-sm" data-contacto=""></ul>
+<div class="mt-4">
+<a class="btn btn-claro w-full text-sm" data-i18n="footer.cta" href="/en/contact">Get in touch</a>
+</div>
+<div class="mt-6" data-redes=""></div>
+</div>
+</div>
+<div class="border-t border-white/10">
+<div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-xs text-brand-200 sm:px-6 md:flex-row md:items-center md:justify-between">
+<p>© <span data-anio="">2026</span> De Personas a Personas · All rights reserved.</p>
+<div class="flex flex-wrap items-center gap-4">
+<a class="enlace-pie" data-i18n="footer.avisoLegal" href="/en/legal-notice">Legal notice</a>
+<span aria-hidden="true" class="text-white/20">·</span>
+<a class="enlace-pie" data-i18n="footer.privacidad" href="/en/privacy-policy">Privacy policy</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- layout:footer:end -->
+</body>
+</html>

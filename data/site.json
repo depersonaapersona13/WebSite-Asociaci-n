@@ -1,21 +1,31 @@
-﻿{
+{
   "_ayuda": "Todo lo que empiece por 'PENDIENTE' se muestra en el sitio como contenido pendiente. Al rellenarlo, desaparece el aviso automáticamente. No borres las comillas ni las comas.",
-
   "meta": {
     "nombre": "De Personas a Personas",
     "siglas": "DPAP",
     "eslogan": "Jóvenes que se apoyan entre sí",
     "urlBase": "https://depersonaapersona13-web.pages.dev",
-    "descripcionCorta": "Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.",
-    "descripcion": "Asociación juvenil sin ánimo de lucro de apoyo mutuo en Sevilla. Espacios seguros de acompañamiento, escucha activa y comunidad entre iguales.",
+    "descripcionCorta": {
+      "es": "Asociación juvenil de apoyo mutuo: jóvenes que se acompañan, se escuchan y se apoyan entre sí.",
+      "en": "Youth mutual support association: young people who accompany, listen to and support each other."
+    },
+    "descripcion": {
+      "es": "Asociación juvenil sin ánimo de lucro de apoyo mutuo en Sevilla. Espacios seguros de acompañamiento, escucha activa y comunidad entre iguales.",
+      "en": "Non-profit youth mutual support association in Seville. Safe spaces for accompaniment, active listening and peer community."
+    },
     "logo": "/assets/img/logo.png"
   },
-
   "contacto": {
     "email": "depersonaapersona13@gmail.com",
     "telefono": "+34 600 123 456",
-    "direccion": "Sevilla, Andalucía",
-    "horario": "Lunes a viernes: 10:00-14:00 y 16:00-20:00",
+    "direccion": {
+      "es": "Sevilla, Andalucía",
+      "en": "Seville, Andalusia"
+    },
+    "horario": {
+      "es": "Lunes a viernes: 10:00-14:00 y 16:00-20:00",
+      "en": "Monday to Friday: 10:00–14:00 and 16:00–20:00"
+    },
     "formulario": {
       "_ayuda": "tipo 'mailto' abre el correo del visitante (funciona ya, sin servicios externos). Si algún día usáis Web3Forms/Formspree, poned su URL en 'endpoint'.",
       "tipo": "mailto",
@@ -23,56 +33,141 @@
       "destino": "depersonaapersona13@gmail.com"
     }
   },
-
   "redes": [
-    { "nombre": "Instagram", "url": "https://www.instagram.com/_de.persona.a.persona_/", "icono": "instagram" },
-    { "nombre": "TikTok", "url": "https://www.tiktok.com/@depersonasapersonas", "icono": "tiktok" },
-    { "nombre": "Facebook", "url": "https://www.facebook.com/profile.php?id=61594435199655", "icono": "facebook" },
-    { "nombre": "X", "url": "https://x.com/personapersona", "icono": "x" },
-    { "nombre": "YouTube", "url": "https://www.youtube.com/@Depersonasapersonas", "icono": "youtube" }
+    {
+      "nombre": "Instagram",
+      "url": "https://www.instagram.com/_de.persona.a.persona_/",
+      "icono": "instagram"
+    },
+    {
+      "nombre": "TikTok",
+      "url": "https://www.tiktok.com/@depersonasapersonas",
+      "icono": "tiktok"
+    },
+    {
+      "nombre": "Facebook",
+      "url": "https://www.facebook.com/profile.php?id=61594435199655",
+      "icono": "facebook"
+    },
+    {
+      "nombre": "X",
+      "url": "https://x.com/personapersona",
+      "icono": "x"
+    },
+    {
+      "nombre": "YouTube",
+      "url": "https://www.youtube.com/@Depersonasapersonas",
+      "icono": "youtube"
+    }
   ],
-
   "legal": {
     "nif": "G-12345678",
-    "registro": "Nº 12345 del Registro de Asociaciones de Andalucía",
+    "registro": {
+      "es": "Nº 12345 del Registro de Asociaciones de Andalucía",
+      "en": "No. 12345 of the Andalusian Register of Associations"
+    },
     "fundacion": "2026-09-13",
-    "sede": "Sevilla (sin sede física, actividad online y en espacios cedidos)"
+    "sede": {
+      "es": "Sevilla (sin sede física, actividad online y en espacios cedidos)",
+      "en": "Seville (no physical office; online activity and borrowed venues)"
+    }
   },
-
   "junta": [
-    { "nombre": "María González", "cargo": "Presidenta", "foto": "", "bio": "Psicóloga especializada en adolescencia y juventud. Cofundadora de De Personas a Personas. Lleva más de 10 años trabajando en acompañamiento juvenil." },
-    { "nombre": "Carlos Ruiz", "cargo": "Vicepresidente", "foto": "", "bio": "Educador social con experiencia en intervención comunitaria. Cofundador de la asociación. Apasionado por la participación juvenil." },
-    { "nombre": "Laura Martínez", "cargo": "Secretaria", "foto": "", "bio": "Trabajadora social enfocada en salud mental juvenil. Cofundadora. Coordinadora de los grupos de apoyo mutuo." },
-    { "nombre": "Javier López", "cargo": "Tesorero", "foto": "", "bio": "Administrativo y gestor de proyectos sociales. Cofundador. Encargado de la sostenibilidad económica de la asociación." }
+    {
+      "nombre": "María González",
+      "cargo": {
+        "es": "Presidenta",
+        "en": "President"
+      },
+      "foto": "",
+      "bio": {
+        "es": "Psicóloga especializada en adolescencia y juventud. Cofundadora de De Personas a Personas. Lleva más de 10 años trabajando en acompañamiento juvenil.",
+        "en": "Psychologist specialising in adolescence and youth. Co-founder of De Personas a Personas. Has worked in youth support for more than 10 years."
+      }
+    },
+    {
+      "nombre": "Carlos Ruiz",
+      "cargo": {
+        "es": "Vicepresidente",
+        "en": "Vice-president"
+      },
+      "foto": "",
+      "bio": {
+        "es": "Educador social con experiencia en intervención comunitaria. Cofundador de la asociación. Apasionado por la participación juvenil.",
+        "en": "Social educator with experience in community work. Co-founder of the association. Passionate about youth participation."
+      }
+    },
+    {
+      "nombre": "Laura Martínez",
+      "cargo": {
+        "es": "Secretaria",
+        "en": "Secretary"
+      },
+      "foto": "",
+      "bio": {
+        "es": "Trabajadora social enfocada en salud mental juvenil. Cofundadora. Coordinadora de los grupos de apoyo mutuo.",
+        "en": "Social worker focused on youth mental health. Co-founder. Coordinator of the mutual support groups."
+      }
+    },
+    {
+      "nombre": "Javier López",
+      "cargo": {
+        "es": "Tesorero",
+        "en": "Treasurer"
+      },
+      "foto": "",
+      "bio": {
+        "es": "Administrativo y gestor de proyectos sociales. Cofundador. Encargado de la sostenibilidad económica de la asociación.",
+        "en": "Administrator and social project manager. Co-founder. In charge of the association's financial sustainability."
+      }
+    }
   ],
-
   "proyectos": [
     {
       "id": "punto-de-encuentro",
-      "titulo": "Punto de encuentro juvenil",
+      "titulo": {
+        "es": "Punto de encuentro juvenil",
+        "en": "Youth meeting point"
+      },
       "estado": "activo",
       "anio": "2026",
-      "resumen": "Espacio semanal de encuentro libre donde jóvenes comparten inquietudes, juegan, crean y se apoyan en un ambiente seguro y sin juicios.",
+      "resumen": {
+        "es": "Espacio semanal de encuentro libre donde jóvenes comparten inquietudes, juegan, crean y se apoyan en un ambiente seguro y sin juicios.",
+        "en": "A free weekly meeting space where young people share concerns, play, create and support each other in a safe, judgement-free environment."
+      },
       "imagen": "",
       "enlace": ""
     },
     {
       "id": "acompanamiento-entre-iguales",
-      "titulo": "Acompañamiento entre iguales",
+      "titulo": {
+        "es": "Acompañamiento entre iguales",
+        "en": "Peer support"
+      },
       "estado": "activo",
       "anio": "2025",
-      "resumen": "Programa de escucha activa y apoyo emocional entre jóvenes formados como pares, para que nadie tenga que enfrentarse solo a sus dificultades.",
+      "resumen": {
+        "es": "Programa de escucha activa y apoyo emocional entre jóvenes formados como pares, para que nadie tenga que enfrentarse solo a sus dificultades.",
+        "en": "A programme of active listening and emotional support between young people trained as peers, so that nobody has to face their difficulties alone."
+      },
       "imagen": "",
       "enlace": ""
     },
     {
       "id": "campana-solidaria",
-      "titulo": "Campaña solidaria 'Comparte tu calor'",
+      "titulo": {
+        "es": "Campaña solidaria 'Comparte tu calor'",
+        "en": "“Share your warmth” solidarity campaign"
+      },
       "estado": "finalizado",
       "anio": "2025",
-      "resumen": "Recogida de ropa de abrigo y alimentos para jóvenes en situación de vulnerabilidad, en colaboración con entidades locales de Sevilla.",
+      "resumen": {
+        "es": "Recogida de ropa de abrigo y alimentos para jóvenes en situación de vulnerabilidad, en colaboración con entidades locales de Sevilla.",
+        "en": "Collection of warm clothing and food for young people in vulnerable situations, in collaboration with local organisations in Seville."
+      },
       "imagen": "",
       "enlace": ""
     }
-  ]
+  ],
+  "_ayuda_idiomas": "Cualquier texto puede escribirse como {\"es\": \"...\", \"en\": \"...\"} para tener versión en español e inglés. Si es un texto simple, se muestra igual en ambos idiomas."
 }

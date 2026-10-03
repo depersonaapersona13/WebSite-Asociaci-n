@@ -1,85 +1,26 @@
-/* tema-visual.js — aplica el tema claro/oscuro ANTES de que se pinte la página,
- * para evitar el destello blanco al cargar. Se carga al principio del <head>,
- * sin "defer", y de forma externa (compatible con la CSP del sitio).
+/* tema-visual.js — el tema (claro/oscuro) sigue siempre al del dispositivo.
  *
- * Prioridad: parámetro ?tema=oscuro|claro  >  preferencia guardada (localStorage)
- *            >  preferencia del sistema (prefers-color-scheme)
- * El botón de cambio del encabezado llama a window.cambiarTema().
+ * No hay botón ni preferencia guardada: se usa prefers-color-scheme del sistema
+ * (ordenador, móvil o tablet) y se actualiza solo si el sistema cambia de tema
+ * (por ejemplo, al llegar la noche con el modo automático activado).
+ *
+ * Se carga al principio del <head>, sin "defer" y como archivo externo (compatible con la CSP),
+ * para aplicar el tema ANTES de pintar y evitar el destello blanco.
  */
 (function () {
   "use strict";
 
-  var CLAVE = "dpap-tema";
-
-  function sistemaOscuro() {
-    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  }
-
-  function desdeParametro() {
-    try {
-      var valor = new URLSearchParams(window.location.search).get("tema");
-      if (valor === "oscuro") return true;
-      if (valor === "claro") return false;
-    } catch (e) { }
-    return null;
-  }
-
-  function estado() {
-    var delParametro = desdeParametro();
-    if (delParametro !== null) return delParametro;
-
-    var guardado = null;
-    try { guardado = window.localStorage.getItem(CLAVE); } catch (e) { }
-    if (guardado === "oscuro") return true;
-    if (guardado === "claro") return false;
-    return sistemaOscuro();
-  }
+  var consulta = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
 
   function aplicar(oscuro) {
-    var raiz = document.documentElement;
-    if (oscuro) {
-      raiz.classList.add("modo-oscuro");
-    } else {
-      raiz.classList.remove("modo-oscuro");
-    }
-    var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", oscuro ? "#0D2236" : "#8FB9E0");
-    var boton = document.getElementById("boton-tema");
-    if (boton) boton.setAttribute("aria-pressed", String(oscuro));
+    document.documentElement.classList.toggle("modo-oscuro", !!oscuro);
   }
 
-  function cambiarTema() {
-    var oscuro = !document.documentElement.classList.contains("modo-oscuro");
-    try { window.localStorage.setItem(CLAVE, oscuro ? "oscuro" : "claro"); } catch (e) { }
-    aplicar(oscuro);
+  aplicar(consulta && consulta.matches);
+
+  if (consulta) {
+    var alCambiar = function (evento) { aplicar(evento.matches); };
+    if (consulta.addEventListener) consulta.addEventListener("change", alCambiar);
+    else if (consulta.addListener) consulta.addListener(alCambiar); /* Safari antiguo */
   }
-
-  aplicar(estado());
-
-  /* Conectar evento click con delegación (funciona siempre aunque el header se inyecte asíncronamente) */
-  document.addEventListener("click", function (evento) {
-    var boton = evento.target && (evento.target.id === "boton-tema" ? evento.target : (evento.target.closest ? evento.target.closest("#boton-tema") : null));
-    if (boton) {
-      evento.preventDefault();
-      cambiarTema();
-    }
-  });
-
-  /* Sincronizar estado del botón en cuanto el layout se inyecte */
-  function sincronizarBoton() {
-    var boton = document.getElementById("boton-tema");
-    if (boton) {
-      var oscuro = document.documentElement.classList.contains("modo-oscuro");
-      boton.setAttribute("aria-pressed", String(oscuro));
-      if (typeof window.textoSitio === "function") {
-        boton.setAttribute("aria-label", oscuro ? window.textoSitio("comun.temaOscuro") : window.textoSitio("comun.temaClaro"));
-      }
-    }
-  }
-  document.addEventListener("layout:cargado", sincronizarBoton);
-  document.addEventListener("DOMContentLoaded", sincronizarBoton);
-
-  /* API para main.js */
-  window.temaActivoOscuro = estado;
-  window.cambiarTema = cambiarTema;
 })();

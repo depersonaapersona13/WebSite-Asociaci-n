@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>De Personas a Personas · Youth mutual support in Seville</title>
+<meta content="Non-profit youth association in Seville: safe spaces for listening, peer support and community. Discover our projects." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="#8FB9E0" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#0D2236" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<link href="https://depersonaapersona13-web.pages.dev/en/" rel="canonical"/>
+<link href="https://depersonaapersona13-web.pages.dev/" hreflang="es" rel="alternate"/>
+<link href="https://depersonaapersona13-web.pages.dev/en/" hreflang="en" rel="alternate"/>
+<link href="https://depersonaapersona13-web.pages.dev/" hreflang="x-default" rel="alternate"/>
+<!-- Vista previa al compartir por WhatsApp, Instagram, X, Facebook... -->
+<meta content="website" property="og:type"/>
+<meta content="De Personas a Personas" property="og:site_name"/>
+<meta content="en_GB" property="og:locale"/>
+<meta content="es_ES" property="og:locale:alternate"/>
+<meta content="De Personas a Personas · Youth mutual support in Seville" property="og:title"/>
+<meta content="Non-profit youth association in Seville: safe spaces for listening, peer support and community. Discover our projects." property="og:description"/>
+<meta content="https://depersonaapersona13-web.pages.dev/en/" property="og:url"/>
+<meta content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="De Personas a Personas · Youth mutual support in Seville" name="twitter:title"/>
+<meta content="Non-profit youth association in Seville: safe spaces for listening, peer support and community. Discover our projects." name="twitter:description"/>
+<meta content="https://depersonaapersona13-web.pages.dev/assets/img/og-image.png" name="twitter:image"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://depersonaapersona13-web.pages.dev/#organization",
+      "name": "De Personas a Personas",
+      "alternateName": "DPAP",
+      "url": "https://depersonaapersona13-web.pages.dev/",
+      "logo": "https://depersonaapersona13-web.pages.dev/assets/img/logo.png",
+      "description": "Non-profit youth mutual support association in Seville. Safe spaces for accompaniment, active listening and peer community.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Seville",
+        "addressRegion": "Andalusia",
+        "addressCountry": "ES"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "depersonaapersona13@gmail.com",
+        "contactType": "customer support",
+        "availableLanguage": [
+          "es",
+          "en"
+        ]
+      },
+      "sameAs": [
+        "https://www.instagram.com/_de.persona.a.persona_/",
+        "https://www.tiktok.com/@depersonasapersonas",
+        "https://www.facebook.com/profile.php?id=61594435199655",
+        "https://x.com/personapersona",
+        "https://www.youtube.com/@Depersonasapersonas"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://depersonaapersona13-web.pages.dev/en/#website",
+      "url": "https://depersonaapersona13-web.pages.dev/en/",
+      "name": "De Personas a Personas",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://depersonaapersona13-web.pages.dev/#organization"
+      }
+    }
+  ]
+}
+  </script>
+<link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/assets/img/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<!-- Rendimiento: logo y poster de hero prioritarios; el JSON se pide cuanto antes -->
+<link as="image" fetchpriority="high" href="/assets/img/hero-poster.jpg" rel="preload"/>
+<link as="image" href="/assets/img/logo.png" rel="preload"/>
+<link as="fetch" crossorigin="anonymous" href="/data/site.json" rel="preload"/>
+<!-- Tema claro/oscuro según el dispositivo, antes de pintar (evita el destello) -->
+<script src="/assets/js/tema-visual.js"></script>
+<link href="/assets/css/styles.css" rel="stylesheet"/>
+<link href="/assets/css/animaciones.css" rel="stylesheet"/>
+<!-- Tailwind compilado en local (sin CDN). Va el último, como hacía el CDN. Recompilar: ver README -->
+<link href="/assets/css/tailwind.css" rel="stylesheet"/>
+<!-- Animaciones, textos del sitio (idiomas.js: lo genera tools/construir.py) y lógica general -->
+<script defer="" src="/assets/js/animaciones.js"></script>
+<script defer="" src="/assets/js/idiomas.js"></script>
+<script defer="" src="/assets/js/layout.js"></script>
+<script defer="" src="/assets/js/main.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-white text-brand-900 antialiased" data-pagina="inicio">
+<a class="salto-contenido" data-i18n="comun.saltar" href="#contenido">Skip to content</a>
+<!-- Pantalla de carga: main.js la oculta al terminar; si el JS fallara, se oculta sola por CSS -->
+<div id="pantalla-carga" role="status">
+<img alt="" data-logo="" height="80" src="/assets/img/logo.png" width="80"/>
+<div aria-hidden="true" class="carga-anillo"></div>
+<p class="carga-texto" data-i18n="comun.cargando">Loading…</p>
+</div>
+<!-- layout:header:start -->
+<header class="sticky top-0 z-50 border-b border-brand-100/80 bg-white/90 backdrop-blur-md transition-colors duration-200">
+<div aria-hidden="true" class="barra-progreso" id="barra-progreso"></div>
+<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+<a class="flex items-center gap-3" href="/en/">
+<!-- El logo real vive en assets/img/logo.png -->
+<img alt="De Personas a Personas logo" class="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-brand-100 sm:h-12 sm:w-12" data-logo="" height="48" src="/assets/img/logo.png" width="48"/>
+<span class="leading-tight">
+<span class="block text-sm font-bold tracking-tight text-brand-900 sm:text-base">De Personas a Personas</span>
+<span class="hidden text-xs text-brand-700 sm:block">Jóvenes que se apoyan entre sí</span>
+</span>
+</a>
+<nav aria-label="Main" class="hidden lg:block">
+<ul class="flex items-center gap-7 text-sm">
+<li><a aria-current="page" class="nav-enlace" data-i18n="nav.inicio" data-nav="inicio" href="/en/">Home</a></li>
+<li><a class="nav-enlace" data-i18n="nav.sobre" data-nav="sobre-nosotros" href="/en/about-us">About Us</a></li>
+<li><a class="nav-enlace" data-i18n="nav.proyectos" data-nav="proyectos" href="/en/projects">Projects</a></li>
+<li><a class="nav-enlace" data-i18n="nav.contacto" data-nav="contacto" href="/en/contact">Contact</a></li>
+</ul>
+</nav>
+<div class="flex items-center gap-2">
+<a class="hidden rounded-full bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-800 lg:inline-flex" data-i18n="nav.cta" href="/en/contact">Get in touch</a>
+<!-- Idiomas: enlaces normales a la versión equivalente (los pone tools/construir.py) -->
+<div aria-label="Idioma / Language" class="selector-idioma" role="group">
+<a class="idioma-btn" data-idioma="es" href="/" hreflang="es" lang="es">ES</a>
+<a aria-current="true" class="idioma-btn" data-idioma="en" href="/en/" hreflang="en" lang="en">EN</a>
+</div>
+<button aria-controls="menu-movil" aria-expanded="false" aria-label="Open navigation menu" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 text-brand-800 lg:hidden" data-i18n-aria-label="nav.abrirMenu" id="boton-menu" type="button">
+<span class="sr-only" data-i18n="nav.abrirMenu">Open navigation menu</span>
+<svg aria-hidden="true" class="icono-abrir h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+</svg>
+<svg aria-hidden="true" class="icono-cerrar h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<div class="border-t border-brand-100 bg-white lg:hidden" hidden="" id="menu-movil">
+<nav aria-label="Mobile menu" class="mx-auto max-w-6xl px-4 py-3 sm:px-6">
+<ul class="space-y-1 text-base">
+<li><a aria-current="page" class="nav-enlace block py-2" data-i18n="nav.inicio" data-nav="inicio" href="/en/">Home</a></li>
+<li><a class="nav-enlace block py-2" data-i18n="nav.sobre" data-nav="sobre-nosotros" href="/en/about-us">About Us</a></li>
+<li><a class="nav-enlace block py-2" data-i18n="nav.proyectos" data-nav="proyectos" href="/en/projects">Projects</a></li>
+<li><a class="nav-enlace block py-2" data-i18n="nav.contacto" data-nav="contacto" href="/en/contact">Contact</a></li>
+<li class="pt-2"><a class="btn btn-primario w-full" data-i18n="nav.cta" href="/en/contact">Get in touch</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<!-- layout:header:end -->
+<main class="flex-1" id="contenido">
+<!-- Portada con Vídeo en Bucle Cinematográfico, Overlay de Marca y Control Interactivo -->
+<section class="hero-video-seccion relative pt-12 pb-0 sm:pt-16 md:pt-20" data-scrub="hero">
+<!-- Vídeo de fondo en bucle -->
+<video aria-hidden="true" autoplay="" class="hero-video-elemento" id="video-hero" loop="" muted="" playsinline="" poster="/assets/img/hero-poster.jpg" preload="auto">
+<source src="/assets/video/hero.mp4" type="video/mp4"/>
+</video>
+<!-- Capa de oscurecido cinematográfico (Overlay) para legibilidad y elegancia visual -->
+<div aria-hidden="true" class="hero-video-overlay"></div>
+<!-- Contenido destacado del Hero -->
+<div class="hero-contenido relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-[1.2fr_auto] pb-14 sm:pb-20 md:pb-24">
+<div class="hero-entrada">
+<div class="mb-5 flex items-center gap-3">
+<span class="kicker-hero" data-i18n="hero.badge">Youth mutual support association · Seville</span>
+</div>
+<h1 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
+            De Personas <span class="block text-sky-200">a Personas</span>
+</h1>
+<p class="mt-4 text-xl font-bold text-sky-100 sm:text-2xl" data-i18n="hero.eslogan">Jóvenes que se apoyan entre sí.</p>
+<p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-100/90 sm:text-lg" data-sitio="meta.descripcionCorta"></p>
+<div class="mt-8 flex flex-wrap items-center gap-4">
+<a class="btn btn-primario-hero" data-i18n="hero.cta1" href="/en/about-us">About us</a>
+<a class="btn btn-contorno-hero" data-i18n="hero.cta2" href="/en/projects">See projects</a>
+</div>
+</div>
+<div class="hero-logo-entrada justify-self-center md:justify-self-end relative">
+<img alt="De Personas a Personas logo" class="relative z-10 h-44 w-44 rounded-full object-cover shadow-2xl ring-4 ring-white/40 sm:h-56 sm:w-56 lg:h-64 lg:w-64" data-logo="" height="240" src="/assets/img/logo.png" width="240"/>
+</div>
+</div>
+<!-- Divisor orgánico en ola curva -->
+<div class="relative w-full overflow-hidden leading-none z-10">
+<svg aria-hidden="true" class="ola-divisor" preserveaspectratio="none" viewbox="0 0 1200 120">
+<path d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,40 L1200,120 L0,120 Z"></path>
+</svg>
+</div>
+</section>
+<!-- Cifras de impacto con contadores animados -->
+<section class="border-b border-brand-100 bg-white py-12 sm:py-16">
+<div class="mx-auto max-w-6xl px-4 sm:px-6">
+<div class="grid grid-cols-2 gap-5 md:grid-cols-4 lg:gap-8">
+<div class="revelar retraso-1 tarjeta p-6 text-center" data-reveal="zoom">
+<p class="cifra-numero text-3xl font-extrabold sm:text-4xl lg:text-5xl" data-contador="4">0</p>
+<p class="mt-2 text-sm font-bold text-brand-900" data-i18n="stats.cifra1Etiqueta">Co-founders</p>
+<p class="mt-1 text-xs text-brand-900/70" data-i18n="stats.cifra1Desc">Committed young people driving the association.</p>
+</div>
+<div class="revelar retraso-2 tarjeta p-6 text-center" data-reveal="zoom">
+<p class="cifra-numero text-3xl font-extrabold sm:text-4xl lg:text-5xl"><span data-contador="100">0</span>%</p>
+<p class="mt-2 text-sm font-bold text-brand-900" data-i18n="stats.cifra2Etiqueta">Free mutual support</p>
+<p class="mt-1 text-xs text-brand-900/70" data-i18n="stats.cifra2Desc">A safe space for active listening among peers.</p>
+</div>
+<div class="revelar retraso-3 tarjeta p-6 text-center" data-reveal="zoom">
+<p class="cifra-numero text-3xl font-extrabold sm:text-4xl lg:text-5xl" data-i18n="stats.cifra3Num">Seville</p>
+<p class="mt-2 text-sm font-bold text-brand-900" data-i18n="stats.cifra3Etiqueta">In-person &amp; online</p>
+<p class="mt-1 text-xs text-brand-900/70" data-i18n="stats.cifra3Desc">Local activities and an accessible online community.</p>
+</div>
+<div class="revelar retraso-4 tarjeta p-6 text-center" data-reveal="zoom">
+<p class="cifra-numero text-3xl font-extrabold sm:text-4xl lg:text-5xl">0€</p>
+<p class="mt-2 text-sm font-bold text-brand-900" data-i18n="stats.cifra4Etiqueta">Cost to take part</p>
+<p class="mt-1 text-xs text-brand-900/70" data-i18n="stats.cifra4Desc">No fees, no barriers for anyone.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Qué hacemos -->
+<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+<div class="max-w-2xl">
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="queHacemos.kicker">What we do</p>
+<h2 class="mt-3 text-3xl font-bold text-brand-900" data-i18n="queHacemos.titulo">Real support, peer to peer</h2>
+<p class="mt-4 text-brand-900/80" data-i18n="queHacemos.texto">We create spaces where young people meet, listen to each other and support one another without feeling judged.</p>
+</div>
+<ul class="mt-12 grid gap-6 md:grid-cols-3">
+<li class="revelar retraso-1 tarjeta h-full p-6">
+<span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+<svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"></path>
+</svg>
+</span>
+<h3 class="text-lg font-bold text-brand-900" data-i18n="queHacemos.apoyoTitulo">Mutual support</h3>
+<p class="mt-2 text-sm leading-relaxed text-brand-900/80" data-i18n="queHacemos.apoyoTexto">We walk alongside those who need it: listening, guidance and practical help between people of similar ages.</p>
+</li>
+<li class="revelar retraso-2 tarjeta h-full p-6">
+<span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+<svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+</svg>
+</span>
+<h3 class="text-lg font-bold text-brand-900" data-i18n="queHacemos.encuentrosTitulo">Meet-ups and activities</h3>
+<p class="mt-2 text-sm leading-relaxed text-brand-900/80" data-i18n="queHacemos.encuentrosTexto">We organise gatherings, workshops and activities to get to know each other, learn together and switch off.</p>
+</li>
+<li class="revelar retraso-3 tarjeta h-full p-6">
+<span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+<svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+</svg>
+</span>
+<h3 class="text-lg font-bold text-brand-900" data-i18n="queHacemos.comunidadTitulo">Community</h3>
+<p class="mt-2 text-sm leading-relaxed text-brand-900/80" data-i18n="queHacemos.comunidadTexto">We build a network: what one person learns is shared with the rest, and nobody is left out.</p>
+</li>
+</ul>
+</section>
+<!-- Proyectos destacados (se cargan desde data/site.json) -->
+<section class="border-y border-brand-100 bg-brand-50">
+<div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+<div class="flex flex-wrap items-end justify-between gap-4">
+<div class="max-w-2xl">
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="proyectos.destacadosKicker">Projects</p>
+<h2 class="mt-3 text-3xl font-bold text-brand-900" data-i18n="proyectos.destacadosTitulo">What we are working on</h2>
+</div>
+<a class="enlace font-semibold" data-i18n="proyectos.verTodos" href="/en/projects">See all projects</a>
+</div>
+<div class="mt-10" data-proyectos-destacados=""></div>
+</div>
+</section>
+<!-- Testimonios / Comunidad -->
+<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+<div class="max-w-2xl">
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-700" data-i18n="testimonios.kicker">Community</p>
+<h2 class="mt-3 text-3xl font-bold text-brand-900" data-i18n="testimonios.titulo">What this space means</h2>
+<p class="mt-4 text-brand-900/80" data-i18n="testimonios.intro">Words and thoughts from people who are already part of our support network.</p>
+</div>
+<div class="mt-12 grid gap-6 md:grid-cols-3">
+<article class="revelar retraso-1 tarjeta-testimonio flex flex-col justify-between" data-reveal="left">
+<blockquote class="text-sm leading-relaxed text-brand-900/85 sm:text-base" data-i18n="testimonios.test1Cita">«Finding a place where you can talk about what's going on without feeling judged changes everything. Knowing you're not alone gives you back the will to keep going.»</blockquote>
+<div class="mt-6 border-t border-brand-100 pt-4">
+<p class="font-bold text-brand-900 text-sm" data-i18n="testimonios.test1Autor">Group member</p>
+<p class="text-xs text-brand-700" data-i18n="testimonios.test1Rol">Meetups participant</p>
+</div>
+</article>
+<article class="revelar retraso-2 tarjeta-testimonio flex flex-col justify-between">
+<blockquote class="text-sm leading-relaxed text-brand-900/85 sm:text-base" data-i18n="testimonios.test2Cita">«You don't need all the answers to help; sometimes all it takes is sitting down to listen and saying: I've been there too.»</blockquote>
+<div class="mt-6 border-t border-brand-100 pt-4">
+<p class="font-bold text-brand-900 text-sm" data-i18n="testimonios.test2Autor">Network peer</p>
+<p class="text-xs text-brand-700" data-i18n="testimonios.test2Rol">Peer support</p>
+</div>
+</article>
+<article class="revelar retraso-3 tarjeta-testimonio flex flex-col justify-between" data-reveal="right">
+<blockquote class="text-sm leading-relaxed text-brand-900/85 sm:text-base" data-i18n="testimonios.test3Cita">«The strength of this association is that we build it peer to peer. Nobody is above anyone else and every voice counts.»</blockquote>
+<div class="mt-6 border-t border-brand-100 pt-4">
+<p class="font-bold text-brand-900 text-sm" data-i18n="testimonios.test3Autor">Youth collaborator</p>
+<p class="text-xs text-brand-700" data-i18n="testimonios.test3Rol">Workshops &amp; activities</p>
+</div>
+</article>
+</div>
+</section>
+<!-- Preguntas Frecuentes (FAQ) en acordeón accesible -->
+<section class="seccion-video-faq border-t border-brand-100" data-scrub="paralaje">
+<!-- Vídeo de fondo -->
+<video aria-hidden="true" class="faq-video-elemento" loop="" muted="" playsinline="" preload="none">
+<source data-src="/assets/video/hero-community.mp4" type="video/mp4"/>
+</video>
+<!-- Overlay oscuro para legibilidad -->
+<div aria-hidden="true" class="faq-video-overlay"></div>
+<div class="relative z-10 mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24">
+<div class="text-center">
+<span class="kicker-faq" data-i18n="faq.kicker">We answer your questions</span>
+<h2 class="mt-5 text-3xl font-bold text-white sm:text-4xl md:text-5xl" data-i18n="faq.titulo">Frequently asked questions</h2>
+<p class="mx-auto mt-4 max-w-2xl text-white/80 text-base sm:text-lg" data-i18n="faq.intro">Everything you need to know before reaching out or joining our meetups.</p>
+</div>
+<div class="mt-12 space-y-4">
+<div class="acordeon-item acordeon-item-oscuro" data-abierto="false">
+<button aria-expanded="false" class="acordeon-boton" type="button">
+<span data-i18n="faq.q1">Who can take part in the association?</span>
+<span aria-hidden="true" class="acordeon-icono">
+<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</span>
+</button>
+<div class="acordeon-panel">
+<p class="text-sm leading-relaxed sm:text-base" data-i18n="faq.a1">Any young person who wants to feel heard, support others, or propose community activities. There are no prerequisites: our doors are open to everyone.</p>
+</div>
+</div>
+<div class="acordeon-item acordeon-item-oscuro" data-abierto="false">
+<button aria-expanded="false" class="acordeon-boton" type="button">
+<span data-i18n="faq.q2">Is there any membership fee or cost?</span>
+<span aria-hidden="true" class="acordeon-icono">
+<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</span>
+</button>
+<div class="acordeon-panel">
+<p class="text-sm leading-relaxed sm:text-base" data-i18n="faq.a2">None at all. Taking part in the association and our meetups is 100% free. We believe in accessible peer support without economic barriers.</p>
+</div>
+</div>
+<div class="acordeon-item acordeon-item-oscuro" data-abierto="false">
+<button aria-expanded="false" class="acordeon-boton" type="button">
+<span data-i18n="faq.q3">What kind of activities and meetups do you organise?</span>
+<span aria-hidden="true" class="acordeon-icono">
+<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</span>
+</button>
+<div class="acordeon-panel">
+<p class="text-sm leading-relaxed sm:text-base" data-i18n="faq.a3">We organise informal meetups, spaces for conversation and listening, practical workshops, group sessions to share concerns, and solidarity projects suggested by the members themselves.</p>
+</div>
+</div>
+<div class="acordeon-item acordeon-item-oscuro" data-abierto="false">
+<button aria-expanded="false" class="acordeon-boton" type="button">
+<span data-i18n="faq.q4">Do I have to live in Seville to participate?</span>
+<span aria-hidden="true" class="acordeon-icono">
+<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</span>
+</button>
+<div class="acordeon-panel">
+<p class="text-sm leading-relaxed sm:text-base" data-i18n="faq.a4">The association was founded in Seville and we hold in-person meetups there, but we also have online channels and digital activities so you can join from anywhere.</p>
+</div>
+</div>
+<div class="acordeon-item acordeon-item-oscuro" data-abierto="false">
+<button aria-expanded="false" class="acordeon-boton" type="button">
+<span data-i18n="faq.q5">How can I propose an idea or get involved?</span>
+<span aria-hidden="true" class="acordeon-icono">
+<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</span>
+</button>
+<div class="acordeon-panel">
+<p class="text-sm leading-relaxed sm:text-base" data-i18n="faq.a5">It's very easy! You can write to us through the contact form on this website or send a direct message on any of our social networks. We'll be glad to hear about your idea.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Llamada a la acción -->
+<section class="seccion-cta-video" data-scrub="paralaje">
+<!-- Vídeo de fondo -->
+<video aria-hidden="true" class="cta-video-elemento" loop="" muted="" playsinline="" preload="none">
+<source data-src="/assets/video/hero.mp4" type="video/mp4"/>
+</video>
+<!-- Overlay de marca -->
+<div aria-hidden="true" class="cta-video-overlay"></div>
+<div class="relative z-10 mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-28">
+<h2 class="text-3xl font-bold text-white sm:text-4xl md:text-5xl" data-i18n="queHacemos.ctaTitulo">Do you want to take part?</h2>
+<p class="mx-auto mt-6 max-w-2xl text-lg text-white/85" data-i18n="queHacemos.ctaTexto">If you're young and want to support others or feel supported yourself, write to us. You can also count on us if you'd like to suggest an activity or collaborate with the association.</p>
+<div class="mt-10 flex flex-wrap justify-center gap-4">
+<a class="rounded-full bg-white px-8 py-3.5 font-bold text-brand-800 shadow-lg transition-all hover:bg-brand-50 hover:shadow-xl hover:-translate-y-0.5" data-i18n="queHacemos.ctaBoton" href="/en/contact">Get in touch</a>
+<a class="rounded-full border-2 border-white/70 px-8 py-3.5 font-bold text-white backdrop-blur-sm transition-all hover:bg-white/15 hover:border-white" data-i18n="queHacemos.ctaBoton2" href="/en/about-us">How we work</a>
+</div>
+</div>
+</section>
+</main>
+<!-- layout:footer:start -->
+<!-- partials/footer.html — pie compartido. Lo copia dentro de cada página tools/construir.py
+     Los datos de contacto, redes y legales los rellena main.js desde data/site.json -->
+<footer class="mt-20 bg-brand-900 text-brand-100">
+<div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
+<div>
+<div class="flex items-center gap-3">
+<img alt="" class="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-white/20" data-logo="" height="48" src="/assets/img/logo.png" width="48"/>
+<p class="font-bold leading-tight text-white">
+          De Personas a Personas
+          <span class="mt-1 block text-xs font-medium text-brand-200">Jóvenes que se apoyan entre sí</span>
+</p>
+</div>
+<p class="mt-5 text-sm leading-relaxed text-brand-200" data-sitio="meta.descripcionCorta"></p>
+</div>
+<nav aria-label="Footer">
+<h2 class="text-xs font-bold uppercase tracking-widest text-white" data-i18n="footer.navegacion">Navigation</h2>
+<ul class="mt-5 space-y-3 text-sm">
+<li><a class="enlace-pie" data-i18n="nav.inicio" href="/en/">Home</a></li>
+<li><a class="enlace-pie" data-i18n="nav.sobre" href="/en/about-us">About Us</a></li>
+<li><a class="enlace-pie" data-i18n="nav.proyectos" href="/en/projects">Projects</a></li>
+<li><a class="enlace-pie" data-i18n="nav.contacto" href="/en/contact">Contact</a></li>
+</ul>
+</nav>
+<div>
+<h2 class="text-xs font-bold uppercase tracking-widest text-white" data-i18n="footer.contactoTitulo">Contact</h2>
+<ul class="mt-5 space-y-3 text-sm" data-contacto=""></ul>
+<div class="mt-4">
+<a class="btn btn-claro w-full text-sm" data-i18n="footer.cta" href="/en/contact">Get in touch</a>
+</div>
+<div class="mt-6" data-redes=""></div>
+</div>
+</div>
+<div class="border-t border-white/10">
+<div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-xs text-brand-200 sm:px-6 md:flex-row md:items-center md:justify-between">
+<p>© <span data-anio="">2026</span> De Personas a Personas · All rights reserved.</p>
+<div class="flex flex-wrap items-center gap-4">
+<a class="enlace-pie" data-i18n="footer.avisoLegal" href="/en/legal-notice">Legal notice</a>
+<span aria-hidden="true" class="text-white/20">·</span>
+<a class="enlace-pie" data-i18n="footer.privacidad" href="/en/privacy-policy">Privacy policy</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- layout:footer:end -->
+<!-- Botón flotante para volver arriba -->
+<button aria-label="Back to top" class="boton-arriba" data-i18n-aria-label="comun.volverArriba" id="boton-arriba" type="button">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M12 19V5M5 12l7-7 7 7"></path>
+</svg>
+</button>
+</body>
+</html>
